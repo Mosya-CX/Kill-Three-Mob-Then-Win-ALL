@@ -8,3 +8,4 @@
 5.将你自己更新的内容合并到main里：切到主分支->点击current branch->pull request-> Choose a branch to merge into main->选中自己的分支
 6.从main上更新你的分支：点branch->update from main
 7.git有不会操作的一定要在群里说出来
+8.每个人要对主分支进行操作的时候要在群里扣一下1，操作完扣2, 别在别人操作的时候你也在操作, 以防出现问题
