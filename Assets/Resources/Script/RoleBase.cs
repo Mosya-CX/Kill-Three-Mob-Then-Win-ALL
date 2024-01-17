@@ -12,7 +12,7 @@ public class RoleBase : MonoBehaviour
     public TMP_Text shieldText;
     public List<BaseBuff> Buffs;
     Animator animator;
-    private void Start()
+    protected void Init()
     {
         HPSlider.maxValue = HP;
         HPSlider.minValue = 0;
@@ -20,7 +20,7 @@ public class RoleBase : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    protected void onUpdate()
     {
         HPSlider.value = HP;
         shieldText.text = Shield.ToString();

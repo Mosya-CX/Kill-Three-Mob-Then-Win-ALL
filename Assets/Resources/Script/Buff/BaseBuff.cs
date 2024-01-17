@@ -10,20 +10,17 @@ public class BaseBuff
     string name;
     string imgPath;
     string Des;
-    int lastTime;
+    public int lastTime;
     string Effect;
-    private void Awake()
+    public BaseBuff(int Id, int lasttime) 
     {
+        id = Id;
+        lastTime = lasttime;
         name = GameConfigManager.Instance.getBuffById(id.ToString())["Name"];
         imgPath = GameConfigManager.Instance.getBuffById(id.ToString())["imgPath"];
         Des = GameConfigManager.Instance.getBuffById(id.ToString())["Des"];
     }
-
-    private void Start()
-    {
-        
-    }
-
+    
     public virtual void Fun(GameObject target)
     {
         // 此处写buff的效果
@@ -42,7 +39,7 @@ public class BaseBuff
         }
     }
     // 销毁
-    public void DisActive(string tag)
+    public void Destory(string tag)
     {
         if (tag == "Player")
         {
