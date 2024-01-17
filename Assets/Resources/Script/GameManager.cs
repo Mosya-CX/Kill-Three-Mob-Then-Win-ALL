@@ -7,8 +7,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = new GameManager();
-    public int currentLevel;
+    public int currentProgress;
     public bool isFighting;
+    public GameObject Player;
+    public GameObject Enemy;
+
     //public int currentTurn;// 0表示非战斗状态，1表示玩家回合，2表示敌人回合
     private void Awake()
     {
@@ -16,8 +19,10 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        // 初始化关卡
-        currentLevel = 0;
+        Player = GameObject.FindWithTag("Player");
+        Enemy = GameObject.FindWithTag("Enemy");
+        // 初始化进度
+        currentProgress = 0;
         //// 初始化战斗回合
         //currentTurn = 0;
         // 初始化配置表
@@ -31,7 +36,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        switch (currentLevel)
+        if (isFighting)
+        {
+            
+        }
+        switch (currentProgress)
         {
             case 0:
                 break;
