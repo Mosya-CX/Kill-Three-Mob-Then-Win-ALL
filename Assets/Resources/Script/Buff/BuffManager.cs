@@ -5,7 +5,14 @@ using UnityEngine;
 public class BuffManager 
 {
     public static BuffManager Instance = new BuffManager();
-    
+
+    // 给部分buff使用的数值参数
+    public int burningDamage = 10;
+    // 以下为一些通用参数随时可调
+    public int Value1;
+    public int Value2;
+    public int Value3;
+
     // 向指定角色添加Buff
     public void AddBuff(GameObject Character, int Id, int lastTime)
     {
@@ -49,8 +56,10 @@ public class BuffManager
         bool isBuff1 = false;// 火元素
         bool isBuff2 = false;// 水元素
         bool isBuff3 = false;// 草元素
-        bool isBuff4 = false;// 减伤
+        bool isBuff4 = false;// 减攻击力
         bool isBuff5 = false;// 燃烧状态
+        bool isBuff6 = false;// 加攻击力
+        bool isBuff7 = false;// 禁止使用护盾
         List<BaseBuff> buffList = null;
         if (Character.tag == "Player")
         {
@@ -82,6 +91,14 @@ public class BuffManager
             {
                 isBuff5 = true;
             }
+            if (buffList[i].id == 6)
+            {
+                isBuff6 = true;
+            }
+            if (buffList[i].id == 7)
+            {
+                isBuff7 = true;
+            }
             buffList[i].lastTime--;
             if (buffList[i].lastTime <= 0)
             {
@@ -90,23 +107,56 @@ public class BuffManager
         }
         if (isBuff1 && isBuff2)
         {
-            
+            // 火加水的buff逻辑
         }
         if (isBuff1 && isBuff3)
         {
-
+            // 火加草的buff逻辑
+            AddBuff(Character, 5, 1);
         }
         if (isBuff2 && isBuff3)
         {
-
+            // 草加水的buff逻辑
+        }
+        if (isBuff4)
+        {
+            // 减攻击力的buff逻辑
+            if (Character.tag == "Player")
+            {
+                Character.GetComponent<Player>().finalDemage -= Value1;
+            }
+            else if (Character.tag == "Enemy")
+            {
+                Character.GetComponent<Enemy>().finalDemage -= Value1;
+            }
         }
         if (isBuff5)
         {
-
+            // 燃烧的buff逻辑
+            if (Character.tag == "Player")
+            {
+                Character.GetComponent<Player>().HP -= burningDamage;
+            }
+            else if (Character.tag == "Enemy")
+            {
+                Character.GetComponent<Enemy>().HP -= burningDamage;
+            }
         }
-        if (isBuff5)
+        if (isBuff6)
         {
-
+            // 加攻击力的buff逻辑
+            if (Character.tag == "Player")
+            {
+                Character.GetComponent<Player>().finalDemage += Value2;
+            }
+            else if (Character.tag == "Enemy")
+            {
+                Character.GetComponent<Enemy>().finalDemage += Value2;
+            }
+        }
+        if (isBuff7)
+        {
+            // 禁止使用护盾的buff逻辑
         }
     }
 

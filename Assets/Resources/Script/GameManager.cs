@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance = new GameManager();
     public int currentProgress;
     public bool isFighting;
+    // 方便调用玩家和敌人
     public GameObject Player;
     public GameObject Enemy;
 
@@ -36,10 +37,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (isFighting)
-        {
-            
-        }
+        //if (isFighting)
+        //{
+        //    Enemy = GameObject.FindWithTag("Enemy");
+        //}
         switch (currentProgress)
         {
             case 0:
@@ -63,5 +64,10 @@ public class GameManager : MonoBehaviour
         //{
 
         //}
+    }
+    // 查找敌人
+    public void FindTarWithTag()
+    {
+        Enemy =  GameObject.FindWithTag("Ememy");
     }
 }

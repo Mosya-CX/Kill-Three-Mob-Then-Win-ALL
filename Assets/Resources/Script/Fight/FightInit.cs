@@ -11,6 +11,7 @@ public class FightInit : FightUnit
 
         // 敌人生成(检测GameManager的progress判断处于什么阶段，通过EnemyManager里的LoadMob传入id生成对应的敌人)
 
+        FightCardManager.instance.Init();
     }
 
     public override void OnUpdate()
