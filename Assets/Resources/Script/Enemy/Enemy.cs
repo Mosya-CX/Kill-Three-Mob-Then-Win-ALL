@@ -20,6 +20,7 @@ public class Enemy : RoleBase
         onUpdate();
     }
 
+    // 以下写敌人的行动方法
     // 攻击
     public void Attack()
     {

@@ -24,9 +24,15 @@ public class Player : RoleBase
         FeeText.text = currentFee + "/" + totalFee;
     }
 
+    // 以下写玩家的行动方法
     // 攻击
     public void Attack()
     {
         Enemy.GetComponent<Enemy>().HP -= finalDemage;
+    }
+    // 防御
+    public void Defend(int shieldValue)
+    {
+        Shield += shieldValue;
     }
 }
