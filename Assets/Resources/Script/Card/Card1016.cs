@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card1016 : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+//落叶归根			在本局剩余时间内，你每使用一张草属性的牌，下一个回合便获得一张草属性的牌（不包括本牌）
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public class Card1016 : CardItem
+{
+    
 }

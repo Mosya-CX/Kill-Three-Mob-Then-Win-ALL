@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card1008 : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+//火花			造成10点火元素伤害，并将你的下一次造成的伤害视为火元素伤害
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public class Card1008 : CardItem
+{
+    
 }

@@ -2,17 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card1013 : MonoBehaviour
+//浊流			抵消你下次受到的伤害，在本局剩余时间内，使敌人身上存在不会消耗的水元素附着
+public class Card1013 : CardItem
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
