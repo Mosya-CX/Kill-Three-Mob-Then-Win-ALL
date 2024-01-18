@@ -11,8 +11,11 @@ public class EnemyManager
         // 获得敌人信息
         Dictionary<string, string> enemyInfo = GameConfigManager.Instance.getEnemyById(id.ToString());
         Vector2 enemyPos = Vector2.zero;//敌人位置，尚未确定
+        // 生成敌人
         GameObject obj = GameObject.Instantiate(Resources.Load(enemyInfo["PrefabPath"])) as GameObject;
         obj.transform.position = enemyPos;
+        // 绑定敌人
+        GameManager.Instance.Enemy = obj;
         Enemy enemy = obj.GetComponent<Enemy>();
         if (enemy == null )
         {

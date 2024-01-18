@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 
 // 挂玩家身上
+// 存储玩家信息
 public class Player : RoleBase
 {
     public int currentFee;
@@ -24,16 +25,6 @@ public class Player : RoleBase
         FeeText.text = currentFee + "/" + totalFee;
     }
 
-    // 以下写玩家的行动方法
-    // 攻击
-    public void Attack()
-    {
-        Enemy.GetComponent<Enemy>().HP -= finalDemage;
-    }
-    // 防御
-    public void Defend(int shieldValue)
-    {
-        Shield += shieldValue;
-    }
+    
    
 }
