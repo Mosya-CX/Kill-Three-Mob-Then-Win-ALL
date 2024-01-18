@@ -16,13 +16,24 @@ public class RoleBase : MonoBehaviour
     {
         HPSlider.maxValue = HP;
         HPSlider.minValue = 0;
-        shieldText.text = Shield.ToString();
+        Shield = 0;
         animator = GetComponent<Animator>();
     }
 
     protected void onUpdate()
     {
-        HPSlider.value = HP;
+        if (HP != HPSlider.value)
+        {
+            if (HP > HPSlider.value)
+            {
+                HPSlider.value += Time.deltaTime;
+            }
+            else if (HP < HPSlider.value)
+            {
+                HPSlider.value -= Time.deltaTime;
+            }
+        }
+        
         shieldText.text = Shield.ToString();
     }
 }
