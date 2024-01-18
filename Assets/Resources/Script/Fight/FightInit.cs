@@ -8,6 +8,8 @@ public class FightInit : FightUnit
     public override void Init()
     {
         //切换BGM
+        AudioManager.Instance.FightingAudio();
+        GameManager.Instance.fightBGMIsOn = true;
 
         // 敌人生成(检测GameManager的progress判断处于什么阶段，通过EnemyManager里的LoadMob传入id生成对应的敌人)
         int progress = GameManager.Instance.currentProgress;
@@ -24,7 +26,7 @@ public class FightInit : FightUnit
             EnemyManager.Instance.LoadMob(1002);
         }
 
-        // 初始化玩家手牌
+        // 初始化可用牌堆
         FightCardManager.instance.Init();
     }
 
