@@ -7,9 +7,9 @@ using TMPro;
 public class RoleBase : MonoBehaviour
 {
     public int HP;
-    public Slider HPSlider;
-    public int Shield;
-    public TMP_Text shieldText;
+    public Slider HPSlider;// 绑定HP的
+    public int Shield;// 护盾值
+    public TMP_Text shieldText;// 绑定护盾值的文本
     public List<BaseBuff> Buffs;
     Animator animator;
     protected void Init()
