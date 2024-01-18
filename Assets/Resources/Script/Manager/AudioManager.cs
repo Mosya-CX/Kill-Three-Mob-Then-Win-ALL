@@ -63,7 +63,6 @@ public class AudioManager : MonoBehaviour
     {
         Instance.effectSource.clip = Instance.winClip;
         Instance.effectSource.Play();
-
     }
 
     //Íæ¼ÒËÀÍö²¥·ÅÒôĞ§

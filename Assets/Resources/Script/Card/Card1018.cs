@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseCard : MonoBehaviour
+public class Card1018 : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

@@ -22,9 +22,23 @@ public class FightManager : MonoBehaviour
 
     public FightUnit fightUnit;//战斗单元
 
-    public int maxHp;
-    public int curHp;
+    public int maxHp;   //最大血量
+    public int curHp;   //当前血量
 
+    public int maxFee;  //最大费用
+    public int curFee;  //当前费用
+
+    public int defenseCount;    //防御值
+
+    //初始化
+    public void Init()
+    {
+        maxHp = 100;
+        curHp = 100;
+        maxFee = 4;
+        curFee = 4;
+        defenseCount = 0;
+    }
     private void Awake()
     {
         Instance = this; 

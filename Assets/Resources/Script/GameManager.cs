@@ -6,21 +6,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
     public static GameManager Instance
     {
         get 
         { 
-            return instance; 
+            return Instance; 
         }
     }
     // 当前游戏流程进度
     public int currentProgress;
     // 判断是否在战斗状态
     public bool isFighting;
-    // 音频开关
-    public bool fightBGMIsOn = false;
-    
+
+    //结局要用到的时间
+    float gameTime;
+
     // 绑定玩家和敌人
     public GameObject Player;
     public GameObject Enemy;
@@ -63,12 +63,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //进入战斗播放战斗BGM
-        if (isFighting && !fightBGMIsOn)
-        {
-            AudioManager.Instance.FightingAudio();
-            fightBGMIsOn = true;
-        }
+        gameTime += Time.deltaTime;//结局要用到的时间
+
         switch (currentProgress)
         {
             case 0:
