@@ -52,12 +52,12 @@ public class GameManager : MonoBehaviour
         {
             
         }
-        //进入战斗播放战斗BGM
+        /*//进入战斗播放战斗BGM
         if (isFighting && !fightBGMIsOn)
         {
             AudioManager.Instance.FightingAudio();
             fightBGMIsOn = true;
-        }
+        }*/
         switch (currentProgress)
         {
             case 0:

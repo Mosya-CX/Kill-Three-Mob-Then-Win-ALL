@@ -18,13 +18,16 @@ public enum FightType
 /// </summary>
 public class FightManager : MonoBehaviour
 {
-    public static FightManager instance;
+    public static FightManager Instance;
 
     public FightUnit fightUnit;//战斗单元
 
+    public int maxHp;
+    public int curHp;
+
     private void Awake()
-    { 
-        instance = this; 
+    {
+        Instance = this; 
     }
 
     //切换战斗类型
