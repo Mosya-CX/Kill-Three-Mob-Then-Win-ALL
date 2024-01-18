@@ -48,6 +48,16 @@ public class FightCardManager
             temp.RemoveAt(cardIndex);
         }
     }
-
-
+    // ¼ì²âÅÆ¶ÑÊÇ·ñÓÐÅÆ
+    public bool hasCard()
+    {
+        return availableCardList.Count > 0;
+    }
+    // ³é¿¨
+    public string DrawCard()
+    {
+        string id = availableCardList[availableCardList.Count-1];
+        availableCardList.RemoveAt(availableCardList.Count-1);
+        return id;
+    }
 }
