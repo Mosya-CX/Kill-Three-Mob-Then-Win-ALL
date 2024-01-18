@@ -9,6 +9,8 @@ public class FightInit : FightUnit
     {
         //切换BGM
 
+        // 敌人生成(检测GameManager的progress判断处于什么阶段，通过EnemyManager里的LoadMob传入id生成对应的敌人)
+
     }
 
     public override void OnUpdate()

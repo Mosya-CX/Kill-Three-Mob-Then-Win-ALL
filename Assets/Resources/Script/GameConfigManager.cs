@@ -18,8 +18,8 @@ public class GameConfigManager
     {
         textAsset = Resources.Load<TextAsset>("Data/card");
         cardData = new GameConfigData(textAsset.text);
-        //textAsset = Resources.Load<TextAsset>("Data/enemy");
-        //enemyData = new GameConfigData(textAsset.text);
+        textAsset = Resources.Load<TextAsset>("Data/enemy");
+        enemyData = new GameConfigData(textAsset.text);
         textAsset = Resources.Load<TextAsset>("Data/buff");
         buffData = new GameConfigData(textAsset.text);
     }

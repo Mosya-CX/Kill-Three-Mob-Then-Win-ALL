@@ -7,7 +7,7 @@ public class PlayerInfoManager
     public static PlayerInfoManager Instance = new PlayerInfoManager();
     // ¥Ê¥¢ ÷≈∆
     public List<string> handCards;
-    // …Ë÷√≥ı ºø®∆¨
+    // …Ë÷√≥ı º ÷≈∆
     public void Init()
     {
         handCards = new List<string>();
