@@ -35,4 +35,5 @@ public class Player : RoleBase
     {
         Shield += shieldValue;
     }
+   
 }
