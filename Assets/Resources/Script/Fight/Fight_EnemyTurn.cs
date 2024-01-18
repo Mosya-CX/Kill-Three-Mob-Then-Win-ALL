@@ -12,6 +12,6 @@ public class Fight_EnemyTurn : FightUnit
 
     public override void OnUpdate()
     {
-
+        // µ–»À––∂Ø
     }
 }

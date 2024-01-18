@@ -37,16 +37,6 @@ public class FightCardManager
             
             usedCardList.RemoveAt(cardIndex);
         }
-        // 重新抽取6张
-        while (temp.Count < 6)
-        {
-            
-            int cardIndex = Random.Range(0, availableCardList.Count - 1);
-            
-            temp.Add(availableCardList[cardIndex]);
-            
-            temp.RemoveAt(cardIndex);
-        }
     }
     // 检测牌堆是否有牌
     public bool hasCard()

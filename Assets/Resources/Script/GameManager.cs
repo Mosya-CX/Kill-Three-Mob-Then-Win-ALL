@@ -6,10 +6,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance = new GameManager();
+    public static GameManager instance;
+    public static GameManager Instance
+    {
+        get 
+        { 
+            return instance; 
+        }
+    }
+    // 当前游戏流程进度
     public int currentProgress;
+    // 判断是否在战斗状态
     public bool isFighting;
-    private bool fightBGMIsOn = false;
+    // 音频开关
+    public bool fightBGMIsOn = false;
+    
+    // 绑定玩家和敌人
     public GameObject Player;
     public GameObject Enemy;
 
@@ -41,6 +53,9 @@ public class GameManager : MonoBehaviour
         GameConfigManager.Instance.Init();
         // 初始化音频管理系统
 
+        // 初始化可用牌堆
+        FightCardManager.instance.Init();
+
         // GameConfig配置测试
         string Name = GameConfigManager.Instance.getCardById("t1")["Name"];
         print(Name);
@@ -48,10 +63,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (isFighting)
-        {
-            
-        }
         //进入战斗播放战斗BGM
         if (isFighting && !fightBGMIsOn)
         {
