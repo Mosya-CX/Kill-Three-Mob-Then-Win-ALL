@@ -6,11 +6,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     public static GameManager Instance
     {
-        get 
-        { 
-            return Instance; 
+        get
+        {
+            return instance;
         }
     }
     // 当前游戏流程进度
