@@ -23,19 +23,19 @@ public class Enemy : RoleBase
     public int finalDemage;// 存储造成的最终伤害
     private void Start()
     {
-        HP = int.Parse(GameConfigManager.Instance.getEnemyById(id.ToString())["HP"]);
+        maxHP = int.Parse(GameConfigManager.Instance.getEnemyById(id.ToString())["HP"]);
         baseDamage = int.Parse(GameConfigManager.Instance.getEnemyById(id.ToString())["baseDamage"]);
         Init();
         Player = GameManager.Instance.Player;
-        //finalDemage = baseDemage;
+        finalDemage = baseDamage;
         nextType = ActionType.None;
         // 此处创建显示写敌人下回合行动的UI
     }
 
     private void Update()
     {
-        onUpdate();
 
+        onUpdate();
     }
 
     

@@ -9,6 +9,8 @@ public class GameConfigManager
     GameConfigData cardData;
     // 敌人数据表
     GameConfigData enemyData;
+    // Buff数据表
+    GameConfigData buffData;
 
     TextAsset textAsset;
     // 初始化配置文件
@@ -16,8 +18,10 @@ public class GameConfigManager
     {
         textAsset = Resources.Load<TextAsset>("Data/Card");
         cardData = new GameConfigData(textAsset.text);
-        //textAsset = Resources.Load<TextAsset>("Data/Enemy");
-        //enemyData = new GameConfigData(textAsset.text);
+        textAsset = Resources.Load<TextAsset>("Data/Enemy");
+        enemyData = new GameConfigData(textAsset.text);
+        textAsset = Resources.Load<TextAsset>("Data/Buff");
+        buffData = new GameConfigData(textAsset.text);
     }
 
     // 获得数据表
@@ -29,6 +33,10 @@ public class GameConfigManager
     {
         return enemyData.getDataList();
     }
+    public List<Dictionary<string, string>> getBuffData()
+    {
+        return buffData.getDataList();
+    }
 
     // 获得指定id的字典
     public Dictionary<string, string> getCardById(string Id)
@@ -39,5 +47,8 @@ public class GameConfigManager
     {
         return enemyData.getDataDicById(Id);
     }
-
+    public Dictionary<string, string> getBuffById(string Id)
+    {
+        return buffData.getDataDicById(Id);
+    }
 }

@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
         //播放开局bgm
         AudioManager.Instance.StartLevelAudio();
 
-        //Player = GameObject.FindWithTag("Player");
-        //Enemy = GameObject.FindWithTag("Enemy");
+        Player = GameObject.FindWithTag("Player");
+        Enemy = GameObject.FindWithTag("Enemy");
 
 
         // 初始化进度
