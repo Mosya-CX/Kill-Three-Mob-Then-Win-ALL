@@ -1,113 +1,93 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using DG.Tweening;
 
 
-public class UIManager
+
+// UI按钮通过该UI管理器打开UI
+public class UIManager : MonoBehaviour
 {
-    private static UIManager _instance;
-    private Transform uiRoot;
+    public static UIManager Instance;
+    public Transform uiCanvas;// ui画布挂在上面
+    List<BasePanel> uiList;
 
-    private Dictionary<string, string> pathDict;
-    //预制件缓存字典
-    private Dictionary<string, GameObject> prefabDict;
-    //已打开界面的缓存字典
-    public Dictionary<string, BasePanel> panelDict;
-
-    public static UIManager Instance
+    private void Awake()
     {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new UIManager();
-            }
-            return _instance;
-        }
+        Instance = this;
+        uiList = new List<BasePanel>();
     }
 
-    public Transform UIRoot
+    //显示
+    public BasePanel OpenUI<T>(string uiName) where T:BasePanel
     {
-        get
+        BasePanel panel = Find(uiName);
+        if (panel != null)
         {
-            if(uiRoot==null)
-            {
-                uiRoot = GameObject.Find("Canvas").transform;
-            }
-            return uiRoot;
+            panel.Open();
         }
-    }
-
-    private UIManager()
-    {
-        InitDicts();
-    }
-
-    private void InitDicts()
-    {
-        prefabDict = new Dictionary<string, GameObject>();  
-        panelDict = new Dictionary<string, BasePanel>();   
-        pathDict = new Dictionary<string, string>()
+        else
         {
-            { UIConst.FightUI, "Menu/FightUI" },
-        };
-    }
-
-    public BasePanel OpenPanel(string name)
-    {
-        BasePanel panel = null; 
-        //检查是否已打开
-        if(panelDict.TryGetValue(name,out panel))
-        {
-            Debug.LogError("界面已打开：" + name);
-            return null;
+            //如果为空
+            GameObject obj = Instantiate(Resources.Load("Prefab/UI/"+uiName), uiCanvas) as GameObject;
+            //改名字
+            obj.name = uiName;
+            //添加脚本
+            panel = obj.AddComponent<T>();
+            //添加到集合存储
+            uiList.Add(panel);
         }
-        //检查路径是否有配置
-        string path = "";
-        if(!pathDict.TryGetValue(name,out path))
-        {
-            Debug.Log("界面名称错误，或者未配置路径：" + name);
-            return null;
-        }
-
-        GameObject panelPrefab = null;
-        if(!prefabDict.TryGetValue(name,out panelPrefab))
-        {
-            string realPath = "Prefab/Panel/" + path;
-            panelPrefab = Resources.Load<GameObject>(realPath) as GameObject;
-            prefabDict.Add(name, panelPrefab);
-        }
-
-        //打开界面
-        GameObject panelObject = GameObject.Instantiate(panelPrefab, UIRoot, false);
-        panel = panelObject.GetComponent<BasePanel>();
-        panelDict.Add(name, panel);
         return panel;
-
-
     }
-
-    public bool ClosePanel(string name)
+    
+    //隐藏
+    public void HideUI(string uiName)
     {
-        BasePanel panel = null;
-        if (!panelDict.TryGetValue(name, out panel))
+        BasePanel panel = Find(uiName);
+        if(panel != null)
         {
-            Debug.LogError("界面未打开: " + name);
-            return false;
+            panel.Hide();
         }
-
-        panel.ClosePanel();
-        return true;
     }
+
+    //关闭
+    public void CloseUI(string uiName) 
+    {
+        BasePanel panel = Find(uiName);
+        if (panel != null)
+        {
+            uiList.Remove(panel);
+            Destroy(panel.gameObject);
+        }
+    }
+    //关闭所有界面
+    public void CloseAllUI()
+    {
+        for(int i = uiList.Count - 1; i >= 0; i--) 
+        {
+            Destroy(uiList[i].gameObject);
+        }
+        uiList.Clear();
+    }
+
+    //寻找
+    public BasePanel Find(string uiName)
+    {
+        for (int i = 0; i < uiList.Count; i++)
+        {
+            if (uiList[i].name == uiName)
+            {
+                return uiList[i];
+            }
+        }
+        return null;
+    }
+
 }
 
 
 public class UIConst
 {
-   // public const string MainMenuPanel = "MainMenuPanel";
-    public const string FightUI = "FightUI";
+  
+    public const string BattleUI = "BattleUI";
 
 }
-

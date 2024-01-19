@@ -77,6 +77,12 @@ public class GameManager : MonoBehaviour
             case 3:
                 break;
         }
+
+        if (FightCardManager.instance.availableCardList.Count == 0)
+        {
+            FightCardManager.instance.ResetUsedCard();
+        }
+
         //if (currentTurn == 0)
         //{
 

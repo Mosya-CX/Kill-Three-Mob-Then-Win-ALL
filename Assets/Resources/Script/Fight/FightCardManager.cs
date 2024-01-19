@@ -9,9 +9,9 @@ public class FightCardManager
     public static FightCardManager instance = new FightCardManager();
 
     // 可用牌堆
-    List<string> availableCardList;
+    public List<string> availableCardList;
     // 弃牌堆
-    List<string> usedCardList;
+    public List<string> usedCardList;
 
     public TMP_Text cardCountText;   //现有手牌数量
     public TMP_Text usedCardCountText;    //弃牌堆数量
@@ -34,16 +34,22 @@ public class FightCardManager
             temp.RemoveAt(cardIndex);
         }
         // 将弃牌区的牌放回可用牌堆
+        ResetUsedCard();
+    }
+    // 将弃牌区的牌放回可用牌堆
+    public void ResetUsedCard()
+    {
         while (usedCardList.Count > 0)
         {
-            
+
             int cardIndex = Random.Range(0, usedCardList.Count - 1);
-            
+
             availableCardList.Add(usedCardList[cardIndex]);
-            
+
             usedCardList.RemoveAt(cardIndex);
         }
     }
+
     // 检测牌堆是否有牌
     public bool hasCard()
     {
