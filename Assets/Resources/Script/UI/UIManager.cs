@@ -60,7 +60,7 @@ public class UIManager
         //检查是否已打开
         if(panelDict.TryGetValue(name,out panel))
         {
-            Debug.LogError("假面已打开：" + name);
+            Debug.LogError("界面已打开：" + name);
             return null;
         }
         //检查路径是否有配置
