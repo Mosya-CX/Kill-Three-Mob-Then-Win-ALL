@@ -8,7 +8,6 @@ using System.Data;
 
 public class RoleBase : MonoBehaviour
 {
-    
     public int curHP;
     public int maxHP;
     public Slider HPSlider;// 绑定HP的Slider
@@ -17,6 +16,8 @@ public class RoleBase : MonoBehaviour
     public TMP_Text shieldText;// 绑定护盾值的文本
     Animator animator;
     public List<int> buffList;
+
+
     protected void Init()
     {
         curHP = maxHP;
@@ -31,6 +32,7 @@ public class RoleBase : MonoBehaviour
         // 更新血量和护盾值
         if (curHP != HPSlider.value)
         {
+            // 此处是血条渐变
             if (curHP > HPSlider.value)
             {
                 HPSlider.value += Time.deltaTime;
@@ -42,5 +44,21 @@ public class RoleBase : MonoBehaviour
         }
         shieldText.text = Shield.ToString();
         HPText.text = curHP + " / " + maxHP;
+
+        if (curHP <= 0)
+        {
+            // 玩家死亡后触发的功能逻辑
+            if (tag == "Player")
+            {
+
+            }
+            else if (tag == "Enemy")
+            {
+                // 播放死亡死亡动画
+
+                EnemyManager.Instance.RemoveEnemy();
+                Destroy(gameObject);// 如有动画此处应有个延迟，延迟时间略比动画时间长一点
+            }
+        }
     }
 }
