@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86.Avx;
+using TMPro;
 
 public class FightCardManager
 {
@@ -10,6 +12,10 @@ public class FightCardManager
     List<string> availableCardList;
     // 弃牌堆
     List<string> usedCardList;
+
+    public TMP_Text cardCountText;   //现有手牌数量
+    public TMP_Text usedCardCountText;    //弃牌堆数量
+
     // 战斗开始初始化手牌
     public void Init()
     {

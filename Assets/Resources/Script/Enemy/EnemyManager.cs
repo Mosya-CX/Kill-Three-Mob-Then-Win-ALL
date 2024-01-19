@@ -21,6 +21,6 @@ public class EnemyManager
         {
             enemy = obj.AddComponent<Enemy>();
         }
-        enemy.HP = int.Parse(enemyInfo["HP"]);
+        enemy.maxHP = int.Parse(enemyInfo["HP"]);
     }
 }
