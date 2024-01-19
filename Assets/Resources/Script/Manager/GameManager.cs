@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        UIManager.Instance.OpenUI<LoginUI>("LoginUI");
         DontDestroyOnLoad(gameObject);
     }
     private void Start()
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
         print(Name);
 
         //œ‘ æLoginUI
-        UIManager.Instance.OpenUI<LoginUI>("LoginUI");
+        //UIManager.Instance.OpenUI<LoginUI>("LoginUI");
     }
 
     private void Update()
@@ -81,10 +81,10 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        if (FightCardManager.instance.availableCardList.Count == 0)
+        /*if (FightCardManager.instance.availableCardList.Count == 0)
         {
             FightCardManager.instance.ResetUsedCard();
-        }
+        }*/
 
         //if (currentTurn == 0)
         //{
