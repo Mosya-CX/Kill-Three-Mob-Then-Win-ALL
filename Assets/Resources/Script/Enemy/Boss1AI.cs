@@ -62,7 +62,19 @@ public class Boss1 : MonoBehaviour
         {
             // ¶¯»­Ð§¹û
 
-            player.curHP -= baseDamage;
+            if (player.Shield >= baseDamage)
+            {
+                player.Shield -= baseDamage;
+            }
+            else if (player.Shield < baseDamage && player.Shield > 0)
+            {
+                player.curHP -= (baseDamage - player.Shield);
+                player.Shield = 0;
+            }
+            else
+            {
+                player.curHP -= baseDamage;
+            }
             attackCount--;
         }
     }

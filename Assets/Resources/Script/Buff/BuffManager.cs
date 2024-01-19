@@ -44,8 +44,20 @@ public class BuffManager : MonoBehaviour
         if (enemyBuffList.Contains(3000) && enemyBuffList.Contains(3001))
         {
             // »ð¼ÓË®
-            playerData.curHP += 8;
-            enemyData.curHP -= 8;
+            playerData.Shield += 8;
+            if (enemyData.Shield >= 8)
+            {
+                playerData.Shield -= 8;
+            }
+            else if (enemyData.Shield < 8 && enemyData.Shield > 0)
+            {
+                enemyData.curHP -= 8 - enemyData.Shield;
+                enemyData.Shield = 0;
+            }
+            else
+            {
+                enemyData.curHP -= 8;
+            }
             enemyBuffList.Remove(enemyBuffList.IndexOf(3000));
             enemyBuffList.Remove(enemyBuffList.IndexOf(3001));
         }
