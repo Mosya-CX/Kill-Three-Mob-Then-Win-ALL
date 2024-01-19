@@ -31,20 +31,10 @@ public class CardItem : MonoBehaviour
         {
             //减少目前费用
             FightManager.Instance.curFee -= cost;
-
-            //刷新费用文本（UI）
+            //刷新费用文本
             //UIManager.Instance.GetUI<FightUI>("FightUI").UpdateFee();
-
-            //使用的卡牌删除
-            //UIManager.Instance.GetUI<FightUI>("FightUI").Removecard(this);
 
             return true;
         }
-    }
-
-    //创建卡牌使用后的特效
-    public void PlayEffect(Vector2 pos)
-    {
-        //gameObject effectObj = 
     }
 }
