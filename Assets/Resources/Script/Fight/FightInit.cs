@@ -10,7 +10,8 @@ public class FightInit : FightUnit
         //切换BGM
         AudioManager.Instance.FightingAudio();
 
-        // 利用FightUI生成战斗场景和战斗界面
+        //初始化战斗数值
+        FightManager.Instance.Init();
 
         // 敌人生成(检测GameManager的progress判断处于什么阶段，通过EnemyManager里的LoadMob传入id生成对应的敌人)
         int progress = GameManager.Instance.currentProgress;

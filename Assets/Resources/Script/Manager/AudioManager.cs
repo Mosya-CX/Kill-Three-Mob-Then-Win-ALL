@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-//声音管理器
+/// <summary>
+/// 声音管理器
+/// </summary>
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
@@ -61,7 +63,6 @@ public class AudioManager : MonoBehaviour
     {
         Instance.effectSource.clip = Instance.winClip;
         Instance.effectSource.Play();
-
     }
 
     //玩家死亡播放音效

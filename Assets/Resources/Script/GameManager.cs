@@ -9,16 +9,19 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static GameManager Instance
     {
-        get 
-        { 
-            return instance; 
+        get
+        {
+            return instance;
         }
     }
     // 当前游戏流程进度
     public int currentProgress;
     // 判断是否在战斗状态
     public bool isFighting;
-    
+
+    //结局要用到的时间
+    float gameTime;
+
     // 绑定玩家和敌人
     public GameObject Player;
     public GameObject Enemy;
@@ -52,7 +55,7 @@ public class GameManager : MonoBehaviour
         // 初始化音频管理系统
 
         // 初始化可用牌堆
-        //FightCardManager.instance.Init();
+        FightCardManager.instance.Init();
 
         // GameConfig配置测试
         string Name = GameConfigManager.Instance.getCardById("t1")["Name"];
@@ -61,7 +64,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
+        gameTime += Time.deltaTime;//结局要用到的时间
+
         switch (currentProgress)
         {
             case 0:

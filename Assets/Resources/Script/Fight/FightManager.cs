@@ -18,13 +18,30 @@ public enum FightType
 /// </summary>
 public class FightManager : MonoBehaviour
 {
-    public static FightManager instance;
+    public static FightManager Instance;
 
     public FightUnit fightUnit;//战斗单元
 
+    public int maxHp;   //最大血量
+    public int curHp;   //当前血量
+
+    public int maxFee;  //最大费用
+    public int curFee;  //当前费用
+
+    public int defenseCount;    //防御值/格挡值
+
+    //初始化
+    public void Init()
+    {
+        maxHp = 100;
+        curHp = 100;
+        maxFee = 4;
+        curFee = 4;
+        defenseCount = 0;
+    }
     private void Awake()
-    { 
-        instance = this; 
+    {
+        Instance = this; 
     }
 
     //切换战斗类型
