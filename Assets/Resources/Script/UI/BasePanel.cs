@@ -6,34 +6,19 @@ using System;
 
 public class BasePanel : MonoBehaviour
 {
-
-    public UIEventTrigger Register(string name)
+    bool isRemove = false;
+    new string name;
+    public virtual void Open()
     {
-        Transform tf = transform.Find(name);
-        return UIEventTrigger.Get(tf.gameObject);
-    }
-    protected bool isRemove = false;
-    protected new string name;
-    public virtual void SetActive(bool active)
-    {
-        gameObject.SetActive(active);
+        gameObject.SetActive(true);
     }
 
-    public virtual void OpenPanel(string name)
-    {
-        this.name = name;
-        SetActive(true);
-    }
-
-    public virtual void ClosePanel()
+    public virtual void Close()
     {
         isRemove = true;
-        SetActive(false);
+        gameObject.SetActive(false);
         Destroy(gameObject);
-        if (UIManager.Instance.panelDict.ContainsKey(name))
-        {
-            UIManager.Instance.panelDict.Remove(name);
-        }
     }
+
 }
 
