@@ -1,17 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using System;
 
 public class BasePanel : MonoBehaviour
 {
-    public virtual void Open()
+
+    public UIEventTrigger Register(string name)
     {
-        gameObject.SetActive(true);
+        Transform tf = transform.Find(name);
+        return UIEventTrigger.Get(tf.gameObject);
+    }
+    protected bool isRemove = false;
+    protected new string name;
+    public virtual void SetActive(bool active)
+    {
+        gameObject.SetActive(active);
     }
 
-    public virtual void Close()
+    public virtual void OpenPanel(string name)
     {
-        gameObject.SetActive(false);
+        this.name = name;
+        SetActive(true);
     }
 
+    public virtual void ClosePanel()
+    {
+        isRemove = true;
+        SetActive(false);
+        Destroy(gameObject);
+        if (UIManager.Instance.panelDict.ContainsKey(name))
+        {
+            UIManager.Instance.panelDict.Remove(name);
+        }
+    }
 }
+
