@@ -28,6 +28,7 @@ public class FightInit : FightUnit
             EnemyManager.Instance.LoadMob(1002);
         }
 
+
         // 初始化可用牌堆
         FightCardManager.instance.Init();
     }
