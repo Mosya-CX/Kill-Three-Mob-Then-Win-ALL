@@ -8,7 +8,7 @@ public class LoginUI : BasePanel
     private void Awake()
     {
         //¿ªÊ¼ÓÎÏ·
-        //Register("bg/startbin").onClick = onStartGameBin;
+        Register("bg/startBin").onClick = onStartGameBin;
     }
 
     private void onStartGameBin(GameObject obj,PointerEventData data) 
