@@ -4,15 +4,80 @@ using UnityEngine;
 
 public class Boss1 : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // 攻击方式
+    public int attackMode;
+    // 攻击顺序
+    public int attackOrder;
+    // 绑定玩家对象
+    public Player player;
+    // 获得基础攻击力
+    public int baseDamage;
     void Start()
     {
-        
+        attackMode = 1;
+        attackMode = 1;
+        player = GameManager.Instance.Player.GetComponent<Player>();
+        baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
     }
 
-    // Update is called once per frame
-    void Update()
+    // 敌人行动
+    public void Move()
     {
-        
+        int tmp = Random.Range(1, 2);
+        if (attackOrder == 1)
+        {
+            if (tmp == 1)
+            {
+                Attack();
+            }
+            else
+            {
+                Defend();
+            }
+            attackOrder++;
+        }
+        if (attackOrder == 2)
+        {
+            if (tmp == 1)
+            {
+                Attack();
+            }
+            else
+            {
+                Defend();
+            }
+            attackOrder++;
+        }
+        if (attackOrder == 3)
+        {
+            Skill1();
+            attackOrder = 1;
+        }
+    }
+
+    void Attack()
+    {
+        int attackCount = 5;
+        while (attackCount > 0)
+        {
+            // 动画效果
+
+            player.curHP -= baseDamage;
+            attackCount--;
+        }
+    }
+
+    void Defend()
+    {
+        // 动画效果
+
+        gameObject.GetComponent<Enemy>().Shield += 12;
+    }
+
+    void Skill1()
+    {
+        // 动画效果
+
+        baseDamage++;
     }
 }

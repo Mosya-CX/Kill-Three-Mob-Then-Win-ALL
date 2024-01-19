@@ -20,14 +20,14 @@ public class Enemy : RoleBase
     public ActionType nextType;// 下回合行动
     public GameObject nextAction;// 绑定敌人下回合行动显示ui
     public int baseDamage;
-    public int finalDemage;// 存储造成的最终伤害
+    //public int finalDemage;// 存储造成的最终伤害
     private void Start()
     {
         maxHP = int.Parse(GameConfigManager.Instance.getEnemyById(id.ToString())["HP"]);
         baseDamage = int.Parse(GameConfigManager.Instance.getEnemyById(id.ToString())["baseDamage"]);
         Init();
         Player = GameManager.Instance.Player;
-        finalDemage = baseDamage;
+        //finalDemage = baseDamage;
         nextType = ActionType.None;
         // 此处创建显示写敌人下回合行动的UI
     }
