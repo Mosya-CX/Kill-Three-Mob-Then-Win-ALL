@@ -60,6 +60,9 @@ public class GameManager : MonoBehaviour
         // GameConfig≈‰÷√≤‚ ‘
         string Name = GameConfigManager.Instance.getCardById("t1")["Name"];
         print(Name);
+
+        //œ‘ æLoginUI
+        UIManager.Instance.OpenUI<LoginUI>("LoginUI");
     }
 
     private void Update()

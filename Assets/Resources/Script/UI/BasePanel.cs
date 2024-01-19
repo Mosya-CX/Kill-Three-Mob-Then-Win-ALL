@@ -6,18 +6,22 @@ using System;
 
 public class BasePanel : MonoBehaviour
 {
-    bool isRemove = false;
-    new string name;
+    //ÏÔÊ¾
     public virtual void Open()
     {
         gameObject.SetActive(true);
     }
 
+    //Òþ²Ø
+    public virtual void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
+    //¹Ø±Õ/´Ý»Ù
     public virtual void Close()
     {
-        isRemove = true;
-        gameObject.SetActive(false);
-        Destroy(gameObject);
+        UIManager.Instance.CloseUI(gameObject.name);
     }
 
 }
