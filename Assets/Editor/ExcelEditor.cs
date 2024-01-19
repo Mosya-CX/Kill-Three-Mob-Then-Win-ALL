@@ -14,8 +14,11 @@ public static class ExcelEditor
     {
         // 获得存放Excel的文件夹路径并从中获得excel文件
         string excelPath = Application.dataPath + "/Excel";
+        // 测试
+        Debug.Log(excelPath);
         string[] Files = Directory.GetFiles(excelPath, "*.xlsx");
-        
+        // 测试
+        Debug.Log(Files.Length);
         for (int i = 0; i < Files.Length; i++)
         {
             // 测试1
@@ -37,7 +40,6 @@ public static class ExcelEditor
                 readTableToTxt(Files[i], dataTable);
             }
         }
-        
         // 刷新编辑器
         AssetDatabase.Refresh();
     }

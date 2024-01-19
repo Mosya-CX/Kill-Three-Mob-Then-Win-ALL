@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
     public int currentProgress;
     // 判断是否在战斗状态
     public bool isFighting;
-    // 音频开关
-    public bool fightBGMIsOn = false;
     
     // 绑定玩家和敌人
     public GameObject Player;
@@ -41,8 +39,8 @@ public class GameManager : MonoBehaviour
         //播放开局bgm
         AudioManager.Instance.StartLevelAudio();
 
-        Player = GameObject.FindWithTag("Player");
-        Enemy = GameObject.FindWithTag("Enemy");
+        //Player = GameObject.FindWithTag("Player");
+        //Enemy = GameObject.FindWithTag("Enemy");
 
 
         // 初始化进度
@@ -54,7 +52,7 @@ public class GameManager : MonoBehaviour
         // 初始化音频管理系统
 
         // 初始化可用牌堆
-        FightCardManager.instance.Init();
+        //FightCardManager.instance.Init();
 
         // GameConfig配置测试
         string Name = GameConfigManager.Instance.getCardById("t1")["Name"];
@@ -63,12 +61,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //进入战斗播放战斗BGM
-        if (isFighting && !fightBGMIsOn)
-        {
-            AudioManager.Instance.FightingAudio();
-            fightBGMIsOn = true;
-        }
+        
         switch (currentProgress)
         {
             case 0:
