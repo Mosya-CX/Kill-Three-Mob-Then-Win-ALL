@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 125535357}
   - component: {fileID: 125535356}
   - component: {fileID: 125535358}
+  - component: {fileID: 125535359}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -191,6 +192,21 @@ MonoBehaviour:
   loseClip: {fileID: 0}
   playerHurtClip: {fileID: 0}
   enemyHurtClip: {fileID: 0}
+  clickCardClip: {fileID: 0}
+  armorClip: {fileID: 0}
+--- !u!114 &125535359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125535355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23ced4c5c89f2c46917ccd1899f009e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiCanvas: {fileID: 1962458424}
 --- !u!1 &244547955
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,13 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+    public static UIManager instance
+    {
+        get
+        {
+            return Instance;
+        }
+    }
     public Transform uiCanvas;// ui画布挂在上面
     List<BasePanel> uiList;
 
@@ -87,7 +94,7 @@ public class UIManager : MonoBehaviour
 
 public class UIConst
 {
-  
+    
     public const string BattleUI = "BattleUI";
 
 }

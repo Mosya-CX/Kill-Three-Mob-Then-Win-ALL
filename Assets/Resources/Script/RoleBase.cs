@@ -8,6 +8,7 @@ using System.Data;
 
 public class RoleBase : MonoBehaviour
 {
+    
     public int curHP;
     public int maxHP;
     public Slider HPSlider;// °ó¶¨HPµÄSlider

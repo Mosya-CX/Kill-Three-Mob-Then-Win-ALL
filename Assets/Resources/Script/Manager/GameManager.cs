@@ -25,31 +25,34 @@ public class GameManager : MonoBehaviour
     // 绑定玩家和敌人
     public GameObject Player;
     public GameObject Enemy;
-
+    
     //public int currentTurn;// 0表示非战斗状态，1表示玩家回合，2表示敌人回合
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        //if (Instance != null)
+        //{
+        //    Destroy(gameObject);
+        //    return;
+        //}
 
         DontDestroyOnLoad(gameObject);
     }
     private void Start()
     {
+        // 测试
+        Debug.Log("0");
         //播放开局bgm
         AudioManager.Instance.StartLevelAudio();
 
-        Player = GameObject.FindWithTag("Player");
-        Enemy = GameObject.FindWithTag("Enemy");
+        //Player = GameObject.FindWithTag("Player");
+        //Enemy = GameObject.FindWithTag("Enemy");
 
 
         // 初始化进度
         currentProgress = 0;
         //// 初始化战斗回合
         //currentTurn = 0;
+
         // 初始化配置表
         GameConfigManager.Instance.Init();
         // 初始化音频管理系统
@@ -58,7 +61,7 @@ public class GameManager : MonoBehaviour
         FightCardManager.instance.Init();
 
         // GameConfig配置测试
-        string Name = GameConfigManager.Instance.getCardById("t1")["Name"];
+        string Name = GameConfigManager.Instance.getCardById("1000")["Name"];
         print(Name);
 
         //显示LoginUI
