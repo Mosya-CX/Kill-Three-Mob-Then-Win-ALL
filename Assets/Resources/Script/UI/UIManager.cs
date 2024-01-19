@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     }
 
     //œ‘ æ
-    public BasePanel OpenUI<T>(string uiName) where T:BasePanel
+    public BasePanel OpenUI<T>(string uiName) where T : BasePanel
     {
         BasePanel panel = Find(uiName);
         if (panel != null)
