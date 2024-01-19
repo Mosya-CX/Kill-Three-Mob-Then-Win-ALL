@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using DG.Tweening;
 
 
 public class UIManager
@@ -60,7 +61,7 @@ public class UIManager
         //检查是否已打开
         if(panelDict.TryGetValue(name,out panel))
         {
-            Debug.LogError("假面已打开：" + name);
+            Debug.LogError("界面已打开：" + name);
             return null;
         }
         //检查路径是否有配置
@@ -109,3 +110,4 @@ public class UIConst
     public const string FightUI = "FightUI";
 
 }
+

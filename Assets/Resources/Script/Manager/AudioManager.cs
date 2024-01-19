@@ -20,6 +20,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip loseClip;      //失败音效
     public AudioClip playerHurtClip; //玩家受伤音效
     public AudioClip enemyHurtClip; //敌人受伤音效
+    public AudioClip clickCardClip; //点击卡牌音效
+    public AudioClip armorClip;     //获得护甲值的音效
 
     AudioSource bgmSource;
     AudioSource effectSource;
@@ -83,6 +85,20 @@ public class AudioManager : MonoBehaviour
     public void EnemyHurtAudio()
     {
         Instance.effectSource.clip = Instance.enemyHurtClip;
+        Instance.effectSource.Play();
+    }
+
+    //点击卡牌音效
+    public void ClickCardAudio()
+    {
+        Instance.effectSource.clip = Instance.clickCardClip;
+        Instance.effectSource.Play();
+    }
+
+    //获得护甲值的音效
+    public void ArmorAudio()
+    {
+        Instance.effectSource.clip = Instance.armorClip;
         Instance.effectSource.Play();
     }
 }
