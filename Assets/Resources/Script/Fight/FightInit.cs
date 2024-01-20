@@ -28,9 +28,14 @@ public class FightInit : FightUnit
             EnemyManager.Instance.LoadMob(1002);
         }
 
-
         // 初始化可用牌堆
         FightCardManager.instance.Init();
+
+        //显示战斗界面
+        UIManager.Instance.OpenUI<FightUI>("FightUI");
+
+        //切换到玩家回合
+        FightManager.Instance.ChangeType(FightType.Player);
     }
 
     public override void OnUpdate()

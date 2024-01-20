@@ -24,5 +24,11 @@ public class BasePanel : MonoBehaviour
         UIManager.Instance.CloseUI(gameObject.name);
     }
 
+    //×¢²áÊÂ¼þ
+    public UIEventTrigger Register(string name)
+    {
+        Transform tf = transform.Find(name);
+        return UIEventTrigger.Get(tf.gameObject);
+    }
 }
 

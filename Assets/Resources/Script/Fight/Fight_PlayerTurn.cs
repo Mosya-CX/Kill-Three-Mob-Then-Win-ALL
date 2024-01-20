@@ -7,6 +7,12 @@ public class Fight_PlayerTurn : FightUnit
 {
     public override void Init()
     {
+        Debug.Log("PlayerTime");
+        UIManager.Instance.ShowTip("玩家回合", Color.green, delegate ()
+        {
+            //抽牌
+            Debug.Log("抽牌");
+        });
         // 初始化玩家费用
         GameManager.Instance.Player.GetComponent<Player>().currentFee = 4;
         // 抽卡后台逻辑
