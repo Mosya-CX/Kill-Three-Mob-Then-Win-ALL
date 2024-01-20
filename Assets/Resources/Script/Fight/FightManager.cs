@@ -35,8 +35,8 @@ public class FightManager : MonoBehaviour
     {
         maxHp = 100;
         curHp = 100;
-        maxFee = 4;
-        curFee = 4;
+        maxFee = 3;
+        curFee = 3;
         defenseCount = 0;
     }
     private void Awake()
