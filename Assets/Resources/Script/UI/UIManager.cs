@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
 
             obj.name = uiName;
             //添加对应的脚本
-            panel = obj.AddComponent<T>();
+            //panel = obj.AddComponent<T>();
             //添加到集合中存储
             uiList.Add(panel);
         }
@@ -128,8 +128,17 @@ public class UIManager : MonoBehaviour
         });
 
         MonoBehaviour.Destroy(obj, 1);
+    }
 
-
+    //获得某个界面的脚本
+    public T GetUI<T>(string uiName) where T : BasePanel
+    {
+        BasePanel ui = Find(uiName);
+        if (ui != null)
+        {
+            return ui.GetComponent<T>();
+        }
+        return null;
     }
 }
 
