@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Resources/Img/UI/弃牌区.png.meta
-guid: cbbdd156d0f9fa4449abb1f80a796657
-========
-guid: 93e3090eedc64314398df919d16a472c
->>>>>>>> Tr8ceur:Assets/Resources/Img/UI/敌人下次行动-攻击.png.meta
+guid: b79c6cb4038bec84d81b22c61a9f97e5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

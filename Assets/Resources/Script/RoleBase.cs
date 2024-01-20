@@ -74,4 +74,27 @@ public class RoleBase : MonoBehaviour
             }
         }
     }
+
+    //受击
+    public void Hit(int val)
+    {
+        //先扣护盾
+        if(Shield >= val) 
+        {
+            Shield -= val;
+
+            //播放受击动画
+            
+            
+        }
+        else
+        {
+            val = val - Shield;
+            Shield = 0;
+            curHP -= val;
+            //播放受伤动画
+
+
+        }
+    }
 }

@@ -49,7 +49,7 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             //是否加音效待定
 
             //提示
-            //UIManager.Instance.ShowTip("费用不足",Color.red);
+            UIManager.Instance.ShowTip("费用不足",Color.red);
 
             return false;
         }
@@ -58,14 +58,14 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             //减少目前费用
             GameManager.Instance.player.currentFee -= cost;
             //使用后的卡牌删除
-
+            UIManager.Instance.GetUI<FightUI>("FightUI").RemoveCard(this);
 
             return true;
         }
     }
 
     //生成卡牌使用后的特效
-    public void PlayEffect(Vector2 pos)
+    public void PlayEffect(Vector3 pos)
     {
         GameObject effectObj = Instantiate(Resources.Load(data["Effects"])) as GameObject;
         effectObj.transform.position = pos;
