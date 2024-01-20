@@ -5,9 +5,28 @@ using UnityEngine;
 //敌人回合
 public class Fight_EnemyTurn : FightUnit
 {
+
     public override void Init()
     {
+        // 绑定当前战斗的敌人
+        GameObject enemy = GameManager.Instance.enemy.gameObject;
 
+        // 执行敌人ai逻辑
+        if (enemy.GetComponent<Boss1AI>() != null )
+        {
+            enemy.GetComponent<Boss1AI>().Move();
+        }
+        else if (enemy.GetComponent<Boss2AI>() != null)
+        {
+            enemy.GetComponent<Boss2AI>().Move();
+        }
+        else if (enemy.GetComponent<Boss3AI>() != null)
+        {
+            enemy.GetComponent<Boss3AI>().Move();
+        }
+
+        //切换到玩家回合
+        FightManager.Instance.ChangeType(FightType.Player);
     }
 
     public override void OnUpdate()

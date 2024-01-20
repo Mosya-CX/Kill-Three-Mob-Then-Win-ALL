@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
+using System.Reflection;
+using TMPro;
+
 
 // 敌人行动类型
 public enum ActionType
@@ -25,14 +28,17 @@ public class Enemy : RoleBase
     //public int finalDemage;// 存储造成的最终伤害
     private void Start()
     {
-        maxHP = int.Parse(GameConfigManager.Instance.getEnemyById(id.ToString())["HP"]);
-        baseDamage = int.Parse(GameConfigManager.Instance.getEnemyById(id.ToString())["baseDamage"]);
         // 重新绑定血条
-        HPSlider = GameObject.Find("EnemyHp").GetComponent<UnityEngine.UI.Slider>() ;
+        HPSlider = GameObject.Find("UI/FightUI/Middle/RightTop/EnemyHP").GetComponent<UnityEngine.UI.Slider>() ;
+        // 绑定血条文本
+        HPText = GameObject.Find("UI/FightUI/Middle/RightTop/EnemyHP/HPText").GetComponent<TMP_Text>();
+        // 绑定护盾值文本
+        shieldText = GameObject.Find("UI/FightUI/Middle/RightTop/Shield/ShieldValue").GetComponent<TMP_Text>();
         // 重新绑定下回合行动显示ui
-        nextAction = GameObject.Find("nextAction");
+        nextAction = GameObject.Find("UI/FightUI/Top/EnemyAction");
+
         Init();
-        Player = GameManager.Instance.Player;
+        Player = GameObject.FindWithTag("Player");
         //finalDemage = baseDamage;
         nextType = ActionType.None;
         nextAction = null;
@@ -40,33 +46,33 @@ public class Enemy : RoleBase
 
     private void Update()
     {
+        onUpdate();
         // 此处更新显示敌人下回合行动的UI
         if (nextType == ActionType.None)
         {
-            Sprite newSprite = Resources.Load<Sprite>("Img/Item/None");
-            SpriteRenderer spriteRenderer = nextAction.GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = newSprite;
+            UnityEngine.UI.Image img = nextAction.GetComponent<UnityEngine.UI.Image>();
+            img.sprite = null;
         }
         else if (nextType == ActionType.Attack)
         {
             Sprite newSprite = Resources.Load<Sprite>("Img/Item/Attack");
-            SpriteRenderer spriteRenderer = nextAction.GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = newSprite;
+            UnityEngine.UI.Image img = nextAction.GetComponent<UnityEngine.UI.Image>();
+            img.sprite = newSprite;
         }
         else if (nextType == ActionType.Defend)
         {
             Sprite newSprite = Resources.Load<Sprite>("Img/Item/Defend");
-            SpriteRenderer spriteRenderer = nextAction.GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = newSprite;
+            UnityEngine.UI.Image img = nextAction.GetComponent<UnityEngine.UI.Image>();
+            img.sprite = newSprite;
         }
         else if (nextType == ActionType.Skill)
         {
             Sprite newSprite = Resources.Load<Sprite>("Img/Item/Skill");
-            SpriteRenderer spriteRenderer = nextAction.GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = newSprite;
+            UnityEngine.UI.Image img = nextAction.GetComponent<UnityEngine.UI.Image>();
+            img.sprite = newSprite;
         }
 
-        onUpdate();
+        
     }
 
     

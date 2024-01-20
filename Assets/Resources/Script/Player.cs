@@ -16,11 +16,12 @@ public class Player : RoleBase
     private void Start()
     {
         Init();
-        Enemy = GameManager.Instance.Enemy;
+        
     }
 
     private void Update()
     {
+        
         onUpdate();
         FeeText.text = currentFee + "/" + totalFee;
     }

@@ -43,7 +43,7 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         //卡牌需要的费用
         int cost = int.Parse(data["Expend"]);
 
-        if(cost > FightManager.Instance.curFee)
+        if(cost > GameManager.Instance.player.currentFee)
         {
             //费用不足
             //是否加音效待定
@@ -56,7 +56,7 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         else
         {
             //减少目前费用
-            FightManager.Instance.curFee -= cost;
+            GameManager.Instance.player.currentFee -= cost;
             //刷新费用文本
             UIManager.Instance.GetUI<FightUI>("FightUI").UpdateFee();
             //使用后的卡牌删除

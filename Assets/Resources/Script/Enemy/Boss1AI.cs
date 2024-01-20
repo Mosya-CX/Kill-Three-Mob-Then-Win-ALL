@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss1 : MonoBehaviour
+public class Boss1AI : MonoBehaviour
 {
     // ¹¥»÷·½Ê½
     public int attackMode;
@@ -16,7 +16,7 @@ public class Boss1 : MonoBehaviour
     {
         attackMode = 1;
         attackMode = 1;
-        player = GameManager.Instance.Player.GetComponent<Player>();
+        player = GameManager.Instance.player;
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
     }
 
