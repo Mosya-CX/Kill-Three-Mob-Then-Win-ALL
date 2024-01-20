@@ -44,9 +44,6 @@ public class GameManager : MonoBehaviour
         //播放开局bgm
         AudioManager.Instance.StartLevelAudio();
 
-        //Player = GameObject.FindWithTag("Player");
-        //Enemy = GameObject.FindWithTag("Enemy");
-
 
         // 初始化进度
         currentProgress = 0;
@@ -66,6 +63,19 @@ public class GameManager : MonoBehaviour
 
         //显示LoginUI
         UIManager.Instance.OpenUI<LoginUI>("LoginUI");
+
+
+
+        //// 目前还没玩家预制体
+        //Player = GameObject.FindWithTag("Player");
+        //if (Player == null)
+        //{
+        //    // 生成玩家对象
+        //    Vector2 playerPos = new Vector2(-5, 0.8f);//玩家位置，尚未确定
+        //    GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Player")) as GameObject;
+        //    obj.transform.position = playerPos;
+        //    Player = obj;
+        //} 
     }
 
     private void Update()
@@ -77,10 +87,22 @@ public class GameManager : MonoBehaviour
             case 0:
                 break;
             case 1:
+                if (Enemy == null)
+                {
+                    EnemyManager.Instance.LoadMob(3000);
+                }
                 break;
             case 2:
+                if (Enemy == null)
+                {
+                    EnemyManager.Instance.LoadMob(3001);
+                }
                 break;
             case 3:
+                if (Enemy == null)
+                {
+                    EnemyManager.Instance.LoadMob(3002);
+                }
                 break;
         }
 

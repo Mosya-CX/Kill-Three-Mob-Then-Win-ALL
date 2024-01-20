@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss1 : MonoBehaviour
+public class Boss1AI : MonoBehaviour
 {
     // ¹¥»÷·½Ê½
     public int attackMode;
