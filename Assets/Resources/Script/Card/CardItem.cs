@@ -10,12 +10,19 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Dictionary<string, string> data; //卡牌信息
 
+    //卡牌需要的费用
+    public int cost;
+
     //初始化
     public void Init(Dictionary<string, string> data)
-    { 
-        this.data = data; 
+    {
+        this.data = data;
+        cost = int.Parse(data["Expend"]);
     }
     private int index;
+
+    
+
     //鼠标进入
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -31,17 +38,30 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         transform.SetSiblingIndex(index);
 
     }
+    // 鼠标点击
     public virtual void OnPointerClick(PointerEventData eventData)
     {
+
+
         //播放点击音效
         AudioManager.Instance.ClickCardAudio();
+
+        // 断绝父子关系
+        gameObject.transform.SetParent(null, true);
+        gameObject.transform.SetParent(GameObject.Find("UI/FightUI/Button").transform, true);
+
+        // 删除动画
+
+        // 删除卡牌
+        PlayerInfoManager.Instance.handCards.Remove(data["Id"]);
+        
+        Destroy(gameObject);
     }
 
     //尝试使用卡牌
     public virtual bool TryUse()
     {
-        //卡牌需要的费用
-        int cost = int.Parse(data["Expend"]);
+        
 
         if(cost > GameManager.Instance.player.currentFee)
         {

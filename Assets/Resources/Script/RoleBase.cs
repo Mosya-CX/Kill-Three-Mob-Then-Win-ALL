@@ -57,8 +57,17 @@ public class RoleBase : MonoBehaviour
             // 玩家死亡后触发的功能逻辑
             if (tag == "Player")
             {
-                //切换到失败状态
-                FightManager.Instance.ChangeType(FightType.Lose);
+                // 检测是否有浴火重生buff
+                if (buffList.Contains(3004))
+                {
+                    maxHP -= 10;
+                    curHP = maxHP;
+                }
+                else
+                {
+                    //切换到失败状态
+                    FightManager.Instance.ChangeType(FightType.Lose);
+                }
             }
             else if (tag == "Enemy")
             {

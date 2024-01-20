@@ -22,7 +22,6 @@ public class FightManager : MonoBehaviour
 
     public FightUnit fightUnit;//战斗单元
 
-
     //初始化
     public void Init()
     {
@@ -41,7 +40,7 @@ public class FightManager : MonoBehaviour
             case FightType.None:
                 break;
             case FightType.Init:
-                fightUnit = new FightUnit();
+                fightUnit = new FightInit();
                 break;
             case FightType.Player:
                 fightUnit = new Fight_PlayerTurn();

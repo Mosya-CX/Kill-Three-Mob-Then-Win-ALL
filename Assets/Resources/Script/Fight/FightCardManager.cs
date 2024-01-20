@@ -61,7 +61,7 @@ public class FightCardManager
     // ³é¿¨
     public string DrawCard()
     {
-        string id = availableCardList[availableCardList.Count-1];
+        string id = availableCardList[Random.Range(0, availableCardList.Count - 1)];
         availableCardList.RemoveAt(availableCardList.Count-1);
         return id;
     }

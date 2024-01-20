@@ -7,11 +7,9 @@ using UnityEngine;
 //3000	火元素		附着火元素
 //3001	水元素		附着水元素
 //3002	草元素		附着草元素
-//3003	减伤		敌人嗔2001的4技能会使得玩家的可造成的伤害减半
-//3004	浴火重生	每回合得到一张1008号卡牌。阵亡后可复活，但是永久-10最大生命上限，回复50%最大生命值
-//3005	浊流1		抵消下一次伤害
-//3006	浊流2		该场战斗内敌人永远存在3001号水附着Buff
-//3007	落叶归根	每使用一张草属性的卡牌，下回合获得一张1014/1015号卡牌
+//3004	浴火重生	阵亡后可复活，但是永久-10最大生命上限，回复100%最大生命值
+//3005	浊流		该场战斗内敌人永远存在水附着Buff
+
 
 
 public class BuffManager : MonoBehaviour
@@ -40,6 +38,13 @@ public class BuffManager : MonoBehaviour
 
     private void Update()
     {
+        if (enemyBuffList.Contains(3005))
+        {
+            if (!enemyBuffList.Contains(3001))
+            {
+                enemyBuffList.Add(3001);
+            }
+        }
         // 检测敌人身上的元素反应
         if (enemyBuffList.Contains(3000) && enemyBuffList.Contains(3001))
         {

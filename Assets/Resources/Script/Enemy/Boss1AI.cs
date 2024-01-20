@@ -75,6 +75,7 @@ public class Boss1AI : MonoBehaviour
             {
                 player.curHP -= baseDamage;
             }
+
             attackCount--;
         }
     }

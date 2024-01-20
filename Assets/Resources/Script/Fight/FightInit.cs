@@ -34,6 +34,9 @@ public class FightInit : FightUnit
         //显示战斗界面
         UIManager.Instance.OpenUI<FightUI>("FightUI");
 
+        // 重置玩家费用上线
+        GameManager.Instance.player.totalFee = 4;
+
         //切换到玩家回合
         FightManager.Instance.ChangeType(FightType.Player);
     }

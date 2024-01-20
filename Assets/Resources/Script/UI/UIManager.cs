@@ -138,6 +138,15 @@ public class UIManager : MonoBehaviour
         {
             return ui.GetComponent<T>();
         }
+
+        // ²¹³ä
+        ui = GameObject.Find("UI/" + uiName).GetComponent<T>();
+        if (ui != null)
+        {
+            return ui.GetComponent<T>();
+        }
+
+
         return null;
     }
 }

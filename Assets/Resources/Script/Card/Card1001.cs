@@ -7,16 +7,17 @@ public class Card1001 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
     {
-        //播放声音
-        AudioManager.Instance.ArmorAudio();
 
-        //增加护盾
-        FightManager.Instance.defenseCount += 4;
+        if (TryUse())
+        {
+            //播放声音
+            AudioManager.Instance.ArmorAudio();
 
-        //刷新防御文本
-        UIManager.Instance.GetUI<FightUI>("FightUI").UpdateDefense();
-         
+            // 使用效果
+            GameManager.Instance.player.Shield += 4;
+
+            base.OnPointerClick(eventData);
+        }
         
-        base.OnPointerClick(eventData);
     }
 }

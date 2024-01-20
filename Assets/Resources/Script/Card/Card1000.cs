@@ -9,15 +9,32 @@ public class Card1000 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
     {
-        //播放特效
 
-        //播放敌人受伤音效
-        AudioManager.Instance.EnemyHurtAudio();
-        //敌人受伤
-        //RoleBase hitEnemy=
-        //hitEnemy.Hit(val);
+        if (TryUse())
+        {
+            //播放特效
+
+            //播放敌人受伤音效
+            AudioManager.Instance.EnemyHurtAudio();
+
+            // 使用效果
+            if (GameManager.Instance.enemy.Shield >= 5)
+            {
+                GameManager.Instance.enemy.Shield -= 5;
+            }
+            else if (GameManager.Instance.enemy.Shield < 5 && GameManager.Instance.enemy.Shield > 0)
+            {
+                GameManager.Instance.enemy.curHP -= (5 - GameManager.Instance.enemy.Shield);
+                GameManager.Instance.enemy.Shield = 0;
+            }
+            else
+            {
+                GameManager.Instance.enemy.curHP -= 5;
+            }
 
 
-        base.OnPointerClick(eventData);
+            base.OnPointerClick(eventData);
+        }
+        
     }
 }
