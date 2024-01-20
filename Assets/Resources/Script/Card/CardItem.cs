@@ -58,7 +58,9 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             //减少目前费用
             FightManager.Instance.curFee -= cost;
             //刷新费用文本
-            //UIManager.Instance.GetUI<FightUI>("FightUI").UpdateFee();
+            UIManager.Instance.GetUI<FightUI>("FightUI").UpdateFee();
+            //使用后的卡牌删除
+
 
             return true;
         }
