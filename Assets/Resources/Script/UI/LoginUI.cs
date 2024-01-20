@@ -17,10 +17,10 @@ public class LoginUI : BasePanel
 
     private void onStartGameBin() 
     {
+        //战斗初始化
+        FightManager.Instance.ChangeType(FightType.Init);
         //关闭页面
         Debug.Log("关闭页面");
         Destroy(gameObject);
-        //战斗初始化
-        //FightManager.Instance.ChangeType(FightType.Init);
     }
 }
