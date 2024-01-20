@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class Boss3AI : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // 攻击方式
+    public int attackMode;
+    // 攻击顺序
+    public int attackOrder;
+    // 绑定玩家对象
+    public Player player;
+    // 获得基础攻击力
+    public int baseDamage;
     void Start()
     {
-        
+        attackMode = 1;
+        attackMode = 1;
+        player = GameManager.Instance.Player.GetComponent<Player>();
+        baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
     }
 
-    // Update is called once per frame
-    void Update()
+    // 敌人行动
+    public void Move()
     {
         
     }

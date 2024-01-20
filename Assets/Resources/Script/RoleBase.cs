@@ -50,14 +50,19 @@ public class RoleBase : MonoBehaviour
             // 玩家死亡后触发的功能逻辑
             if (tag == "Player")
             {
-
+                //切换到失败状态
+                FightManager.Instance.ChangeType(FightType.Lose);
             }
             else if (tag == "Enemy")
             {
-                // 播放死亡死亡动画
+                // 播放敌人死亡动画
 
                 EnemyManager.Instance.RemoveEnemy();
-                Destroy(gameObject);// 如有动画此处应有个延迟，延迟时间应略比动画时间长一点
+
+                //切换到胜利状态
+                FightManager.Instance.ChangeType(FightType.Win);
+
+                Destroy(gameObject);
             }
         }
     }

@@ -64,6 +64,8 @@ public class GameManager : MonoBehaviour
         //显示LoginUI
         UIManager.Instance.OpenUI<LoginUI>("LoginUI");
 
+
+
         //// 目前还没玩家预制体
         //Player = GameObject.FindWithTag("Player");
         //if (Player == null)
@@ -85,10 +87,22 @@ public class GameManager : MonoBehaviour
             case 0:
                 break;
             case 1:
+                if (Enemy == null)
+                {
+                    EnemyManager.Instance.LoadMob(3000);
+                }
                 break;
             case 2:
+                if (Enemy == null)
+                {
+                    EnemyManager.Instance.LoadMob(3001);
+                }
                 break;
             case 3:
+                if (Enemy == null)
+                {
+                    EnemyManager.Instance.LoadMob(3002);
+                }
                 break;
         }
 

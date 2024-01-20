@@ -13,9 +13,9 @@ public class LoginUI : BasePanel
 
     private void onStartGameBin(GameObject obj,PointerEventData data) 
     {
-        //关闭开始界面
-        Close();
         //战斗初始化
         FightManager.Instance.ChangeType(FightType.Init);
+        //关闭开始界面
+        Close();
     }
 }
