@@ -17,7 +17,7 @@ public class Boss2AI : MonoBehaviour
     {
         attackMode = 1;
         attackMode = 1;
-        player = GameManager.Instance.Player.GetComponent<Player>();
+        player = GameManager.Instance.player;
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
     }
 

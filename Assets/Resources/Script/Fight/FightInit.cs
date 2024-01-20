@@ -17,15 +17,15 @@ public class FightInit : FightUnit
         int progress = GameManager.Instance.currentProgress;
         if (progress == 1)
         {
-            EnemyManager.Instance.LoadMob(1000);
+            EnemyManager.Instance.LoadMob("2001");
         }
         else if (progress == 2)
         {
-            EnemyManager.Instance.LoadMob(1001);
+            EnemyManager.Instance.LoadMob("2002");
         }
         else if (progress == 3)
         {
-            EnemyManager.Instance.LoadMob(1002);
+            EnemyManager.Instance.LoadMob("2003");
         }
 
         // 初始化可用牌堆

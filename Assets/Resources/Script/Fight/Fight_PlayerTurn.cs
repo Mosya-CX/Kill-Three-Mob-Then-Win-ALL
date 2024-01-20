@@ -15,7 +15,7 @@ public class Fight_PlayerTurn : FightUnit
             UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(6);
         });
         // 初始化玩家费用
-        GameManager.Instance.Player.GetComponent<Player>().currentFee = 4;
+        GameManager.Instance.player.currentFee = 4;
         // 抽卡后台逻辑
 
         

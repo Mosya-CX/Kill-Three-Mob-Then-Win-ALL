@@ -16,8 +16,8 @@ using UnityEngine;
 
 public class BuffManager : MonoBehaviour
 {
-    public static GameManager instance;
-    public static GameManager Instance
+    public static BuffManager instance;
+    public static BuffManager Instance
     {
         get
         {
@@ -32,8 +32,8 @@ public class BuffManager : MonoBehaviour
 
     private void Start()
     {
-        playerData = GameManager.instance.Player.GetComponent<Player>();
-        enemyData = GameManager.instance.Enemy.GetComponent<Enemy>();
+        playerData = GameManager.Instance.player;
+        enemyData = GameManager.Instance.enemy;
         playerBuffList = playerData.buffList;
         enemyBuffList = enemyData.buffList;
     }
