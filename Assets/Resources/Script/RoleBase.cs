@@ -57,7 +57,7 @@ public class RoleBase : MonoBehaviour
                 // 播放死亡死亡动画
 
                 EnemyManager.Instance.RemoveEnemy();
-                Destroy(gameObject);// 如有动画此处应有个延迟，延迟时间略比动画时间长一点
+                Destroy(gameObject);// 如有动画此处应有个延迟，延迟时间应略比动画时间长一点
             }
         }
     }

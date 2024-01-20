@@ -64,16 +64,16 @@ public class GameManager : MonoBehaviour
         //显示LoginUI
         UIManager.Instance.OpenUI<LoginUI>("LoginUI");
 
-
-        Player = GameObject.FindWithTag("Player");
-        if (Player == null)
-        {
-            // 生成玩家对象
-            Vector2 playerPos = new Vector2(-5, 0.8f);//玩家位置，尚未确定
-            GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Player")) as GameObject;
-            obj.transform.position = playerPos;
-            Player = obj;
-        } 
+        //// 目前还没玩家预制体
+        //Player = GameObject.FindWithTag("Player");
+        //if (Player == null)
+        //{
+        //    // 生成玩家对象
+        //    Vector2 playerPos = new Vector2(-5, 0.8f);//玩家位置，尚未确定
+        //    GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Player")) as GameObject;
+        //    obj.transform.position = playerPos;
+        //    Player = obj;
+        //} 
     }
 
     private void Update()
