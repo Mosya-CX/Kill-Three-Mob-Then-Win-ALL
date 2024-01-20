@@ -34,11 +34,7 @@ public class GameManager : MonoBehaviour
     //public int currentTurn;// 0表示非战斗状态，1表示玩家回合，2表示敌人回合
     private void Awake()
     {
-        //if (Instance != null)
-        //{
-        //    Destroy(gameObject);
-        //    return;
-        //}
+        Instance = this;
 
         DontDestroyOnLoad(gameObject);
     }
