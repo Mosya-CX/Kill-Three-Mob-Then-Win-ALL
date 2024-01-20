@@ -13,7 +13,7 @@ public class Card1001 : CardItem
             AudioManager.Instance.ArmorAudio();
 
             //增加护盾
-            FightManager.Instance.defenseCount += 4;
+            GameManager.Instance.player.Shield += 4;
 
             //刷新防御文本
             //UIManager...

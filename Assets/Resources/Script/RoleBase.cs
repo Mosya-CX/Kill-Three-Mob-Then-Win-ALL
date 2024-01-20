@@ -23,8 +23,13 @@ public class RoleBase : MonoBehaviour
         curHP = maxHP;
         HPSlider.maxValue = maxHP;
         HPSlider.minValue = 0;
+        HPSlider.value = HPSlider.maxValue;
         Shield = 0;
-        animator = GetComponent<Animator>();
+
+        shieldText.text = Shield.ToString();
+        HPText.text = curHP + " / " + maxHP;
+
+        //animator = GetComponent<Animator>();
     }
 
     protected void onUpdate()
@@ -32,14 +37,15 @@ public class RoleBase : MonoBehaviour
         // 更新血量和护盾值
         if (curHP != HPSlider.value)
         {
+            print("111");
             // 此处是血条渐变
             if (curHP > HPSlider.value)
             {
-                HPSlider.value += Time.deltaTime;
+                HPSlider.value += Time.deltaTime * 50;
             }
             else if (curHP < HPSlider.value)
             {
-                HPSlider.value -= Time.deltaTime;
+                HPSlider.value -= Time.deltaTime * 50;
             }
         }
         shieldText.text = Shield.ToString();
@@ -57,7 +63,8 @@ public class RoleBase : MonoBehaviour
             {
                 // 播放敌人死亡动画
 
-                EnemyManager.Instance.RemoveEnemy();
+                // 移除敌人
+                //GameManager.Instance.Enemy = null;
 
                 //切换到胜利状态
                 FightManager.Instance.ChangeType(FightType.Win);

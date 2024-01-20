@@ -9,7 +9,7 @@ public class Fight_EnemyTurn : FightUnit
     public override void Init()
     {
         // 绑定当前战斗的敌人
-        GameObject enemy = GameManager.Instance.Enemy;
+        GameObject enemy = GameManager.Instance.enemy.gameObject;
 
         // 执行敌人ai逻辑
         if (enemy.GetComponent<Boss1AI>() != null )

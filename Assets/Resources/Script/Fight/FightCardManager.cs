@@ -41,12 +41,15 @@ public class FightCardManager
     {
         while (usedCardList.Count > 0)
         {
+            Debug.Log(2);
 
             int cardIndex = Random.Range(0, usedCardList.Count - 1);
 
             availableCardList.Add(usedCardList[cardIndex]);
 
             usedCardList.RemoveAt(cardIndex);
+
+            Debug.Log(3);
         }
     }
 

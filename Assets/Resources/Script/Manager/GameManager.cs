@@ -2,18 +2,23 @@ using Excel.Log;
 using OfficeOpenXml;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-    public static GameManager Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
+    public static GameManager Instance;
+    //public static GameManager Instance
+    //{
+    //    get
+    //    {
+    //        return instance;
+    //    }
+    //    set
+    //    {
+    //        instance = value;
+    //    }
+    //}
     // 当前游戏流程进度
     public int currentProgress;
     // 判断是否在战斗状态
@@ -23,8 +28,8 @@ public class GameManager : MonoBehaviour
     float gameTime;
 
     // 绑定玩家和敌人
-    public GameObject Player;
-    public GameObject Enemy;
+    public Player player;
+    public Enemy enemy;
     
     //public int currentTurn;// 0表示非战斗状态，1表示玩家回合，2表示敌人回合
     private void Awake()
@@ -39,8 +44,6 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        // 测试
-        Debug.Log("0");
         //播放开局bgm
         AudioManager.Instance.StartLevelAudio();
 
@@ -58,24 +61,26 @@ public class GameManager : MonoBehaviour
         FightCardManager.instance.Init();
 
         // GameConfig配置测试
-        string Name = GameConfigManager.Instance.getCardById("1000")["Name"];
-        print(Name);
+
 
         //显示LoginUI
-        UIManager.Instance.OpenUI<LoginUI>("LoginUI");
+        //UIManager.Instance.OpenUI<LoginUI>("LoginUI");
 
 
+        // 目前还没玩家预制体
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        if (player == null)
+        {
+            // 生成玩家对象
+            Vector2 playerPos = new Vector2(-5, 0.8f);//玩家位置，尚未确定
+            GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Player")) as GameObject;
+            obj.transform.position = playerPos;
+            player = obj.GetComponent<Player>();
+            obj.name = "Player";
+        }
 
-        //// 目前还没玩家预制体
-        //Player = GameObject.FindWithTag("Player");
-        //if (Player == null)
-        //{
-        //    // 生成玩家对象
-        //    Vector2 playerPos = new Vector2(-5, 0.8f);//玩家位置，尚未确定
-        //    GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Player")) as GameObject;
-        //    obj.transform.position = playerPos;
-        //    Player = obj;
-        //} 
+        EnemyManager.Instance.LoadMob("2001");
+
     }
 
     private void Update()
@@ -87,28 +92,30 @@ public class GameManager : MonoBehaviour
             case 0:
                 break;
             case 1:
-                if (Enemy == null)
+                if (enemy == null)
                 {
-                    EnemyManager.Instance.LoadMob(3000);
+                    EnemyManager.Instance.LoadMob("2001");
                 }
                 break;
             case 2:
-                if (Enemy == null)
+                if (enemy == null)
                 {
-                    EnemyManager.Instance.LoadMob(3001);
+                    EnemyManager.Instance.LoadMob("2002");
                 }
                 break;
             case 3:
-                if (Enemy == null)
+                if (enemy == null)
                 {
-                    EnemyManager.Instance.LoadMob(3002);
+                    EnemyManager.Instance.LoadMob("2003");
                 }
                 break;
         }
 
         if (FightCardManager.instance.availableCardList.Count == 0)
         {
+            Debug.Log(1);
             FightCardManager.instance.ResetUsedCard();
+            Debug.Log(4);
         }
 
         //if (currentTurn == 0)
