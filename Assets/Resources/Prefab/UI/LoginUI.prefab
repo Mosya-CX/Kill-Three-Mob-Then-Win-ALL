@@ -383,6 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startBtn: {fileID: 703415394419237159}
+  quitBtn: {fileID: 703415394745560093}
 --- !u!1 &703415394995834686
 GameObject:
   m_ObjectHideFlags: 0
