@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
         //    return;
         //}
 
+        Instance = this;
+
         DontDestroyOnLoad(gameObject);
     }
     private void Start()
@@ -111,12 +113,17 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        if (FightCardManager.instance.availableCardList.Count == 0)
+        if (enemy == null)
         {
-            Debug.Log(1);
-            FightCardManager.instance.ResetUsedCard();
-            Debug.Log(4);
+
         }
+
+        //if (FightCardManager.instance.availableCardList.Count == 0)
+        //{
+        //    Debug.Log(1);
+        //    FightCardManager.instance.ResetUsedCard();
+        //    Debug.Log(4);
+        //}
 
         //if (currentTurn == 0)
         //{

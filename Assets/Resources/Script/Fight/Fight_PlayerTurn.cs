@@ -12,7 +12,7 @@ public class Fight_PlayerTurn : FightUnit
         {
             //抽牌
             Debug.Log("抽牌");
-            UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(6);
+            //UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(6);
         });
         // 初始化玩家费用
         GameManager.Instance.player.currentFee = 4;

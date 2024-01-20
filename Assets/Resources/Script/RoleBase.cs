@@ -15,6 +15,7 @@ public class RoleBase : MonoBehaviour
     public int Shield;// 护盾值
     public TMP_Text shieldText;// 绑定护盾值的文本
     Animator animator;
+
     public List<int> buffList;
 
 
@@ -37,7 +38,7 @@ public class RoleBase : MonoBehaviour
         // 更新血量和护盾值
         if (curHP != HPSlider.value)
         {
-            print("111");
+            
             // 此处是血条渐变
             if (curHP > HPSlider.value)
             {

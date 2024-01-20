@@ -84,11 +84,27 @@ public class BuffManager : MonoBehaviour
     {
         if (target.tag == "Player")
         {
-            playerData.buffList.Add(buffId);
+            if (playerBuffList.Contains(buffId))
+            {
+                return;
+            }
+            else
+            {
+                playerData.buffList.Add(buffId);
+            }
+            
         }
         else if (target.tag == "Enemy")
         {
-            enemyData.buffList.Add(buffId);
+            if (playerBuffList.Contains(buffId))
+            {
+                return;
+            }
+            else
+            {
+                enemyData.buffList.Add(buffId);
+            }
+            
         }
     }
     // É¾³ýbuff

@@ -656,21 +656,13 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1431635326078416016, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
-      propertyPath: m_Value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1431635326078416016, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1786664781679289499, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
       propertyPath: m_Name
       value: FightUI
       objectReference: {fileID: 0}
-    - target: {fileID: 1786664781679289499, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 2653744474836407798, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0022392273
       objectReference: {fileID: 0}
     - target: {fileID: 2711138722535625307, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
       propertyPath: m_AnchorMax.x
