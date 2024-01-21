@@ -16,26 +16,27 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     //初始化
     public void Init(Dictionary<string, string> data)
     {
+
         this.data = data;
         cost = int.Parse(data["Expend"]);
     }
     private int index;
 
-    
+
 
     //鼠标进入
     public void OnPointerEnter(PointerEventData eventData)
     {
-        transform.DOScale(1.5f, 0.25f);
-        index = transform.GetSiblingIndex();
-        transform.SetAsLastSibling();
+        //transform.DOScale(1.5f, 0.25f);
+        //index = transform.GetSiblingIndex();
+        //transform.SetAsLastSibling();
     }
 
     //鼠标离开
     public void OnPointerExit(PointerEventData eventData)
     {
-        transform.DOScale(1f, 0.25f);
-        transform.SetSiblingIndex(index);
+        //transform.DOScale(1f, 0.25f);
+        //transform.SetSiblingIndex(index);
 
     }
     // 鼠标点击
@@ -52,9 +53,10 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         // 删除动画
 
-        // 删除卡牌
+        // 从手牌删除卡牌
         PlayerInfoManager.Instance.handCards.Remove(data["Id"]);
-        
+        FightCardManager.instance.usedCardList.Add(data["Id"]);
+
         Destroy(gameObject);
     }
 

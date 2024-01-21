@@ -42,6 +42,10 @@ public class FightInit : FightUnit
 
         //切换到玩家回合
         FightManager.Instance.ChangeType(FightType.Player);
+
+        // 更新牌堆的UI显示
+        GameObject.FindWithTag("FightUI").GetComponent<FightUI>().UpdateCardNum();
+        GameObject.FindWithTag("FightUI").GetComponent<FightUI>().UpdateCardNum();
     }
 
     public override void OnUpdate()
