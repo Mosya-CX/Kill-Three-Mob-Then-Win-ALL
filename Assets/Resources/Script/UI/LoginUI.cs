@@ -8,15 +8,19 @@ using UnityEngine.UI;
 public class LoginUI : BasePanel
 {
     public Button startBtn;
+    public Button quitBin;
     private void Awake()
     {
         //开始游戏
         //Register("bg/startBin").onClick = onStartGameBin;
-        startBtn.onClick.AddListener(onStartGameBin);
+
+        startBtn.onClick.AddListener(()=>onStartGameBin());// 添加的方法要是公有的
     }
 
-    private void onStartGameBin() 
+    public void onStartGameBin() 
     {
+        // 给游戏进程+1
+        GameManager.Instance.currentProgress++;
         //战斗初始化
         FightManager.Instance.ChangeType(FightType.Init);
         //关闭页面

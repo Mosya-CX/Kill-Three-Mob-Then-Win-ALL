@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
 
 
         //显示LoginUI
-        //UIManager.Instance.OpenUI<LoginUI>("LoginUI");
+        UIManager.Instance.OpenUI<LoginUI>("LoginUI");
 
 
         // 目前还没玩家预制体
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
             obj.name = "Player";
         }
 
-        EnemyManager.Instance.LoadMob("2001");
+        
 
     }
 
@@ -90,22 +90,13 @@ public class GameManager : MonoBehaviour
             case 0:
                 break;
             case 1:
-                if (enemy == null)
-                {
-                    EnemyManager.Instance.LoadMob("2001");
-                }
+                
                 break;
             case 2:
-                if (enemy == null)
-                {
-                    EnemyManager.Instance.LoadMob("2002");
-                }
+                
                 break;
             case 3:
-                if (enemy == null)
-                {
-                    EnemyManager.Instance.LoadMob("2003");
-                }
+                
                 break;
         }
 
