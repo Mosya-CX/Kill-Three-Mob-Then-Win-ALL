@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,56 +13,69 @@ using UnityEngine;
 
 
 
-public class BuffManager
+public class BuffManager : MonoBehaviour 
 {
-    public static BuffManager instance = new BuffManager();
+    public static BuffManager Instance;
 
-    public static BuffManager Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
+   
 
     public Player playerData;
     public Enemy enemyData;
     public List<int> playerBuffList;
     public List<int> enemyBuffList;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
-        playerData = GameManager.Instance.player;
-        enemyData = GameManager.Instance.enemy;
-        playerBuffList = playerData.buffList;
-        enemyBuffList = enemyData.buffList;
+        
     }
 
     private void Update()
     {
-        if (playerBuffList == null || playerData == null)
+        GameObject obj = GameObject.Find("UI/FightUI/Middle/EnemyStack");
+        if (obj != null)
         {
-            playerData = GameManager.Instance.player;
-            playerBuffList = playerData.buffList;
+            Debug.Log("找到的EnemyStack");
         }
-        if (enemyBuffList == null || enemyData == null)
+        // 检测是否玩家和敌人数据是否绑定
+        if (GameManager.Instance.isFighting)
         {
-            enemyData = GameManager.Instance.enemy;
-            enemyBuffList = enemyData.buffList;
+            if (playerBuffList == null || playerData == null)
+            {
+                playerData = GameManager.Instance.player;
+                playerBuffList = playerData.buffList;
+            }
+            if (enemyBuffList == null || enemyData == null)
+            {
+                enemyData = GameManager.Instance.enemy;
+                enemyBuffList = enemyData.buffList;
+            }
         }
-
+        
+       
+        // 检测敌人身上的buff
         if (enemyBuffList != null)
         {
+            // 检测是否存在浊流buff
             if (enemyBuffList.Contains(3005))
             {
+                
+                // 加水元素
                 if (!enemyBuffList.Contains(3001))
                 {
+
                     enemyBuffList.Add(3001);
                 }
             }
+
             // 检测敌人身上的元素反应
             if (enemyBuffList.Contains(3000) && enemyBuffList.Contains(3001))
             {
+
                 // 火加水
                 playerData.Shield += 8;
                 if (enemyData.Shield >= 8)
@@ -77,22 +91,23 @@ public class BuffManager
                 {
                     enemyData.curHP -= 8;
                 }
-                enemyBuffList.Remove(enemyBuffList.IndexOf(3000));
-                enemyBuffList.Remove(enemyBuffList.IndexOf(3001));
+                DelBuff(enemyData.gameObject, 3000);
+                DelBuff(enemyData.gameObject, 3001);
             }
             else if (enemyBuffList.Contains(3001) && enemyBuffList.Contains(3002))
             {
                 // 水加草
                 playerData.currentFee++;
-                enemyBuffList.Remove(enemyBuffList.IndexOf(3001));
-                enemyBuffList.Remove(enemyBuffList.IndexOf(3002));
+                DelBuff(enemyData.gameObject, 3001);
+                DelBuff(enemyData.gameObject, 3002);
             }
             else if (enemyBuffList.Contains(3000) && enemyBuffList.Contains(3002))
             {
                 // 火加草
                 playerData.curHP += 10;
-                enemyBuffList.Remove(enemyBuffList.IndexOf(3000));
-                enemyBuffList.Remove(enemyBuffList.IndexOf(3002));
+                DelBuff(enemyData.gameObject, 3000);
+                DelBuff(enemyData.gameObject, 3002);
+                
             }
         }
         
@@ -111,6 +126,12 @@ public class BuffManager
             }
             else
             {
+                // 加载ui
+                GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/UI/" + buffId.ToString())) as GameObject;
+                obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(80, 70);
+                obj.transform.SetParent(GameObject.Find("UI/FightUI/Middle/PlayerStack").transform, false);
+                obj.name = buffId.ToString();
+
                 playerData.buffList.Add(buffId);
             }
             
@@ -123,6 +144,12 @@ public class BuffManager
             }
             else
             {
+                // 加载ui
+                GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/UI/" + buffId.ToString())) as GameObject;
+                obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(80, 70);
+                obj.transform.SetParent(GameObject.Find("UI/FightUI/Middle/EnemyStack").transform, false);
+                obj.name = buffId.ToString();
+
                 enemyData.buffList.Add(buffId);
             }
             
@@ -133,11 +160,25 @@ public class BuffManager
     {
         if (target.tag == "Player")
         {
-            playerBuffList.Remove(enemyBuffList.IndexOf(buffId));
+            // 删除ui物体
+            GameObject obj = GameObject.Find("UI/FightUI/Middle/PlayerStack/" + buffId);
+            obj.GetComponent<BaseBuff>().Dele();
+            //obj.name = "None";
+            //obj.SetActive(false);
+
+            playerBuffList.RemoveAt(enemyBuffList.IndexOf(buffId));
         }
         else if (target.tag == "Enemy")
         {
-            enemyBuffList.Remove(enemyBuffList.IndexOf(buffId));
+
+            // 删除ui物体
+            GameObject obj = GameObject.Find("UI/FightUI/Middle/EnemyStack/" + buffId);
+            obj.GetComponent<BaseBuff>().Dele();
+            //obj.name = "None";
+            //obj.SetActive(false) ;
+
+
+            enemyBuffList.RemoveAt(enemyBuffList.IndexOf(buffId));
         }
     }
 }
