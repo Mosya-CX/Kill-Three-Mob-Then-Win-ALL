@@ -41,7 +41,6 @@ public class Boss1AI : MonoBehaviour
         {
             if (tmp == 1)
             {
-
                 Attack();
             }
             else
@@ -60,11 +59,10 @@ public class Boss1AI : MonoBehaviour
     void Attack()
     {
         int attackCount = 5;
-        AudioManager.Instance.HurtEffectAudio();
-        AudioManager.Instance.HurtVoiceAudio();
         while (attackCount > 0)
         {
             // 动画效果
+
 
             if (player.Shield >= baseDamage)
             {
@@ -79,7 +77,6 @@ public class Boss1AI : MonoBehaviour
             {
                 player.curHP -= baseDamage;
             }
-
             Debug.Log("进行攻击");
             attackCount--;
         }
@@ -89,7 +86,6 @@ public class Boss1AI : MonoBehaviour
     {
         // 动画效果
 
-        AudioManager.Instance.ArmorAudio();
         Debug.Log("进行防御");
         gameObject.GetComponent<Enemy>().Shield += 12;
     }

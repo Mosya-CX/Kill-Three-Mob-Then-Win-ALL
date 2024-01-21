@@ -8,8 +8,9 @@ public class Fight_Win : FightUnit
     public override void Init()
     {
         GameManager.Instance.currentProgress++;
-
+        // ”–æÁ«È”√None
         // FightManager.Instance.ChangeType(FightType.None);
+        FightManager.Instance.ChangeType(FightType.Init);
     }
 
     public override void OnUpdate()

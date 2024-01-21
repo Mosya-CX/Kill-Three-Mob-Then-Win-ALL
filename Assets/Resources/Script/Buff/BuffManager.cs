@@ -39,6 +39,16 @@ public class BuffManager
 
     private void Update()
     {
+        if (playerBuffList == null || playerData == null)
+        {
+            playerData = GameManager.Instance.player;
+            playerBuffList = playerData.buffList;
+        }
+        if (enemyBuffList == null || enemyData == null)
+        {
+            enemyData = GameManager.Instance.enemy;
+            enemyBuffList = enemyData.buffList;
+        }
 
         if (enemyBuffList != null)
         {
@@ -107,7 +117,7 @@ public class BuffManager
         }
         else if (target.tag == "Enemy")
         {
-            if (playerBuffList.Contains(buffId))
+            if (enemyBuffList.Contains(buffId))
             {
                 return;
             }

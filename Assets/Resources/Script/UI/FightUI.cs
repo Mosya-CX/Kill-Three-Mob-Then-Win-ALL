@@ -59,12 +59,19 @@ public class FightUI : BasePanel
             {
                 // 如果没牌了，就将弃牌堆的牌重新洗会可用牌堆
                 FightCardManager.instance.ResetUsedCard();
+                if (FightCardManager.instance.availableCardList.Count == 0)
+                {
+                    Debug.Log("没牌了");
+                    
+                    return item;
+                }
             }
             
             // 抽卡
             string cardId = FightCardManager.instance.DrawCard();
             Dictionary<string, string> cardData = GameConfigManager.Instance.getCardById(cardId);
-            
+
+            Debug.Log(cardId);
             // 生成卡牌物体
             GameObject obj = Instantiate(Resources.Load(cardData["PrefabPath"]), transform) as GameObject;
             

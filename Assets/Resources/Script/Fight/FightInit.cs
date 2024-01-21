@@ -29,7 +29,7 @@ public class FightInit : FightUnit
         }
 
         // ÷ÿ÷√≈∆∂—
-        Debug.Log("÷ÿ÷√≈∆∂—");
+
         FightCardManager.instance.ResetHandCard();
         FightCardManager.instance.ResetUsedCard();
 
