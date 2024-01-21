@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Des
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f2a1432b6842ff1419a4d93a27e9e9f5, type: 2}
-  m_sharedMaterial: {fileID: 4105099348606814455, guid: f2a1432b6842ff1419a4d93a27e9e9f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: aa4f81766ea594a4186f3c4693813616, type: 2}
+  m_sharedMaterial: {fileID: 4105099348606814455, guid: aa4f81766ea594a4186f3c4693813616, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 0.001
-  m_fontSizeMax: 72
+  m_fontSizeMax: 500
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256

@@ -37,7 +37,7 @@ public class Boss1AI : MonoBehaviour
             }
             attackOrder++;
         }
-        if (attackOrder == 2)
+        else if (attackOrder == 2)
         {
             if (tmp == 1)
             {
@@ -50,7 +50,7 @@ public class Boss1AI : MonoBehaviour
             }
             attackOrder++;
         }
-        if (attackOrder == 3)
+        else if (attackOrder == 3)
         {
             Skill1();
             attackOrder = 1;
