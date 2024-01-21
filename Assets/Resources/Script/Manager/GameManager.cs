@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         if (player == null)
         {
             // 生成玩家对象
-            Vector2 playerPos = new Vector2(-5, 0.8f);//玩家位置，尚未确定
+            Vector2 playerPos = new Vector2(-5, 0);//玩家位置
             GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Player")) as GameObject;
             obj.transform.position = playerPos;
             player = obj.GetComponent<Player>();
@@ -103,10 +103,6 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        if (enemy == null)
-        {
-
-        }
 
         //if (FightCardManager.instance.availableCardList.Count == 0)
         //{

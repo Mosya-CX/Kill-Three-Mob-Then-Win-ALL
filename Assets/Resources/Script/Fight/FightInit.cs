@@ -45,7 +45,8 @@ public class FightInit : FightUnit
 
         // 更新牌堆的UI显示
         GameObject.FindWithTag("FightUI").GetComponent<FightUI>().UpdateCardNum();
-        GameObject.FindWithTag("FightUI").GetComponent<FightUI>().UpdateCardNum();
+        GameObject.FindWithTag("FightUI").GetComponent<FightUI>().updateUsedCardNum();
+
     }
 
     public override void OnUpdate()

@@ -8,8 +8,8 @@ public class Card1002 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
     {
-        
-        if (TryUse()) 
+        Debug.Log(1);
+        if (TryUse())
         {
             // 使用效果
             if (GameManager.Instance.enemy.Shield >= 7)
@@ -27,7 +27,7 @@ public class Card1002 : CardItem
             }
 
             //抽卡效果
-            if (FightCardManager.instance.hasCard() == true) 
+            if (FightCardManager.instance.hasCard() == true)
             {
                 UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(1);
 
@@ -36,6 +36,6 @@ public class Card1002 : CardItem
             base.OnPointerClick(eventData);
         }
 
-        
+
     }
 }
