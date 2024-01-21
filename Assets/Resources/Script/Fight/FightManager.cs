@@ -74,8 +74,14 @@ public class FightManager : MonoBehaviour
 
     private void Update()
     {
+        // 此处判断牌堆是否还有牌
+        if (FightCardManager.instance.availableCardList.Count <= 0)
+        {
+            // 如果没牌了，就将弃牌堆的牌重新洗会可用牌堆
+            FightCardManager.instance.ResetUsedCard();
+        }
         // 此处添加每帧运行逻辑
-        if(fightUnit != null) 
+        if (fightUnit != null) 
         {
             fightUnit.OnUpdate();
         }

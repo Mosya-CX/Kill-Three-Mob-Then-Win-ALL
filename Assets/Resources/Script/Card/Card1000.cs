@@ -9,6 +9,7 @@ public class Card1000 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log(1);
 
         if (TryUse())
         {
@@ -35,6 +36,6 @@ public class Card1000 : CardItem
 
             base.OnPointerClick(eventData);
         }
-        
+
     }
 }

@@ -20,7 +20,7 @@ public class FightUI : BasePanel
 
     private void Update()
     {
-        if (FightManager.Instance.fightUnit is Fight_PlayerTurn)
+        if (FightManager.Instance.fightUnit is Fight_PlayerTurn || FightManager.Instance.fightUnit is Fight_EnemyTurn)
         {
 
             UpdateCardNum();
@@ -64,27 +64,27 @@ public class FightUI : BasePanel
             // 抽卡
             string cardId = FightCardManager.instance.DrawCard();
             Dictionary<string, string> cardData = GameConfigManager.Instance.getCardById(cardId);
-            print(1);
+            
             // 生成卡牌物体
             GameObject obj = Instantiate(Resources.Load(cardData["PrefabPath"]), transform) as GameObject;
-            Debug.Log("3");
+            
             obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(80, 70);
-            Debug.Log("4");
+            
             // 设手牌区UI为父对象
             obj.transform.SetParent(GameObject.FindWithTag("HandCard").transform, false);
-            Debug.Log("5");
+            
             //var item = obj.AddComponent<CardItem>();
 
             // 给卡牌加上脚本
             item = obj.AddComponent(System.Type.GetType(cardData["Script"])) as CardItem;
-            Debug.Log("6");
+            
             // 初始化卡牌数据
             item.Init(cardData);
-            Debug.Log("7");
+          
             // 添加到手牌列表
             cardItemList.Add(item);
             PlayerInfoManager.Instance.handCards.Add(cardId);
-            Debug.Log("8");
+
         }
 
         // 返回抽到的最后一张牌
