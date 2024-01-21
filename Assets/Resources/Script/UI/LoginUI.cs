@@ -8,13 +8,14 @@ using UnityEngine.UI;
 public class LoginUI : BasePanel
 {
     public Button startBtn;
-    public Button quitBin;
+    public Button quitBtn;
     private void Awake()
     {
         //开始游戏
         //Register("bg/startBin").onClick = onStartGameBin;
 
         startBtn.onClick.AddListener(()=>onStartGameBin());// 添加的方法要是公有的
+        quitBtn.onClick.AddListener(() => onQuitGameBin());
     }
 
     public void onStartGameBin() 
@@ -26,5 +27,9 @@ public class LoginUI : BasePanel
         //关闭页面
         Debug.Log("关闭页面");
         Destroy(gameObject);
+    }
+    public void onQuitGameBin()
+    {
+        Application.Quit();
     }
 }
