@@ -49,15 +49,16 @@ public class CardItem : MonoBehaviour, IPointerClickHandler
         AudioManager.Instance.ClickCardAudio();
 
         // ¶Ï¾ø¸¸×Ó¹ØÏµ
-        gameObject.transform.SetParent(null, true);
-        gameObject.transform.SetParent(GameObject.Find("UI/FightUI/Button").transform, true);
+        //gameObject.transform.SetParent(null, true);
+        //gameObject.transform.SetParent(GameObject.Find("UI/FightUI/Button").transform, true);
 
-        // É¾³ý¶¯»­
+        //// É¾³ý¶¯»­
 
         // É¾³ý¿¨ÅÆ
         PlayerInfoManager.Instance.handCards.Remove(data["Id"]);
-        Debug.Log("É¾³ý");
-        Destroy(gameObject);
+        FightCardManager.instance.usedCardList.Add(data["Id"]);
+        //Destroy(gameObject);
+
     }
 
     //³¢ÊÔÊ¹ÓÃ¿¨ÅÆ
@@ -81,7 +82,7 @@ public class CardItem : MonoBehaviour, IPointerClickHandler
             GameManager.Instance.player.currentFee -= cost;
             //Ê¹ÓÃºóµÄ¿¨ÅÆÉ¾³ý
             UIManager.Instance.GetUI<FightUI>("FightUI").RemoveCard(this);
-
+            
             return true;
         }
     }

@@ -19,7 +19,7 @@ public class FightUI : BasePanel
 
     private void Update()
     {
-        if (FightManager.Instance.fightUnit is Fight_PlayerTurn)
+        if (FightManager.Instance.fightUnit is Fight_PlayerTurn || FightManager.Instance.fightUnit is Fight_EnemyTurn)
         {
 
             UpdateCardNum();
@@ -63,8 +63,7 @@ public class FightUI : BasePanel
             // 抽卡
             string cardId = FightCardManager.instance.DrawCard();
             Dictionary<string, string> cardData = GameConfigManager.Instance.getCardById(cardId);
-            print(cardId);
-            print(cardData["PrefabPath"]);
+            
             // 生成卡牌物体
             GameObject obj = Instantiate(Resources.Load(cardData["PrefabPath"]), transform) as GameObject;
             
