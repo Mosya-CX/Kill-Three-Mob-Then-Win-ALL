@@ -24,7 +24,6 @@ public class LoginUI : BasePanel
         //战斗初始化
         FightManager.Instance.ChangeType(FightType.Init);
         //关闭页面
-        Debug.Log("关闭页面");
         Destroy(gameObject);
     }
 }
