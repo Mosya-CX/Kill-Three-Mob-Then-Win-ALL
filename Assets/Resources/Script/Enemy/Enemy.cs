@@ -48,7 +48,7 @@ public class Enemy : RoleBase
     {
         onUpdate();
         // 此处更新显示敌人下回合行动的UI
-        if (nextType == ActionType.None)
+        /*if (nextType == ActionType.None)
         {
             UnityEngine.UI.Image img = nextAction.GetComponent<UnityEngine.UI.Image>();
             img.sprite = null;
@@ -70,7 +70,7 @@ public class Enemy : RoleBase
             Sprite newSprite = Resources.Load<Sprite>("Img/Item/Skill");
             UnityEngine.UI.Image img = nextAction.GetComponent<UnityEngine.UI.Image>();
             img.sprite = newSprite;
-        }
+        }*/
 
         
     }

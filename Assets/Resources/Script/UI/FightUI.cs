@@ -10,10 +10,11 @@ public class FightUI : BasePanel
     public TMP_Text cardNumTxt;//卡牌数量
     public TMP_Text usedCardNumTxt;//弃牌堆数量
     public List<CardItem> cardItemList;//存储卡牌
+    public Button turnBtn;
 
     private void Start()
     {
-        
+        turnBtn.onClick.AddListener(() => ChangeTurn());
     }
 
 
@@ -126,7 +127,7 @@ public class FightUI : BasePanel
         cardItemList.Remove(item);
 
         //刷新卡牌
-        UpdateCardItemPos();
+        //UpdateCardItemPos();
 
         //卡牌移到弃牌堆效果
         item.GetComponent<RectTransform>().DOAnchorPos(new Vector2(1000, -700), 0.25f);
@@ -142,6 +143,17 @@ public class FightUI : BasePanel
         for (int i = cardItemList.Count - 1; i >= 0; i--)
         {
             RemoveCard(cardItemList[i]);
+        }
+    }
+
+    //切换回合
+    private void ChangeTurn()
+    {
+        //只有玩家回合才能切换
+        if(FightManager.Instance.fightUnit is Fight_PlayerTurn) 
+        {
+            FightManager.Instance.ChangeType(FightType.Enemy);
+
         }
     }
 }
