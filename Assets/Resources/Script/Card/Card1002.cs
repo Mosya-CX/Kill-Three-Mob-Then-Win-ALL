@@ -8,7 +8,6 @@ public class Card1002 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log(1);
         if (TryUse())
         {
             // 使用效果
