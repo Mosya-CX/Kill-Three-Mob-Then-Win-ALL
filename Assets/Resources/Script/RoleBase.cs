@@ -65,6 +65,8 @@ public class RoleBase : MonoBehaviour
                 }
                 else
                 {
+                    //≤•∑≈À¿Õˆ“Ù–ß
+                    AudioManager.Instance.PlayerDeathAudio();
                     //«–ªªµΩ ß∞‹◊¥Ã¨
                     FightManager.Instance.ChangeType(FightType.Lose);
                 }

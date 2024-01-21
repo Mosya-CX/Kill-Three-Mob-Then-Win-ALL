@@ -60,7 +60,8 @@ public class Boss1AI : MonoBehaviour
     void Attack()
     {
         int attackCount = 5;
-        AudioManager.Instance.PlayerHurtAudio();
+        AudioManager.Instance.HurtEffectAudio();
+        AudioManager.Instance.HurtVoiceAudio();
         while (attackCount > 0)
         {
             // ¶¯»­Ð§¹û
