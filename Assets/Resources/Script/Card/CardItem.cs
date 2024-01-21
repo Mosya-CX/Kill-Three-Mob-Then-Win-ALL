@@ -7,10 +7,9 @@ using DG.Tweening;
 using TMPro;
 
 
-public class CardItem : MonoBehaviour,  IPointerClickHandler//, IPointerEnterHandler, IPointerExitHandler
+public class CardItem : MonoBehaviour,  IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Dictionary<string, string> data; //卡牌信息
-    private Vector2 originalScale;
 
     //卡牌需要的费用
     public int cost;
@@ -38,13 +37,12 @@ public class CardItem : MonoBehaviour,  IPointerClickHandler//, IPointerEnterHan
     }
     private int index;
 
-    /*//鼠标进入
+    //鼠标进入
     public void OnPointerEnter(PointerEventData eventData)
     {
         transform.DOScale(1.5f, 0.25f);
-        index = transform.GetSiblingIndex();
-        transform.SetAsLastSibling();
-        //transform.localScale = originalScale * 1.2f;
+        //index = transform.GetSiblingIndex();
+        //transform.SetAsLastSibling();
         Debug.Log("鼠标进入");
     }
 
@@ -52,11 +50,10 @@ public class CardItem : MonoBehaviour,  IPointerClickHandler//, IPointerEnterHan
     public void OnPointerExit(PointerEventData eventData)
     {
         transform.DOScale(1f, 0.25f);
-        transform.SetSiblingIndex(index);
-        //transform.localScale = originalScale;
+        //transform.SetSiblingIndex(index);
         Debug.Log("鼠标离开");
 
-    }*/
+    }
     // 鼠标点击
     public virtual void OnPointerClick(PointerEventData eventData)
     {
