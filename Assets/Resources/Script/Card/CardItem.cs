@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using TMPro;
 
 
 public class CardItem : MonoBehaviour,  IPointerClickHandler//, IPointerEnterHandler, IPointerExitHandler
@@ -13,12 +14,27 @@ public class CardItem : MonoBehaviour,  IPointerClickHandler//, IPointerEnterHan
 
     //卡牌需要的费用
     public int cost;
+    // 卡牌简介
+    public string Des;
 
     //初始化
     public void Init(Dictionary<string, string> data)
     {
         this.data = data;
         cost = int.Parse(data["Expend"]);
+        Des = data["Des"];
+        TMP_Text[] Texts = GetComponentsInChildren<TMP_Text>();
+        foreach (var text in Texts)
+        {
+            if (text.name == "Expand")
+            {
+                text.text = cost.ToString();
+            }
+            else if (text.name == "Des")
+            {
+                text.text = Des;
+            }
+        }
     }
     private int index;
 
@@ -55,10 +71,11 @@ public class CardItem : MonoBehaviour,  IPointerClickHandler//, IPointerEnterHan
 
         // 删除动画
 
+
         // 删除卡牌
         PlayerInfoManager.Instance.handCards.Remove(data["Id"]);
-        Debug.Log("删除");
-        //Destroy(gameObject);
+        FightCardManager.instance.usedCardList.Add(data["Id"]);
+        Destroy(gameObject);
     }
 
     //尝试使用卡牌
@@ -81,7 +98,7 @@ public class CardItem : MonoBehaviour,  IPointerClickHandler//, IPointerEnterHan
             //减少目前费用
             GameManager.Instance.player.currentFee -= cost;
             //使用后的卡牌删除
-            UIManager.Instance.GetUI<FightUI>("FightUI").RemoveCard(this);
+            //UIManager.Instance.GetUI<FightUI>("FightUI").RemoveCard(this);
 
             return true;
         }

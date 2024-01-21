@@ -74,7 +74,7 @@ public class RoleBase : MonoBehaviour
                 // 播放敌人死亡动画
 
                 // 移除敌人
-                //GameManager.Instance.Enemy = null;
+                GameManager.Instance.enemy = null;
 
                 //切换到胜利状态
                 FightManager.Instance.ChangeType(FightType.Win);

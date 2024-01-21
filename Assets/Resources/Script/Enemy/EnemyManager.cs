@@ -27,11 +27,9 @@ public class EnemyManager
         enemy.maxHP = int.Parse(enemyInfo["HP"]);
         enemy.baseDamage = int.Parse(enemyInfo["BaseDamage"]);
         enemy.name = enemyInfo["Name"];
-        if (GameManager.Instance == null )
-        {
-            Debug.Log("6666");
-        }
+
         // ∞Û∂®µ–»À
+        obj.tag = "Enemy";
         GameManager.Instance.enemy = enemy;
         BuffManager.Instance.enemyBuffList = enemy.buffList;
         BuffManager.Instance.enemyData = enemy;

@@ -23,17 +23,16 @@ public class Boss1AI : MonoBehaviour
     // 敌人行动
     public void Move()
     {
-        int tmp = Random.Range(1, 2);
+        int tmp = Random.Range(1, 3);
+        Debug.Log(tmp);
         if (attackOrder == 1)
         {
             if (tmp == 1)
             {
-                Debug.Log("准备攻击");
                 Attack();
             }
             else
             {
-                Debug.Log("准备防御");
                 Defend();
             }
             attackOrder++;
@@ -42,12 +41,10 @@ public class Boss1AI : MonoBehaviour
         {
             if (tmp == 1)
             {
-                Debug.Log("准备攻击");
                 Attack();
             }
             else
             {
-                Debug.Log("准备防御");
                 Defend();
             }
             attackOrder++;

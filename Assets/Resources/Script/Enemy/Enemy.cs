@@ -41,7 +41,7 @@ public class Enemy : RoleBase
         Player = GameObject.FindWithTag("Player");
         //finalDemage = baseDamage;
         nextType = ActionType.None;
-        nextAction = null;
+
     }
 
     private void Update()
