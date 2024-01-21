@@ -18,13 +18,14 @@ public class AudioManager : MonoBehaviour
     public AudioClip deathClip;     //死亡音效
     public AudioClip winClip;       //胜利音效
     public AudioClip loseClip;      //失败音效
-    public AudioClip playerHurtClip; //玩家受伤音效
-    public AudioClip enemyHurtClip; //敌人受伤音效
+    public AudioClip hurtEffectClip; //受击音效
+    public AudioClip hurtVoiceClip; //玩家受伤呻吟音效
     public AudioClip clickCardClip; //点击卡牌音效
     public AudioClip armorClip;     //获得护甲值的音效
 
     AudioSource bgmSource;
-    AudioSource effectSource;
+    AudioSource effect1Source;      
+    AudioSource effect2Source;
 
 
     private void Awake()
@@ -40,7 +41,8 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         bgmSource = gameObject.AddComponent<AudioSource>();
-        effectSource = gameObject.AddComponent<AudioSource>();
+        effect1Source = gameObject.AddComponent<AudioSource>();
+        effect2Source = gameObject.AddComponent<AudioSource>();
     }
 
     //开始游戏时播放bgm
@@ -63,42 +65,41 @@ public class AudioManager : MonoBehaviour
     //玩家胜利播放音效
     public void PlayerWonAudio()
     {
-        Instance.effectSource.clip = Instance.winClip;
-        Instance.effectSource.Play();
+        Instance.effect1Source.clip = Instance.winClip;
+        Instance.effect1Source.Play();
     }
 
     //玩家死亡播放音效
     public void PlayerDeathAudio()
     {
-        Instance.effectSource.clip = Instance.deathClip;
-        Instance.effectSource.Play();
+        Instance.effect1Source.clip = Instance.deathClip;
+        Instance.effect1Source.Play();
     }
-
-    //玩家受伤播放音效
-    public void PlayerHurtAudio()
-    {
-        Instance.effectSource.clip = Instance.playerHurtClip;
-        Instance.effectSource.Play();
-    }
-
-    //敌人受伤播放音效
-    public void EnemyHurtAudio()
-    {
-        Instance.effectSource.clip = Instance.enemyHurtClip;
-        Instance.effectSource.Play();
-    }
-
     //点击卡牌音效
     public void ClickCardAudio()
     {
-        Instance.effectSource.clip = Instance.clickCardClip;
-        Instance.effectSource.Play();
+        Instance.effect1Source.clip = Instance.clickCardClip;
+        Instance.effect1Source.Play();
+    }
+
+    //受伤音效
+    public void HurtEffectAudio()
+    {
+        Instance.effect2Source.clip = Instance.hurtEffectClip;
+        Instance.effect2Source.Play();
+    }
+
+    //受伤声音/呻吟
+    public void HurtVoiceAudio()
+    {
+        Instance.effect1Source.clip = Instance.hurtVoiceClip;
+        Instance.effect1Source.Play();
     }
 
     //获得护甲值的音效
     public void ArmorAudio()
     {
-        Instance.effectSource.clip = Instance.armorClip;
-        Instance.effectSource.Play();
+        Instance.effect2Source.clip = Instance.armorClip;
+        Instance.effect2Source.Play();
     }
 }

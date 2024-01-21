@@ -58,6 +58,8 @@ public class Boss1AI : MonoBehaviour
 
     void Attack()
     {
+        AudioManager.Instance.HurtEffectAudio();
+        AudioManager.Instance.HurtVoiceAudio();
         int attackCount = 5;
         while (attackCount > 0)
         {
@@ -86,6 +88,7 @@ public class Boss1AI : MonoBehaviour
     {
         // 动画效果
 
+        AudioManager.Instance.ArmorAudio();
         Debug.Log("进行防御");
         gameObject.GetComponent<Enemy>().Shield += 12;
     }
