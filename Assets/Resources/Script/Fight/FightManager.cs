@@ -43,6 +43,11 @@ public class FightManager : MonoBehaviour
                 fightUnit = new FightInit();
                 break;
             case FightType.Player:
+                // 判断上回合是否是敌人回合
+                if (fightUnit is Fight_EnemyTurn)
+                {
+                    // 在此进行
+                }
                 fightUnit = new Fight_PlayerTurn();
                 break;
             case FightType.Enemy:
@@ -60,6 +65,7 @@ public class FightManager : MonoBehaviour
 
     private void Update()
     {
+        // 此处添加每帧运行逻辑
         if(fightUnit != null) 
         {
             fightUnit.OnUpdate();

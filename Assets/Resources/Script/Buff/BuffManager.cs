@@ -12,9 +12,10 @@ using UnityEngine;
 
 
 
-public class BuffManager : MonoBehaviour
+public class BuffManager
 {
-    public static BuffManager instance;
+    public static BuffManager instance = new BuffManager();
+
     public static BuffManager Instance
     {
         get
@@ -23,10 +24,10 @@ public class BuffManager : MonoBehaviour
         }
     }
 
-    Player playerData;
-    Enemy enemyData;
-    List<int> playerBuffList;
-    List<int> enemyBuffList;
+    public Player playerData;
+    public Enemy enemyData;
+    public List<int> playerBuffList;
+    public List<int> enemyBuffList;
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class BuffManager : MonoBehaviour
 
     private void Update()
     {
+        
         if (enemyBuffList.Contains(3005))
         {
             if (!enemyBuffList.Contains(3001))

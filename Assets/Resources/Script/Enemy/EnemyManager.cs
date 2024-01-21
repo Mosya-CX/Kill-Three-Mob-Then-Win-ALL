@@ -33,6 +33,9 @@ public class EnemyManager
         }
         // ∞Û∂®µ–»À
         GameManager.Instance.enemy = enemy;
+        BuffManager.Instance.enemyBuffList = enemy.buffList;
+        BuffManager.Instance.enemyData = enemy;
+
     }
 
     
