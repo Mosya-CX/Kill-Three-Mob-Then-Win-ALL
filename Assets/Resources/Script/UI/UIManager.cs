@@ -113,8 +113,8 @@ public class UIManager : MonoBehaviour
         Text _text = obj.transform.Find("bg/Text").GetComponent<Text>();
         _text.color = color;
         _text.text = msg;
-        Tween scale1 = obj.transform.Find("bg").DOScale(1, 0.2f);
-        Tween scale2 = obj.transform.Find("bg").DOScale(0, 0.2f);
+        Tween scale1 = obj.transform.Find("bg").DOScale(1, 1.5f);
+        Tween scale2 = obj.transform.Find("bg").DOScale(0, 1.5f);
 
         Sequence seq = DOTween.Sequence();
         seq.Append(scale1);
@@ -128,7 +128,7 @@ public class UIManager : MonoBehaviour
             }
         });
 
-        MonoBehaviour.Destroy(obj, 1);
+        MonoBehaviour.Destroy(obj, 3.6f);
     }
 
     //获得某个界面的脚本

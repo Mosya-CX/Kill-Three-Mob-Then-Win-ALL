@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 
 
-public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,IPointerClickHandler
+public class CardItem : MonoBehaviour, IPointerClickHandler
 {
     public Dictionary<string, string> data; //卡牌信息
 
@@ -23,12 +23,13 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     
 
-    //鼠标进入
+    /*//鼠标进入
     public void OnPointerEnter(PointerEventData eventData)
     {
         transform.DOScale(1.5f, 0.25f);
         index = transform.GetSiblingIndex();
         transform.SetAsLastSibling();
+        Debug.Log("鼠标进入");
     }
 
     //鼠标离开
@@ -36,8 +37,9 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         transform.DOScale(1f, 0.25f);
         transform.SetSiblingIndex(index);
+        Debug.Log("鼠标离开");
 
-    }
+    }*/
     // 鼠标点击
     public virtual void OnPointerClick(PointerEventData eventData)
     {
@@ -54,7 +56,7 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         // 删除卡牌
         PlayerInfoManager.Instance.handCards.Remove(data["Id"]);
-        
+        Debug.Log("删除");
         Destroy(gameObject);
     }
 
