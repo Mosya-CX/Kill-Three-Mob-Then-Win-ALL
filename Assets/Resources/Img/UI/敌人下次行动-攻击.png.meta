@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Resources/Img/UI/血条底png.png.meta
 guid: 32582989eb360eb439cd9bb69ae81369
+=======
+guid: 8676fe53fc5afdc418dcb0d6b1ea2f37
+>>>>>>> Stashed changes:Assets/Resources/Img/UI/敌人下次行动-攻击.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
