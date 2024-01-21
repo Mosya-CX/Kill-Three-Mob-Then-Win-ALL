@@ -1,6 +1,6 @@
 Id	Name	HP	BaseDamage	PrefabPath				
 								
-2001	贪	150	2	Prefab/Character/TestEnemy				
-2002	嗔	200	15	Prefab/Character/TestEnemy				
-2003	痴（第一阶段）	150	3	Prefab/Character/TestEnemy				
-2004	痴（第二阶段）	300	20	Prefab/Character/TestEnemy				
+2001	贪	150	2	Prefab/Character/Boss1				
+2002	嗔	200	15	Prefab/Character/Boss2				
+2003	痴（第一阶段）	150	3	Prefab/Character/Boss3				
+2004	痴（第二阶段）	300	20	Prefab/Character/Boss4				

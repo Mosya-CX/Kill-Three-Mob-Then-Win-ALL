@@ -77,7 +77,10 @@ public class GameManager : MonoBehaviour
             obj.name = "Player";
         }
 
-        
+        if (player != null && BuffManager.Instance.playerData == null)
+        {
+            BuffManager.Instance.playerData = player;
+        }
 
     }
 
