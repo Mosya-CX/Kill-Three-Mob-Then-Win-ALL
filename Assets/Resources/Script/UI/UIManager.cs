@@ -134,18 +134,20 @@ public class UIManager : MonoBehaviour
     //获得某个界面的脚本
     public T GetUI<T>(string uiName) where T : BasePanel
     {
-        BasePanel ui = Find(uiName);
+        // 补充
+        BasePanel ui = GameObject.Find("UI/" + uiName).GetComponent<T>();
         if (ui != null)
         {
             return ui.GetComponent<T>();
         }
 
-        // 补充
-        ui = GameObject.Find("UI/" + uiName).GetComponent<T>();
+        ui = Find(uiName);
         if (ui != null)
         {
             return ui.GetComponent<T>();
         }
+
+        
 
 
         return null;

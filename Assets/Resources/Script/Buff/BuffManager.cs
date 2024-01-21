@@ -39,49 +39,53 @@ public class BuffManager
 
     private void Update()
     {
+
+        if (enemyBuffList != null)
+        {
+            if (enemyBuffList.Contains(3005))
+            {
+                if (!enemyBuffList.Contains(3001))
+                {
+                    enemyBuffList.Add(3001);
+                }
+            }
+            // 检测敌人身上的元素反应
+            if (enemyBuffList.Contains(3000) && enemyBuffList.Contains(3001))
+            {
+                // 火加水
+                playerData.Shield += 8;
+                if (enemyData.Shield >= 8)
+                {
+                    playerData.Shield -= 8;
+                }
+                else if (enemyData.Shield < 8 && enemyData.Shield > 0)
+                {
+                    enemyData.curHP -= 8 - enemyData.Shield;
+                    enemyData.Shield = 0;
+                }
+                else
+                {
+                    enemyData.curHP -= 8;
+                }
+                enemyBuffList.Remove(enemyBuffList.IndexOf(3000));
+                enemyBuffList.Remove(enemyBuffList.IndexOf(3001));
+            }
+            else if (enemyBuffList.Contains(3001) && enemyBuffList.Contains(3002))
+            {
+                // 水加草
+                playerData.currentFee++;
+                enemyBuffList.Remove(enemyBuffList.IndexOf(3001));
+                enemyBuffList.Remove(enemyBuffList.IndexOf(3002));
+            }
+            else if (enemyBuffList.Contains(3000) && enemyBuffList.Contains(3002))
+            {
+                // 火加草
+                playerData.curHP += 10;
+                enemyBuffList.Remove(enemyBuffList.IndexOf(3000));
+                enemyBuffList.Remove(enemyBuffList.IndexOf(3002));
+            }
+        }
         
-        if (enemyBuffList.Contains(3005))
-        {
-            if (!enemyBuffList.Contains(3001))
-            {
-                enemyBuffList.Add(3001);
-            }
-        }
-        // 检测敌人身上的元素反应
-        if (enemyBuffList.Contains(3000) && enemyBuffList.Contains(3001))
-        {
-            // 火加水
-            playerData.Shield += 8;
-            if (enemyData.Shield >= 8)
-            {
-                playerData.Shield -= 8;
-            }
-            else if (enemyData.Shield < 8 && enemyData.Shield > 0)
-            {
-                enemyData.curHP -= 8 - enemyData.Shield;
-                enemyData.Shield = 0;
-            }
-            else
-            {
-                enemyData.curHP -= 8;
-            }
-            enemyBuffList.Remove(enemyBuffList.IndexOf(3000));
-            enemyBuffList.Remove(enemyBuffList.IndexOf(3001));
-        }
-        else if (enemyBuffList.Contains(3001) && enemyBuffList.Contains(3002))
-        {
-            // 水加草
-            playerData.currentFee++;
-            enemyBuffList.Remove(enemyBuffList.IndexOf(3001));
-            enemyBuffList.Remove(enemyBuffList.IndexOf(3002));
-        }
-        else if (enemyBuffList.Contains(3000) && enemyBuffList.Contains(3002))
-        {
-            // 火加草
-            playerData.curHP += 10;
-            enemyBuffList.Remove(enemyBuffList.IndexOf(3000));
-            enemyBuffList.Remove(enemyBuffList.IndexOf(3002));
-        }
 
     
     }

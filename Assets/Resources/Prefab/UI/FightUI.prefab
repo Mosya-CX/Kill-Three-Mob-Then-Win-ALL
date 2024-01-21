@@ -668,9 +668,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6019623345523408788}
+  - component: {fileID: 3590174551569947061}
   m_Layer: 5
   m_Name: FightUI
-  m_TagString: Untagged
+  m_TagString: FightUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -698,6 +699,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3590174551569947061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786664781679289499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2cf6811adec0d148b0861d289d067dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardNumTxt: {fileID: 6076791802611321749}
+  usedCardNumTxt: {fileID: 710942346419767972}
+  cardItemList: []
 --- !u!1 &1933699210409919444
 GameObject:
   m_ObjectHideFlags: 0

@@ -62,6 +62,7 @@ public class Boss1AI : MonoBehaviour
         {
             // ¶¯»­Ð§¹û
 
+
             if (player.Shield >= baseDamage)
             {
                 player.Shield -= baseDamage;

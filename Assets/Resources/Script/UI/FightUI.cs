@@ -11,31 +11,34 @@ public class FightUI : BasePanel
     public TMP_Text usedCardNumTxt;//弃牌堆数量
     public List<CardItem> cardItemList;//存储卡牌
 
-    private void Awake()
-    {
-        // 绑定牌堆UI
-        cardNumTxt = transform.Find("Button/Background/Left/CardList/CardNumber").GetComponent<TMP_Text>();
-        usedCardNumTxt = transform.Find("Button/Background/Right/CardList/CardNumber").GetComponent<TMP_Text>();
-
-    }
-
     private void Start()
     {
-        UpdateCardNum();
-        updateUsedCardNum();
+        
     }
 
 
+    private void Update()
+    {
+        if (FightManager.Instance.fightUnit is Fight_PlayerTurn)
+        {
+
+            UpdateCardNum();
+            updateUsedCardNum();
+        }
+        
+    }
 
     //更新卡堆数量
     public void UpdateCardNum()
     {
+
         cardNumTxt.text = FightCardManager.instance.availableCardList.Count.ToString();
     }
 
     //更新弃牌堆数量
     public void updateUsedCardNum()
     {
+
         usedCardNumTxt.text = FightCardManager.instance.usedCardList.Count.ToString();
     }
 
@@ -47,37 +50,40 @@ public class FightUI : BasePanel
         //    count = FightCardManager.instance.availableCardList.Count;
         //}
         CardItem item = null;
-
         for (int i = 0; i < count; i++)
         {
+           
             // 此处判断牌堆是否还有牌
             if (FightCardManager.instance.availableCardList.Count == 0)
             {
                 // 如果没牌了，就将弃牌堆的牌重新洗会可用牌堆
                 FightCardManager.instance.ResetUsedCard();
             }
-
+            
             // 抽卡
             string cardId = FightCardManager.instance.DrawCard();
             Dictionary<string, string> cardData = GameConfigManager.Instance.getCardById(cardId);
-
+            print(1);
             // 生成卡牌物体
             GameObject obj = Instantiate(Resources.Load(cardData["PrefabPath"]), transform) as GameObject;
-            obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(-1000, -700);
-            
+            Debug.Log("3");
+            obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(80, 70);
+            Debug.Log("4");
             // 设手牌区UI为父对象
-            obj.transform.SetParent(transform.Find("Button/Background/HandCardBackgrouhnd"), false);
-            
+            obj.transform.SetParent(GameObject.FindWithTag("HandCard").transform, false);
+            Debug.Log("5");
             //var item = obj.AddComponent<CardItem>();
-            
+
             // 给卡牌加上脚本
             item = obj.AddComponent(System.Type.GetType(cardData["Script"])) as CardItem;
-            
+            Debug.Log("6");
             // 初始化卡牌数据
             item.Init(cardData);
+            Debug.Log("7");
             // 添加到手牌列表
             cardItemList.Add(item);
             PlayerInfoManager.Instance.handCards.Add(cardId);
+            Debug.Log("8");
         }
 
         // 返回抽到的最后一张牌

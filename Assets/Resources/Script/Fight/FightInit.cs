@@ -28,13 +28,16 @@ public class FightInit : FightUnit
             EnemyManager.Instance.LoadMob("2003");
         }
 
-        // 初始化可用牌堆
-        FightCardManager.instance.Init();
+        // 重置牌堆
+        FightCardManager.instance.ResetHandCard();
+        FightCardManager.instance.ResetUsedCard();
 
-        // 显示战斗界面(不需要)
+        // 显示战斗界面()
         // UIManager.Instance.OpenUI<FightUI>("FightUI");
+        GameObject.FindWithTag("FightUI").SetActive(true);
+        GameObject.FindWithTag("Player").SetActive(true) ;
 
-        // 重置玩家费用上线
+        // 重置玩家费用上限
         GameManager.Instance.player.totalFee = 4;
 
         //切换到玩家回合
