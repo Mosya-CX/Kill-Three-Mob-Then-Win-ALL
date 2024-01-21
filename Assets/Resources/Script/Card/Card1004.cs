@@ -15,7 +15,7 @@ public class Card1004 : CardItem
             //³é¿¨Ð§¹û
             if (FightCardManager.instance.hasCard() == true)
             {
-                UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(2);
+                UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(2, true);
 
             }
 

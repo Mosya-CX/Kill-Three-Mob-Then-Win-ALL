@@ -16,6 +16,8 @@ public class CardItem : MonoBehaviour,  IPointerClickHandler//, IPointerEnterHan
     public int cost;
     // 卡牌简介
     public string Des;
+    // 判断是否可用被选中
+    public bool isSlectable;
 
     //初始化
     public void Init(Dictionary<string, string> data)

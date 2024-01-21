@@ -44,7 +44,7 @@ public class FightUI : BasePanel
     }
 
     //创建卡牌物体
-    public CardItem CreateCardItem(int count)
+    public CardItem CreateCardItem(int count, bool isSlectable)
     {
         //if (count > FightCardManager.instance.availableCardList.Count)
         //{
@@ -74,7 +74,6 @@ public class FightUI : BasePanel
             Debug.Log(cardId);
             // 生成卡牌物体
             GameObject obj = Instantiate(Resources.Load(cardData["PrefabPath"]), transform) as GameObject;
-            
             obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(80, 70);
             
             // 设手牌区UI为父对象
@@ -87,7 +86,9 @@ public class FightUI : BasePanel
             
             // 初始化卡牌数据
             item.Init(cardData);
-          
+            
+            item.isSlectable = isSlectable;
+
             // 添加到手牌列表
             cardItemList.Add(item);
             PlayerInfoManager.Instance.handCards.Add(cardId);

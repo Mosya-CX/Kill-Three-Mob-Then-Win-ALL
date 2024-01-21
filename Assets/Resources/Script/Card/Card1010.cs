@@ -12,14 +12,14 @@ public class Card1010 : CardItem
         
         if (TryUse() == true)
         {
-            // 使用效果
-            BuffManager.Instance.AddBuff(GameManager.Instance.player.gameObject, 3004);
+            // 使用效果(暂时没有)
+            // BuffManager.Instance.AddBuff(GameManager.Instance.player.gameObject, 3004);
             
 
             //抽卡效果
             if (FightCardManager.instance.hasCard() == true)
             {
-                CardItem item = UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(2);
+                CardItem item = UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(2, true);
                 item.cost = 0;
             }
             base.OnPointerClick(eventData);

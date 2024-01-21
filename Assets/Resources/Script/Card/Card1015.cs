@@ -31,7 +31,7 @@ public class Card1015 : CardItem
             //³é¿¨Ð§¹û
             if (FightCardManager.instance.hasCard() == true)
             {
-                CardItem item = UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(2);
+                CardItem item = UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(2, true);
             }
 
             base.OnPointerClick(eventData);

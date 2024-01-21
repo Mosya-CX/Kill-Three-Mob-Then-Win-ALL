@@ -39,4 +39,9 @@ public class Fight_EnemyTurn : FightUnit
     {
         // µ–»À––∂Ø
     }
+
+    public override void End()
+    {
+        GameManager.Instance.turn++;
+    }
 }
