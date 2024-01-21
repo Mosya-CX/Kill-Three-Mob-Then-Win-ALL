@@ -75,7 +75,8 @@ public class Boss3AI : MonoBehaviour
     void Skill1() 
     {
         //¶¯»­
-        //GameManager.Instance.enemy.curHP == 0;
+
+        gameObject.GetComponent<Enemy>().curHP = 0;
 
 
     }

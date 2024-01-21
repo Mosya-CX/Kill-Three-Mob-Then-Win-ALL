@@ -6,9 +6,10 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 
 
-public class CardItem : MonoBehaviour, IPointerClickHandler
+public class CardItem : MonoBehaviour,  IPointerClickHandler//, IPointerEnterHandler, IPointerExitHandler
 {
     public Dictionary<string, string> data; //卡牌信息
+    private Vector2 originalScale;
 
     //卡牌需要的费用
     public int cost;
@@ -21,14 +22,13 @@ public class CardItem : MonoBehaviour, IPointerClickHandler
     }
     private int index;
 
-    
-
     /*//鼠标进入
     public void OnPointerEnter(PointerEventData eventData)
     {
         transform.DOScale(1.5f, 0.25f);
         index = transform.GetSiblingIndex();
         transform.SetAsLastSibling();
+        //transform.localScale = originalScale * 1.2f;
         Debug.Log("鼠标进入");
     }
 
@@ -37,6 +37,7 @@ public class CardItem : MonoBehaviour, IPointerClickHandler
     {
         transform.DOScale(1f, 0.25f);
         transform.SetSiblingIndex(index);
+        //transform.localScale = originalScale;
         Debug.Log("鼠标离开");
 
     }*/
@@ -49,16 +50,15 @@ public class CardItem : MonoBehaviour, IPointerClickHandler
         AudioManager.Instance.ClickCardAudio();
 
         // 断绝父子关系
-        //gameObject.transform.SetParent(null, true);
-        //gameObject.transform.SetParent(GameObject.Find("UI/FightUI/Button").transform, true);
+        gameObject.transform.SetParent(null, true);
+        gameObject.transform.SetParent(GameObject.Find("UI/FightUI/Button").transform, true);
 
-        //// 删除动画
+        // 删除动画
 
         // 删除卡牌
         PlayerInfoManager.Instance.handCards.Remove(data["Id"]);
-        FightCardManager.instance.usedCardList.Add(data["Id"]);
+        Debug.Log("删除");
         //Destroy(gameObject);
-
     }
 
     //尝试使用卡牌
@@ -82,7 +82,7 @@ public class CardItem : MonoBehaviour, IPointerClickHandler
             GameManager.Instance.player.currentFee -= cost;
             //使用后的卡牌删除
             UIManager.Instance.GetUI<FightUI>("FightUI").RemoveCard(this);
-            
+
             return true;
         }
     }

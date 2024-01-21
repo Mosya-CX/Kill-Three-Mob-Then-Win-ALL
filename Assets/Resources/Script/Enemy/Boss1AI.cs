@@ -28,10 +28,12 @@ public class Boss1AI : MonoBehaviour
         {
             if (tmp == 1)
             {
+                Debug.Log("准备攻击");
                 Attack();
             }
             else
             {
+                Debug.Log("准备防御");
                 Defend();
             }
             attackOrder++;
@@ -40,10 +42,12 @@ public class Boss1AI : MonoBehaviour
         {
             if (tmp == 1)
             {
+                Debug.Log("准备攻击");
                 Attack();
             }
             else
             {
+                Debug.Log("准备防御");
                 Defend();
             }
             attackOrder++;
@@ -76,7 +80,7 @@ public class Boss1AI : MonoBehaviour
             {
                 player.curHP -= baseDamage;
             }
-
+            Debug.Log("进行攻击");
             attackCount--;
         }
     }
@@ -85,6 +89,7 @@ public class Boss1AI : MonoBehaviour
     {
         // 动画效果
 
+        Debug.Log("进行防御");
         gameObject.GetComponent<Enemy>().Shield += 12;
     }
 
