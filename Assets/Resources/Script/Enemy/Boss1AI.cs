@@ -15,7 +15,7 @@ public class Boss1AI : MonoBehaviour
     void Start()
     {
         attackMode = 1;
-        attackMode = 1;
+        attackOrder = 1;
         player = GameManager.Instance.player;
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
     }
@@ -23,17 +23,16 @@ public class Boss1AI : MonoBehaviour
     // 敌人行动
     public void Move()
     {
-        int tmp = Random.Range(1, 2);
+        int tmp = Random.Range(1, 3);
+        Debug.Log(tmp);
         if (attackOrder == 1)
         {
             if (tmp == 1)
             {
-                Debug.Log("准备攻击");
                 Attack();
             }
             else
             {
-                Debug.Log("准备防御");
                 Defend();
             }
             attackOrder++;
@@ -42,12 +41,11 @@ public class Boss1AI : MonoBehaviour
         {
             if (tmp == 1)
             {
-                Debug.Log("准备攻击");
+
                 Attack();
             }
             else
             {
-                Debug.Log("准备防御");
                 Defend();
             }
             attackOrder++;
@@ -62,10 +60,10 @@ public class Boss1AI : MonoBehaviour
     void Attack()
     {
         int attackCount = 5;
+        AudioManager.Instance.PlayerHurtAudio();
         while (attackCount > 0)
         {
             // 动画效果
-
 
             if (player.Shield >= baseDamage)
             {
@@ -80,6 +78,7 @@ public class Boss1AI : MonoBehaviour
             {
                 player.curHP -= baseDamage;
             }
+
             Debug.Log("进行攻击");
             attackCount--;
         }
@@ -89,6 +88,7 @@ public class Boss1AI : MonoBehaviour
     {
         // 动画效果
 
+        AudioManager.Instance.ArmorAudio();
         Debug.Log("进行防御");
         gameObject.GetComponent<Enemy>().Shield += 12;
     }
