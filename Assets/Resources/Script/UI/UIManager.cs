@@ -83,6 +83,7 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < uiList.Count; i++)
         {
+            
             if (uiList[i].name == uiName)
             {
                 return uiList[i];

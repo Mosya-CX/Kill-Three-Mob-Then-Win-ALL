@@ -80,6 +80,7 @@ public class FightUI : BasePanel
             PlayerInfoManager.Instance.handCards.Add(cardId);
         }
 
+        // 返回抽到的最后一张牌
         if (item != null)
         {
             return item;
