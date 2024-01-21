@@ -15,7 +15,7 @@ public class Boss1AI : MonoBehaviour
     void Start()
     {
         attackMode = 1;
-        attackMode = 1;
+        attackOrder = 1;
         player = GameManager.Instance.player;
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
     }
@@ -38,7 +38,7 @@ public class Boss1AI : MonoBehaviour
             }
             attackOrder++;
         }
-        if (attackOrder == 2)
+        else if (attackOrder == 2)
         {
             if (tmp == 1)
             {
@@ -52,7 +52,7 @@ public class Boss1AI : MonoBehaviour
             }
             attackOrder++;
         }
-        if (attackOrder == 3)
+        else if (attackOrder == 3)
         {
             Skill1();
             attackOrder = 1;
