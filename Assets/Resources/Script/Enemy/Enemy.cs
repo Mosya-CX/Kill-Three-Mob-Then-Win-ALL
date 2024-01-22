@@ -7,7 +7,7 @@ using System.Reflection;
 using TMPro;
 
 
-// µÐÈËÐÐ¶¯ÀàÐÍ
+// ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½
 public enum ActionType
 {
     None,
@@ -16,42 +16,43 @@ public enum ActionType
     Skill,
 }
 
-// ¹ÒµÐÈËÉíÉÏ
-// ´æ´¢µÐÈËÐÅÏ¢
+// ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 public class Enemy : RoleBase
 {
     public int id;
     public GameObject Player;
-    public ActionType nextType;// ÏÂ»ØºÏÐÐ¶¯
-    public GameObject nextAction;// °ó¶¨µÐÈËÏÂ»ØºÏÐÐ¶¯ÏÔÊ¾ui
+    public ActionType nextType;// ï¿½Â»Øºï¿½ï¿½Ð¶ï¿½
+    public GameObject nextAction;// ï¿½ó¶¨µï¿½ï¿½ï¿½ï¿½Â»Øºï¿½ï¿½Ð¶ï¿½ï¿½ï¿½Ê¾ui
     public int baseDamage;
-    //public int finalDemage;// ´æ´¢Ôì³ÉµÄ×îÖÕÉËº¦
+    UnityEngine.UI.Image img;
+    //public int finalDemage;// ï¿½æ´¢ï¿½ï¿½Éµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½
     private void Start()
     {
-        // ÖØÐÂ°ó¶¨ÑªÌõ
-        HPSlider = GameObject.Find("UI/FightUI/Middle/RightTop/EnemyHP").GetComponent<UnityEngine.UI.Slider>() ;
-        // °ó¶¨ÑªÌõÎÄ±¾
-        HPText = GameObject.Find("UI/FightUI/Middle/RightTop/EnemyHP/HPText").GetComponent<TMP_Text>();
-        // °ó¶¨»¤¶ÜÖµÎÄ±¾
-        shieldText = GameObject.Find("UI/FightUI/Middle/RightTop/Shield/ShieldValue").GetComponent<TMP_Text>();
-        // ÖØÐÂ°ó¶¨ÏÂ»ØºÏÐÐ¶¯ÏÔÊ¾ui
-        nextAction = GameObject.Find("UI/FightUI/Top/EnemyAction");
 
+        // ï¿½ï¿½ï¿½Â°ï¿½Ñªï¿½ï¿½
+        HPSlider = GameObject.Find("UI/FightUI/Middle/RightTop/EnemyHP").GetComponent<UnityEngine.UI.Slider>() ;
+        // ï¿½ï¿½Ñªï¿½ï¿½ï¿½Ä±ï¿½
+        HPText = GameObject.Find("UI/FightUI/Middle/RightTop/EnemyHP/HPText").GetComponent<TMP_Text>();
+        // ï¿½ó¶¨»ï¿½ï¿½ï¿½Öµï¿½Ä±ï¿½
+        shieldText = GameObject.Find("UI/FightUI/Middle/RightTop/Shield/ShieldValue").GetComponent<TMP_Text>();
+        // ï¿½ï¿½ï¿½Â°ï¿½ï¿½Â»Øºï¿½ï¿½Ð¶ï¿½ï¿½ï¿½Ê¾ui
+        nextAction = GameObject.Find("UI/FightUI/Top/EnemyAction");
         Init();
         Player = GameObject.FindWithTag("Player");
         //finalDemage = baseDamage;
         nextType = ActionType.None;
-
     }
 
     private void Update()
     {
         onUpdate();
-        // ´Ë´¦¸üÐÂÏÔÊ¾µÐÈËÏÂ»ØºÏÐÐ¶¯µÄUI
+        // ï¿½Ë´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Â»Øºï¿½ï¿½Ð¶ï¿½ï¿½ï¿½UI
         /*if (nextType == ActionType.None)
         {
-            UnityEngine.UI.Image img = nextAction.GetComponent<UnityEngine.UI.Image>();
-            img.sprite = null;
+            img = nextAction.GetComponent<UnityEngine.UI.Image>();
+            //UnityEngine.UIElements.Image img = nextAction.GetComponent<UnityEngine.UIElements.Image>();
+            //img.sprite = null;
         }
         else if (nextType == ActionType.Attack)
         {

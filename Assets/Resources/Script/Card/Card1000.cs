@@ -19,6 +19,7 @@ public class Card1000 : CardItem
 
         if (TryUse())
         {
+            Debug.Log("1000");
             //播放特效
 
             //播放敌人受伤音效

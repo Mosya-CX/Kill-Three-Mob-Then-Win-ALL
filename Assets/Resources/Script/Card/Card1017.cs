@@ -11,6 +11,7 @@ public class Card1017 : CardItem
     {
         if (TryUse())
         {
+            Debug.Log("1017");
             base.OnPointerClick(eventData);
         }
         

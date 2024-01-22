@@ -7,9 +7,9 @@ using TMPro;
 
 public class FightUI : BasePanel
 {
-    public TMP_Text cardNumTxt;//¿¨ÅÆÊýÁ¿
-    public TMP_Text usedCardNumTxt;//ÆúÅÆ¶ÑÊýÁ¿
-    public List<CardItem> cardItemList;//´æ´¢¿¨ÅÆ
+    public TMP_Text cardNumTxt;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public TMP_Text usedCardNumTxt;//ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½
+    public List<CardItem> cardItemList;//ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½
     public Button turnBtn;
 
     private void Start()
@@ -25,21 +25,20 @@ public class FightUI : BasePanel
 
     }
 
-    //¸üÐÂ¿¨¶ÑÊýÁ¿
+    //ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void UpdateCardNum()
     {
 
         cardNumTxt.text = FightCardManager.instance.availableCardList.Count.ToString();
     }
 
-    //¸üÐÂÆúÅÆ¶ÑÊýÁ¿
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½
     public void updateUsedCardNum()
     {
-
         usedCardNumTxt.text = FightCardManager.instance.usedCardList.Count.ToString();
     }
 
-    //´´½¨¿¨ÅÆÎïÌå
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public CardItem CreateCardItem(int count, bool isSlectable)
     {
         //if (count > FightCardManager.instance.availableCardList.Count)
@@ -50,47 +49,48 @@ public class FightUI : BasePanel
         for (int i = 0; i < count; i++)
         {
            
-            // ´Ë´¦ÅÐ¶ÏÅÆ¶ÑÊÇ·ñ»¹ÓÐÅÆ
+            // ï¿½Ë´ï¿½ï¿½Ð¶ï¿½ï¿½Æ¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
             if (FightCardManager.instance.availableCardList.Count == 0)
             {
-                // Èç¹ûÃ»ÅÆÁË£¬¾Í½«ÆúÅÆ¶ÑµÄÅÆÖØÐÂÏ´»á¿ÉÓÃÅÆ¶Ñ
+                // ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ë£ï¿½ï¿½Í½ï¿½ï¿½ï¿½ï¿½Æ¶Ñµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
                 FightCardManager.instance.ResetUsedCard();
                 if (FightCardManager.instance.availableCardList.Count == 0)
                 {
-                    Debug.Log("Ã»ÅÆÁË");
+                    Debug.Log("Ã»ï¿½ï¿½ï¿½ï¿½");
                     
                     return item;
                 }
             }
             
-            // ³é¿¨
+            // ï¿½é¿¨
             string cardId = FightCardManager.instance.DrawCard();
             Dictionary<string, string> cardData = GameConfigManager.Instance.getCardById(cardId);
-
-            // Éú³É¿¨ÅÆÎïÌå
+            //print(cardId);
+            //print(cardData["PrefabPath"]);
+            // ï¿½ï¿½ï¿½É¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             GameObject obj = Instantiate(Resources.Load(cardData["PrefabPath"]), transform) as GameObject;
             obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(80, 70);
             
-            // ÉèÊÖÅÆÇøUIÎª¸¸¶ÔÏó
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UIÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             obj.transform.SetParent(GameObject.FindWithTag("HandCard").transform, false);
             
             //var item = obj.AddComponent<CardItem>();
 
-            // ¸ø¿¨ÅÆ¼ÓÉÏ½Å±¾
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½Ï½Å±ï¿½
             item = obj.AddComponent(System.Type.GetType(cardData["Script"])) as CardItem;
             
-            // ³õÊ¼»¯¿¨ÅÆÊý¾Ý
+            // ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             item.Init(cardData);
             
             item.isSlectable = isSlectable;
 
-            // Ìí¼Óµ½ÊÖÅÆÁÐ±í
+            // ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
             cardItemList.Add(item);
             PlayerInfoManager.Instance.handCards.Add(cardId);
 
         }
 
-        // ·µ»Ø³éµ½µÄ×îºóÒ»ÕÅÅÆ
+        // ï¿½ï¿½ï¿½Ø³éµ½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
         if (item != null)
         {
             return item;
@@ -102,7 +102,7 @@ public class FightUI : BasePanel
 
     }
 
-    //¸üÐÂ¿¨ÅÆÎ»ÖÃ
+    //ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½Î»ï¿½ï¿½
     public void UpdateCardItemPos()
     {
         float offset = 800.0f / cardItemList.Count;
@@ -115,31 +115,30 @@ public class FightUI : BasePanel
         }
     }
 
-    //É¾³ý¿¨ÅÆÎïÌå
+    //É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void RemoveCard(CardItem item)
     {
-        item.enabled = false;//½ûÓÃ¿¨ÅÆÂß¼­
+        item.enabled = false;//ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ß¼ï¿½
 
-        //Ìí¼Óµ½ÆúÅÆ¼¯ºÏ
+        //ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½
         FightCardManager.instance.usedCardList.Add(item.data["Id"]);
 
-        //¸üÐÂÊ¹ÓÃºóµÄ¿¨ÅÆÊýÁ¿
+        //ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ãºï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         usedCardNumTxt.text = FightCardManager.instance.usedCardList.Count.ToString();
-
-        //´Ó¼¯ºÏÖÐÉ¾³ý
+       
+        //ï¿½Ó¼ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
         cardItemList.Remove(item);
-
-        //Ë¢ÐÂ¿¨ÅÆ
+        //Ë¢ï¿½Â¿ï¿½ï¿½ï¿½
         //UpdateCardItemPos();
 
-        //¿¨ÅÆÒÆµ½ÆúÅÆ¶ÑÐ§¹û
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Æ¶ï¿½Ð§ï¿½ï¿½
         item.GetComponent<RectTransform>().DOAnchorPos(new Vector2(1000, -700), 0.25f);
         item.transform.DOScale(0, 0.25f);
 
         Destroy(item.gameObject, 1);
     }
 
-    //É¾³ýËùÓÐ¿¨ÅÆ
+    //É¾ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½
     public void RemoveAllCards()
     {
         for (int i = cardItemList.Count - 1; i >= 0; i--)
@@ -148,10 +147,10 @@ public class FightUI : BasePanel
         }
     }
 
-    //ÇÐ»»»ØºÏ
+    //ï¿½Ð»ï¿½ï¿½Øºï¿½
     private void ChangeTurn()
     {
-        //Ö»ÓÐÍæ¼Ò»ØºÏ²ÅÄÜÇÐ»»
+        //Ö»ï¿½ï¿½ï¿½ï¿½Ò»ØºÏ²ï¿½ï¿½ï¿½ï¿½Ð»ï¿½
         if(FightManager.Instance.fightUnit is Fight_PlayerTurn) 
         {
             FightManager.Instance.ChangeType(FightType.Enemy);

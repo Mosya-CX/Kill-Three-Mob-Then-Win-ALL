@@ -18,6 +18,7 @@ public class Card1011 : CardItem
 
         if (TryUse())
         {
+            Debug.Log("1011");
             // 使用效果
             // 造成伤害
             if (GameManager.Instance.enemy.Shield >= 3)

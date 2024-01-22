@@ -4,30 +4,33 @@ using UnityEngine;
 
 public class Boss1AI : MonoBehaviour
 {
-    // ¹¥»÷·½Ê½
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
     public int attackMode;
-    // ¹¥»÷Ë³Ðò
+    // ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½
     public int attackOrder;
-    // °ó¶¨Íæ¼Ò¶ÔÏó
+    // ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½
     public Player player;
-    // »ñµÃ»ù´¡¹¥»÷Á¦
+    // ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public int baseDamage;
+    public Enemy enemy;
+    //BOSSï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ØºÏ¹ï¿½ï¿½ï¿½
+    public int nextMove;
     void Start()
     {
+        nextMove = Random.Range(1, 3);
         attackMode = 1;
         attackOrder = 1;
-        player = GameManager.Instance.player;
+        player = GameManager.Instance.player.GetComponent<Player>();
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
+        enemy.GetComponent<Enemy>();
     }
 
-    // µÐÈËÐÐ¶¯
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
     public void Move()
     {
-        int tmp = Random.Range(1, 3);
-        Debug.Log(tmp);
         if (attackOrder == 1)
         {
-            if (tmp == 1)
+            if (nextMove == 1)
             {
                 Attack();
             }
@@ -39,7 +42,7 @@ public class Boss1AI : MonoBehaviour
         }
         else if (attackOrder == 2)
         {
-            if (tmp == 1)
+            if (nextMove == 1)
             {
                 Attack();
             }
@@ -51,9 +54,37 @@ public class Boss1AI : MonoBehaviour
         }
         else if (attackOrder == 3)
         {
-            Skill1();
+            if (nextMove == 1)
+            {
+                Attack();
+            }
+            else
+            {
+                Defend();
+            }
+            enemy.nextType = ActionType.Skill;
+            attackOrder++;
+
+        }
+        if(attackOrder == 4)
+        {
+            Skill();
             attackOrder = 1;
         }
+        nextMove = Random.Range(1, 3);
+        if (attackOrder != 4)
+        {
+            switch (nextMove)
+            {
+                case 1:
+                    enemy.nextType = ActionType.Attack;   
+                    break;
+                case 2:
+                    enemy.nextType = ActionType.Defend;
+                    break;
+            }
+        }
+        
     }
 
     void Attack()
@@ -61,10 +92,10 @@ public class Boss1AI : MonoBehaviour
         AudioManager.Instance.AttackAudio();
         AudioManager.Instance.HurtVoiceAudio();
         int attackCount = 5;
+        enemy.nextType = ActionType.Attack;
         while (attackCount > 0)
         {
-            // ¶¯»­Ð§¹û
-
+            // ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
 
             if (player.Shield >= baseDamage)
             {
@@ -79,24 +110,22 @@ public class Boss1AI : MonoBehaviour
             {
                 player.curHP -= baseDamage;
             }
-            Debug.Log("½øÐÐ¹¥»÷");
             attackCount--;
         }
     }
 
     void Defend()
     {
-        // ¶¯»­Ð§¹û
+        // ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
 
         AudioManager.Instance.ArmorAudio();
-        Debug.Log("½øÐÐ·ÀÓù");
+        Debug.Log("ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½");
         gameObject.GetComponent<Enemy>().Shield += 12;
     }
 
-    void Skill1()
+    void Skill()
     {
-        // ¶¯»­Ð§¹û
-
+        // ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
         baseDamage++;
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//×ÇÁ÷			»ñµÃ8µã»¤¶Ü£¬ÔÚ±¾¾ÖÊ£ÓàÊ±¼äÄÚ£¬Ê¹µÐÈËÉíÉÏ´æÔÚ²»»áÏûºÄµÄË®ÔªËØ¸½×Å
+//ï¿½ï¿½ï¿½ï¿½			ï¿½ï¿½ï¿½8ï¿½ã»¤ï¿½Ü£ï¿½ï¿½Ú±ï¿½ï¿½ï¿½Ê£ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ú£ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½Ë®Ôªï¿½Ø¸ï¿½ï¿½ï¿½
 public class Card1013 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -18,10 +18,10 @@ public class Card1013 : CardItem
 
         if (TryUse())
         {
-            AudioManager.Instance.ArmorAudio();
-            // Ê¹ÓÃÐ§¹û
+           
+            // Ê¹ï¿½ï¿½Ð§ï¿½ï¿½
             GameManager.Instance.player.Shield += 8;
-            // ¼Óbuff
+            // ï¿½ï¿½buff
             BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3005);
 
 

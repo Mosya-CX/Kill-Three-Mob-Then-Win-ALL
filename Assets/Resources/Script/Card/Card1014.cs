@@ -19,6 +19,7 @@ public class Card1014 : CardItem
 
         if (TryUse())
         {
+            Debug.Log("1014");
             // 使用效果
             GameManager.Instance.enemy.curHP -= 6;
             BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3002);

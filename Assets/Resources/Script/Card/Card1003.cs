@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//¿ìËÙ·ÀÊØ »ñµÃ12µã¸ñµ²
+//ï¿½ï¿½ï¿½Ù·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½12ï¿½ï¿½ï¿½
 public class Card1003 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -19,9 +19,9 @@ public class Card1003 : CardItem
 
         if (TryUse())
         {
-            //ÒôÐ§
+            //ï¿½ï¿½Ð§
             AudioManager.Instance.ArmorAudio();
-            // Ê¹ÓÃÐ§¹û
+            // Ê¹ï¿½ï¿½Ð§ï¿½ï¿½
             GameManager.Instance.player.Shield += 12;
 
             base.OnPointerClick(eventData);

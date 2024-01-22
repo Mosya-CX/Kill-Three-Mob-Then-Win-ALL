@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//Ñ¸½Ý¹¥»÷			Ôì³É 7µãÉËº¦£¬³é1ÕÅÅÆ
+//Ñ¸ï¿½Ý¹ï¿½ï¿½ï¿½			ï¿½ï¿½ï¿½ 7ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½
 public class Card1002 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -18,9 +18,9 @@ public class Card1002 : CardItem
 
         if (TryUse())
         {
-            //ÒôÐ§
+            //ï¿½ï¿½Ð§
             AudioManager.Instance.AttackAudio();
-            // Ê¹ÓÃÐ§¹û
+            // Ê¹ï¿½ï¿½Ð§ï¿½ï¿½
             if (GameManager.Instance.enemy.Shield >= 7)
             {
                 GameManager.Instance.enemy.Shield -= 7;
@@ -35,7 +35,7 @@ public class Card1002 : CardItem
                 GameManager.Instance.enemy.curHP -= 7;
             }
 
-            //³é¿¨Ð§¹û
+            //ï¿½é¿¨Ð§ï¿½ï¿½
             UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(1, true);
 
             base.OnPointerClick(eventData);

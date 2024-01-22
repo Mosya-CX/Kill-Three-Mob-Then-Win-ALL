@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//ÎÒÃ»Òâ¼û			³é3ÕÅÅÆ,ÆäÖÐÒ»ÕÅÃâ·Ñ
+//ï¿½ï¿½Ã»ï¿½ï¿½ï¿½			ï¿½ï¿½3ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
 public class Card1006 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -17,14 +17,14 @@ public class Card1006 : CardItem
             return;
         }
 
-        // Ê¹ÓÃÐ§¹û
+        // Ê¹ï¿½ï¿½Ð§ï¿½ï¿½
         if (TryUse() == true)
         {
 
-            //³é¿¨Ð§¹û
+            //ï¿½é¿¨Ð§ï¿½ï¿½
             CardItem item = UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(3, true);
             item.cost = 0;
-            // ¸üÐÂ»¨·Ñui
+            // ï¿½ï¿½ï¿½Â»ï¿½ï¿½ï¿½ui
             TMP_Text[] Texts = item.gameObject.GetComponentsInChildren<TMP_Text>();
             foreach (var text in Texts)
             {
