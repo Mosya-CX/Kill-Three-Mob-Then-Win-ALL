@@ -15,6 +15,8 @@ public class CardItem : MonoBehaviour,  IPointerClickHandler, IPointerEnterHandl
     public int cost;
     // 卡牌简介
     public string Des;
+    // 判断是否可用被选中
+    public bool isSlectable;
 
     //初始化
     public void Init(Dictionary<string, string> data)
@@ -72,6 +74,7 @@ public class CardItem : MonoBehaviour,  IPointerClickHandler, IPointerEnterHandl
         // 删除卡牌
         PlayerInfoManager.Instance.handCards.Remove(data["Id"]);
         FightCardManager.instance.usedCardList.Add(data["Id"]);
+        GameObject.Find("UI/FightUI").GetComponent<FightUI>().cardItemList.Remove(this);
         Destroy(gameObject);
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,17 +9,31 @@ public class Card1006 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
     {
+        if (!isSlectable)
+        {
+            FightCardManager.instance.availableCardList.Add(data["Id"]);
+            GameObject.Find("UI/CardSelectUI").GetComponent<CardSelectUI>().progress++;
+            GameObject.Find("UI/CardSelectUI").GetComponent<CardSelectUI>().isReCreate = false;
+            return;
+        }
+
         // 使用效果
         if (TryUse() == true)
         {
 
-
             //抽卡效果
-            if (FightCardManager.instance.hasCard() == true)
+            CardItem item = UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(3, true);
+            item.cost = 0;
+            // 更新花费ui
+            TMP_Text[] Texts = item.gameObject.GetComponentsInChildren<TMP_Text>();
+            foreach (var text in Texts)
             {
-                CardItem item = UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(2);
-                item.cost = 0;
+                if (text.name == "Expand")
+                {
+                    text.text = item.cost.ToString();
+                }
             }
+
             base.OnPointerClick(eventData);
         }
 

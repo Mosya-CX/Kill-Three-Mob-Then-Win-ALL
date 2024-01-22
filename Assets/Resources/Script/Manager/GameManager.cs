@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     //}
     // 当前游戏流程进度
     public int currentProgress;
+    // 当前回合
+    public int turn;
     // 判断是否在战斗状态
     public bool isFighting;
 
@@ -45,11 +47,12 @@ public class GameManager : MonoBehaviour
         //播放开局bgm
         AudioManager.Instance.StartLevelAudio();
 
+        isFighting = false;
 
         // 初始化进度
         currentProgress = 0;
-        //// 初始化战斗回合
-        //currentTurn = 0;
+        // 初始化战斗回合
+        turn = 0;
 
         // 初始化配置表
         GameConfigManager.Instance.Init();

@@ -8,12 +8,21 @@ public class Card1013 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
     {
+        if (!isSlectable)
+        {
+            FightCardManager.instance.availableCardList.Add(data["Id"]);
+            GameObject.Find("UI/CardSelectUI").GetComponent<CardSelectUI>().progress++;
+            GameObject.Find("UI/CardSelectUI").GetComponent<CardSelectUI>().isReCreate = false;
+            return;
+        }
+
         if (TryUse())
         {
             AudioManager.Instance.ArmorAudio();
             // 使用效果
             GameManager.Instance.player.Shield += 8;
-            BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3001);
+            // 加buff
+            BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3005);
 
 
             base.OnPointerClick(eventData);

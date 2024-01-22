@@ -17,11 +17,16 @@ public class Fight_PlayerTurn : FightUnit
             Debug.Log("≥È≈∆");
         });
         //≥È≈∆
-        UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(6);
+        UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(6, true);
     }
 
     public override void OnUpdate()
     {
         
+    }
+
+    public override void End()
+    {
+
     }
 }

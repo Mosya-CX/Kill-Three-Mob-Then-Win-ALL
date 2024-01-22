@@ -9,6 +9,13 @@ public class Card1014 : CardItem
 
     public override void OnPointerClick(PointerEventData eventData)
     {
+        if (!isSlectable)
+        {
+            FightCardManager.instance.availableCardList.Add(data["Id"]);
+            GameObject.Find("UI/CardSelectUI").GetComponent<CardSelectUI>().progress++;
+            GameObject.Find("UI/CardSelectUI").GetComponent<CardSelectUI>().isReCreate = false;
+            return;
+        }
 
         if (TryUse())
         {
@@ -17,10 +24,7 @@ public class Card1014 : CardItem
             BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3002);
             // 下回合额外抽做不到
             //抽卡效果
-            if (FightCardManager.instance.hasCard() == true)
-            {
-                CardItem item = UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(2);
-            }
+            CardItem item = UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(2, true);
 
             base.OnPointerClick(eventData);
         }

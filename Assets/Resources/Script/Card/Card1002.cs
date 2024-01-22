@@ -8,6 +8,14 @@ public class Card1002 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
     {
+        if (!isSlectable)
+        {
+            FightCardManager.instance.availableCardList.Add(data["Id"]);
+            GameObject.Find("UI/CardSelectUI").GetComponent<CardSelectUI>().progress++;
+            GameObject.Find("UI/CardSelectUI").GetComponent<CardSelectUI>().isReCreate = false;
+            return;
+        }
+
         if (TryUse())
         {
             //ÒôÐ§
@@ -28,11 +36,7 @@ public class Card1002 : CardItem
             }
 
             //³é¿¨Ð§¹û
-            if (FightCardManager.instance.hasCard() == true)
-            {
-                UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(1);
-
-            }
+            UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(1, true);
 
             base.OnPointerClick(eventData);
         }

@@ -7,6 +7,8 @@ public class FightInit : FightUnit
 {
     public override void Init()
     {
+        
+
         //ÇÐ»»BGM
         AudioManager.Instance.FightingAudio();
 
@@ -48,6 +50,9 @@ public class FightInit : FightUnit
         GameObject.FindWithTag("FightUI").GetComponent<FightUI>().UpdateCardNum();
         GameObject.FindWithTag("FightUI").GetComponent<FightUI>().updateUsedCardNum();
 
+
+        GameManager.Instance.isFighting = true;
+        GameManager.Instance.turn = 0;
     }
 
     public override void OnUpdate()

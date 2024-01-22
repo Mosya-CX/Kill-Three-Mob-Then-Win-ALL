@@ -7,7 +7,7 @@ public class Fight_Lose : FightUnit
 {
     public override void Init()
     {
-        // 
+        GameManager.Instance.isFighting = false;
 
     }
 
