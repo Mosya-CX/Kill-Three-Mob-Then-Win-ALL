@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//²ÝÖ®ºôÎü			Ôì³É10µãÄ¾ÊôÐÔÉËº¦£¬ÏÂ»ØºÏ¶îÍâ»ñµÃ2µã·ÑÓÃ²¢³é2ÕÅÅÆ
+//ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½			ï¿½ï¿½ï¿½10ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½Â»ØºÏ¶ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½
 public class Card1015 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -18,8 +18,8 @@ public class Card1015 : CardItem
 
         if (TryUse())
         {
-            // Ôì³ÉÉËº¦
-            if(GameManager.Instance.enemy.Shield >= 10)
+            
+            if (GameManager.Instance.enemy.Shield >= 10)
             {
                 GameManager.Instance.enemy.Shield -= 10;
             }
@@ -32,12 +32,12 @@ public class Card1015 : CardItem
             {
                 GameManager.Instance.enemy.curHP -= 10;
             }
-            // ¼Óbuff
+            // ï¿½ï¿½buff
             BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3002);
-            // ÏÂ»ØºÏ¶îÍâ»ñµÃ2µã·ÑÓÃ
+            // ï¿½Â»ØºÏ¶ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½
             //BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3002);
 
-            // ÏÂ»ØºÏ¶îÍâ³é2ÕÅÅÆ
+            // ï¿½Â»ØºÏ¶ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½
 
             base.OnPointerClick(eventData);
         }

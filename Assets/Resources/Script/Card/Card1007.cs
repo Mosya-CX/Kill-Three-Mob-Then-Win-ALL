@@ -18,6 +18,7 @@ public class Card1007 : CardItem
 
         if (TryUse())
         {
+            Debug.Log("1007");
             // 使用效果
             GameManager.Instance.player.totalFee += 1;// 提高费用上线
             // 造成伤害

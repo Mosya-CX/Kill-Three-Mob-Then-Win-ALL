@@ -5,7 +5,7 @@ using UnityEngine;
 //ÕÊº“ªÿ∫œ
 public class Fight_PlayerTurn : FightUnit
 {
-
+    
     public override void Init()
     {
 
@@ -17,7 +17,7 @@ public class Fight_PlayerTurn : FightUnit
             Debug.Log("≥È≈∆");
         });
         //≥È≈∆
-        UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(6, true);
+        UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(GameManager.Instance.player.cardCount, true);
     }
 
     public override void OnUpdate()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//ÂäÒ¶¹é¸ù			»Ø¸´20Ñª£¬ÔÚ±¾¾ÖÊ£ÓàÊ±¼äÄÚ£¬Ã¿»ØºÏ¶à³é2ÕÅÅÆ
+//ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½			ï¿½Ø¸ï¿½20Ñªï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½Ê£ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ú£ï¿½Ã¿ï¿½ØºÏ¶ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½
 
 public class Card1016 : CardItem
 {
@@ -19,8 +19,9 @@ public class Card1016 : CardItem
 
         if (TryUse())
         {
-            GameManager.Instance.player.curHP += 20;
-            // Ê£ÓàÊ±¼äÄÚÃ¿»ØºÏ¶à³é2ÕÅÅÆ ÐèÒª¸ÄPlayerTurnµÄ³éÅÆÊý
+            
+            GameManager.Instance.player.curHP += 15;
+            // Ê£ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ØºÏ¶ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Òªï¿½ï¿½PlayerTurnï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½
 
         }
 

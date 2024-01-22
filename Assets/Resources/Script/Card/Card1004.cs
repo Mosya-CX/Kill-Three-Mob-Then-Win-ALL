@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//ÎÒÈ«¶¼Òª     ´ÓÃþÅÆÇø½«ÄãµÄÊÖÅÆÖØÐÂ²¹³äÖÁ6ÕÅ
+//ï¿½ï¿½È«ï¿½ï¿½Òª     ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â²ï¿½ï¿½ï¿½ï¿½ï¿½6ï¿½ï¿½
 public class Card1004 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -16,12 +16,12 @@ public class Card1004 : CardItem
             return;
         }
 
-        // Ê¹ÓÃÐ§¹û
+        // Ê¹ï¿½ï¿½Ð§ï¿½ï¿½
         if (TryUse() == true)
         {
             if (PlayerInfoManager.Instance.handCards.Count <= 6)
             {
-                // ³éÅÆ
+                // ï¿½ï¿½ï¿½ï¿½
                 UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(6 - PlayerInfoManager.Instance.handCards.Count + 1, true);
             }
 

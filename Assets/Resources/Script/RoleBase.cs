@@ -42,11 +42,11 @@ public class RoleBase : MonoBehaviour
             // 此处是血条渐变
             if (curHP > HPSlider.value)
             {
-                HPSlider.value += Time.deltaTime * 50;
+                HPSlider.value += Time.deltaTime ;
             }
             else if (curHP < HPSlider.value)
             {
-                HPSlider.value -= Time.deltaTime * 50;
+                HPSlider.value -= Time.deltaTime ;
             }
         }
         shieldText.text = Shield.ToString();

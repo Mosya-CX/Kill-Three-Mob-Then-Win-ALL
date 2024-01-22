@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//Ë®Ö®ÆÁÕÏ			»ñµÃ13µã¸ñµ²£¬²¢ÔÚ»ØºÏ½áÊøÔì³É3µãË®ÔªËØÉËº¦
+//Ë®Ö®ï¿½ï¿½ï¿½ï¿½			ï¿½ï¿½ï¿½13ï¿½ï¿½ñµ²£ï¿½ï¿½ï¿½ï¿½Ú»ØºÏ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3ï¿½ï¿½Ë®Ôªï¿½ï¿½ï¿½Ëºï¿½
 public class Card1012 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -18,11 +18,11 @@ public class Card1012 : CardItem
 
         if (TryUse())
         {
-            AudioManager.Instance.ArmorAudio();
-            // Ê¹ÓÃÐ§¹û
+           
+            // Ê¹ï¿½ï¿½Ð§ï¿½ï¿½
             GameManager.Instance.player.Shield += 13;
 
-            // ¼Óbuff
+            // ï¿½ï¿½buff
 
 
             //if (GameManager.Instance.enemy.Shield >= 3)

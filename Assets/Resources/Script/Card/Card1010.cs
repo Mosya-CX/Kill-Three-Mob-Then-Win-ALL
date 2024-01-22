@@ -18,6 +18,8 @@ public class Card1010 : CardItem
 
         if (TryUse() == true)
         {
+
+            Debug.Log("1010");
             // 使用效果
             // 加buff
             // BuffManager.Instance.AddBuff(GameManager.Instance.player.gameObject, 3004);
