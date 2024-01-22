@@ -10,7 +10,8 @@ public enum FightType
     Player,//玩家回合
     Enemy,//敌人回合
     Win,
-    Lose
+    Lose,
+    Select,
 }
 
 /// <summary>
@@ -67,6 +68,9 @@ public class FightManager : MonoBehaviour
                 break;
             case FightType.Lose:
                 fightUnit = new Fight_Lose();
+                break;
+            case FightType.Select:
+                fightUnit = new SelectTurn();
                 break;
         }
         fightUnit.Init();//初始化

@@ -74,6 +74,7 @@ public class CardItem : MonoBehaviour,  IPointerClickHandler, IPointerEnterHandl
         // É¾³ý¿¨ÅÆ
         PlayerInfoManager.Instance.handCards.Remove(data["Id"]);
         FightCardManager.instance.usedCardList.Add(data["Id"]);
+        GameObject.Find("UI/FightUI").GetComponent<FightUI>().cardItemList.Remove(this);
         Destroy(gameObject);
     }
 

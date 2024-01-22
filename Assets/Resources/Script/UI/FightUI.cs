@@ -20,13 +20,9 @@ public class FightUI : BasePanel
 
     private void Update()
     {
-        if (FightManager.Instance.fightUnit is Fight_PlayerTurn || FightManager.Instance.fightUnit is Fight_EnemyTurn)
-        {
+        UpdateCardNum();
+        updateUsedCardNum();
 
-            UpdateCardNum();
-            updateUsedCardNum();
-        }
-        
     }
 
     //更新卡堆数量
@@ -71,7 +67,6 @@ public class FightUI : BasePanel
             string cardId = FightCardManager.instance.DrawCard();
             Dictionary<string, string> cardData = GameConfigManager.Instance.getCardById(cardId);
 
-            Debug.Log(cardId);
             // 生成卡牌物体
             GameObject obj = Instantiate(Resources.Load(cardData["PrefabPath"]), transform) as GameObject;
             obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(80, 70);

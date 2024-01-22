@@ -9,7 +9,13 @@ public class Card1000 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log(1);
+        if (!isSlectable)
+        {
+            FightCardManager.instance.availableCardList.Add(data["Id"]);
+            GameObject.Find("UI/CardSelectUI").GetComponent<CardSelectUI>().progress++;
+            GameObject.Find("UI/CardSelectUI").GetComponent<CardSelectUI>().isReCreate = false;
+            return;
+        }
 
         if (TryUse())
         {
