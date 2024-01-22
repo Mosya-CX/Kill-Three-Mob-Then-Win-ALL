@@ -11,7 +11,7 @@ public class Fight_EnemyTurn : FightUnit
         // 绑定当前战斗的敌人
         GameObject enemy = GameManager.Instance.enemy.gameObject;
         //删除玩家所有卡牌
-        //UIManager.Instance.GetUI<FightUI>("FightUI").RemoveAllCards();
+        UIManager.Instance.GetUI<FightUI>("FightUI").RemoveAllCards();
         //敌人回合提示
         UIManager.Instance.ShowTip("敌人回合", Color.red, delegate ()
         {
