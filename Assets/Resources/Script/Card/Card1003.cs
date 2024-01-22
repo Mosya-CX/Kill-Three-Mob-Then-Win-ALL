@@ -11,6 +11,8 @@ public class Card1003 : CardItem
     {
         if (TryUse())
         {
+            //音效
+            AudioManager.Instance.ArmorAudio();
             // 使用效果
             GameManager.Instance.player.Shield += 12;
 

@@ -10,6 +10,7 @@ public class Card1013 : CardItem
     {
         if (TryUse())
         {
+            AudioManager.Instance.ArmorAudio();
             // 使用效果
             GameManager.Instance.player.Shield += 8;
             BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3001);

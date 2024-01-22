@@ -11,6 +11,7 @@ public class Card1005 : CardItem
 
         if (TryUse())
         {
+            AudioManager.Instance.AttackAudio();
             // 使用效果
             GameManager.Instance.player.Shield += 12;
             if (GameManager.Instance.enemy.Shield >= 12)
@@ -27,7 +28,7 @@ public class Card1005 : CardItem
                 GameManager.Instance.enemy.curHP -= 12;
             }
 
-
+            AudioManager.Instance.ArmorAudio();
             base.OnPointerClick(eventData);
         }
         

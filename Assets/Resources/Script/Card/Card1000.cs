@@ -16,7 +16,7 @@ public class Card1000 : CardItem
             //播放特效
 
             //播放敌人受伤音效
-            AudioManager.Instance.HurtEffectAudio();
+            AudioManager.Instance.AttackAudio();
 
             // 使用效果
             if (GameManager.Instance.enemy.Shield >= 5)
