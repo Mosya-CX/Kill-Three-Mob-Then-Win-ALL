@@ -7,7 +7,6 @@ public class FightInit : FightUnit
 {
     public override void Init()
     {
-        
 
         //切换BGM
         AudioManager.Instance.FightingAudio();
@@ -42,6 +41,7 @@ public class FightInit : FightUnit
 
         // 重置玩家费用上限
         GameManager.Instance.player.totalFee = 4;
+
 
         //切换到玩家回合
         FightManager.Instance.ChangeType(FightType.Player);

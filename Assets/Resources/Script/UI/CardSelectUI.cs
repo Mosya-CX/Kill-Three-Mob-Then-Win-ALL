@@ -61,6 +61,9 @@ public class CardSelectUI : BasePanel
     {
         //随机抽取
         Dictionary<string, string> cardData = GameConfigManager.Instance.getCardById(Random.Range(minId, maxId+1).ToString());
+
+        Debug.Log(cardData["Id"]);
+        
         //生成对象
         GameObject obj = GameObject.Instantiate(Resources.Load(cardData["PrefabPath"])) as GameObject;
         obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(80, 70);
