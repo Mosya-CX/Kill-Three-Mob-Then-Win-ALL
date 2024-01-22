@@ -22,7 +22,7 @@ public class Boss1AI : MonoBehaviour
         attackOrder = 1;
         player = GameManager.Instance.player.GetComponent<Player>();
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
-        enemy.GetComponent<Enemy>();
+        enemy = gameObject.GetComponent<Enemy>();
     }
 
     // �����ж�
