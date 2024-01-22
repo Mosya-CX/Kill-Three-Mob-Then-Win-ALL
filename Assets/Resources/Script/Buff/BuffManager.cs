@@ -10,7 +10,7 @@ using UnityEngine;
 //3002	草元素		附着草元素
 //3004	浴火重生	阵亡后可复活，但是永久-10最大生命上限，回复100%最大生命值
 //3005	浊流		该场战斗内敌人永远存在水附着Buff
-
+//
 
 
 public class BuffManager : MonoBehaviour 
@@ -36,11 +36,7 @@ public class BuffManager : MonoBehaviour
 
     private void Update()
     {
-        GameObject obj = GameObject.Find("UI/FightUI/Middle/EnemyStack");
-        if (obj != null)
-        {
-            Debug.Log("找到的EnemyStack");
-        }
+      
         // 检测是否玩家和敌人数据是否绑定
         if (GameManager.Instance.isFighting)
         {

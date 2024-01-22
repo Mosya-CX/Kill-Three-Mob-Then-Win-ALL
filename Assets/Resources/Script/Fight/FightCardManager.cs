@@ -19,7 +19,7 @@ public class FightCardManager
     // 战斗开始初始化手牌
     public void Init()
     {
-        availableCardList = new List<string>() { "1003","1003","1003","1003", "1003", "1003", "1003", "1003", "1003","1006", "1006", "1006" };
+        availableCardList = new List<string>() { "1000", "1000", "1000", "1002", "1002", "1002", "1002", "1002", "1003", "1005", "1008", "1011", "1014" };
         usedCardList = new List<string>();
 
         // 清空手牌
@@ -51,7 +51,6 @@ public class FightCardManager
     {
         while (usedCardList.Count > 0)
         {
-            Debug.Log(2);
 
             int cardIndex = Random.Range(0, usedCardList.Count);
 
@@ -59,7 +58,7 @@ public class FightCardManager
 
             usedCardList.RemoveAt(cardIndex);
 
-            Debug.Log(3);
+
         }
     }
 
