@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6016972167232463558}
   - component: {fileID: 7636219144596780401}
   - component: {fileID: 6003196378173562993}
-  - component: {fileID: 1643380146407250908}
+  - component: {fileID: 3502015094529405261}
   m_Layer: 0
   m_Name: Boss2
   m_TagString: Untagged
@@ -110,7 +110,7 @@ MonoBehaviour:
   nextType: 0
   nextAction: {fileID: 0}
   baseDamage: 0
---- !u!114 &1643380146407250908
+--- !u!114 &3502015094529405261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,10 +119,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2312679618349296142}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e451388d031860e4bb9f2415e2c16ccd, type: 3}
+  m_Script: {fileID: 11500000, guid: f32a522ae9fada240b921f6e3067b4bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackMode: 0
   attackOrder: 0
   player: {fileID: 0}
   baseDamage: 0
+  isCharging: 0
+  ChargingDamage: 0
+  enemy: {fileID: 0}

@@ -22,7 +22,7 @@ public class Card1013 : CardItem
             // ʹ��Ч��
             GameManager.Instance.player.Shield += 8;
             // ��buff
-            BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3005);
+            //BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3005);
 
 
             base.OnPointerClick(eventData);
