@@ -28,6 +28,10 @@ public class FightInit : FightUnit
         {
             EnemyManager.Instance.LoadMob("2003");
         }
+        else if (progress == 4)
+        {
+            EnemyManager.Instance.LoadMob("2004");
+        }
 
         // 重置牌堆
 
@@ -42,6 +46,11 @@ public class FightInit : FightUnit
         // 重置玩家费用上限
         GameManager.Instance.player.totalFee = 4;
 
+        // 重置玩家血量
+        GameManager.Instance.player.curHP = GameManager.Instance.player.maxHP;
+
+        // 重置玩家护盾值
+        GameManager.Instance.player.Shield = 0;
 
         //切换到玩家回合
         FightManager.Instance.ChangeType(FightType.Player);
