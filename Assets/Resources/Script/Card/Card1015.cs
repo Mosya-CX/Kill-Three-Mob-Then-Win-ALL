@@ -18,6 +18,7 @@ public class Card1015 : CardItem
 
         if (TryUse())
         {
+            // 造成伤害
             if(GameManager.Instance.enemy.Shield >= 10)
             {
                 GameManager.Instance.enemy.Shield -= 10;
@@ -31,15 +32,12 @@ public class Card1015 : CardItem
             {
                 GameManager.Instance.enemy.curHP -= 10;
             }
-
+            // 加buff
             BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3002);
-            // 下回合做不到
-            GameManager.Instance.player.currentFee += 2;
-            //抽卡效果
-            if (FightCardManager.instance.hasCard() == true)
-            {
-                CardItem item = UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(2, true);
-            }
+            // 下回合额外获得2点费用
+            //BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3002);
+
+            // 下回合额外抽2张牌
 
             base.OnPointerClick(eventData);
         }

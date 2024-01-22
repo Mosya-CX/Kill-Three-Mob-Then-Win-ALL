@@ -19,8 +19,8 @@ public class Card1007 : CardItem
         if (TryUse())
         {
             // 使用效果
-            GameManager.Instance.player.totalFee += 1;
-
+            GameManager.Instance.player.totalFee += 1;// 提高费用上线
+            // 造成伤害
             if (GameManager.Instance.enemy.Shield >= 1)
             {
                 GameManager.Instance.enemy.Shield -= 1;
@@ -35,7 +35,8 @@ public class Card1007 : CardItem
                 GameManager.Instance.enemy.curHP -= 1;
             }
 
-            BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, Random.Range(3000, 3002));
+            // 加buff
+            BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, Random.Range(3000, 3003));
 
             base.OnPointerClick(eventData);
         }

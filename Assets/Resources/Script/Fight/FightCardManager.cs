@@ -19,7 +19,7 @@ public class FightCardManager
     // 战斗开始初始化手牌
     public void Init()
     {
-        availableCardList = new List<string>() { "1008", "1009", "1010", "1011", "1012", "1013", "1014", "1015","1016" };
+        availableCardList = new List<string>() { "1003","1003","1003","1003", "1003", "1003", "1003", "1003", "1003","1006", "1006", "1006" };
         usedCardList = new List<string>();
 
         // 清空手牌

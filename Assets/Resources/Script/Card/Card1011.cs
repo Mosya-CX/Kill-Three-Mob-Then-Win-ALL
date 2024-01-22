@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//点水			造成3点水元素伤害，并使其攻击力减少3点
+//点水			造成3点水元素伤害，获得5点格挡
 public class Card1011 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -19,6 +19,7 @@ public class Card1011 : CardItem
         if (TryUse())
         {
             // 使用效果
+            // 造成伤害
             if (GameManager.Instance.enemy.Shield >= 3)
             {
                 GameManager.Instance.enemy.Shield -= 3;
@@ -32,8 +33,9 @@ public class Card1011 : CardItem
             {
                 GameManager.Instance.enemy.curHP -= 3;
             }
-
-            GameManager.Instance.enemy.baseDamage -= 3;
+            // 加盾
+            GameManager.Instance.player.Shield += 5;
+            // 加buff
             BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3001);
 
             base.OnPointerClick(eventData);
