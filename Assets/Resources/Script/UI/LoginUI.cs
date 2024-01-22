@@ -23,7 +23,7 @@ public class LoginUI : BasePanel
         // 给游戏进程+1
         GameManager.Instance.currentProgress++;
         //战斗初始化
-        FightManager.Instance.ChangeType(FightType.Init);
+        FightManager.Instance.ChangeType(FightType.Select);
         //关闭页面
         Destroy(gameObject);
     }

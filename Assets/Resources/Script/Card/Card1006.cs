@@ -8,10 +8,17 @@ public class Card1006 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
     {
+        if (!isSlectable)
+        {
+            FightCardManager.instance.availableCardList.Add(data["Id"]);
+            GameObject.Find("UI/CardSelectUI").GetComponent<CardSelectUI>().progress++;
+            GameObject.Find("UI/CardSelectUI").GetComponent<CardSelectUI>().isReCreate = false;
+            return;
+        }
+
         // 使用效果
         if (TryUse() == true)
         {
-
 
             //抽卡效果
             if (FightCardManager.instance.hasCard() == true)

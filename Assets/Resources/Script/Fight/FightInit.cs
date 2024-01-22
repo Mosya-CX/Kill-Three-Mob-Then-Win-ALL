@@ -7,6 +7,7 @@ public class FightInit : FightUnit
 {
     public override void Init()
     {
+        
 
         //ÇÐ»»BGM
         AudioManager.Instance.FightingAudio();
