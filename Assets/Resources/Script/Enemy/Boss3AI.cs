@@ -27,7 +27,11 @@ public class Boss3AI : MonoBehaviour
     // �����ж�
     public void Move()
     {
-        if (attackOrder == 1)
+        if(gameObject.GetComponent<Enemy>().curHP <= 50)
+        {
+            attackMode = 3;
+        }
+        if(attackMode == 1) 
         {
             if (nextMove == 1)
             {
@@ -39,7 +43,8 @@ public class Boss3AI : MonoBehaviour
             }
             attackOrder++;
         }
-        if (attackOrder == 2)
+
+        else if (attackMode == 2)
         {
             if (nextMove == 1)
             {
@@ -51,7 +56,8 @@ public class Boss3AI : MonoBehaviour
             }
             attackOrder++;
         }
-        if (attackOrder == 3)
+
+        else if (attackOrder == 3)
         {
             if (nextMove == 1)
             {
@@ -87,8 +93,9 @@ public class Boss3AI : MonoBehaviour
 
    public void Attack()
     {
-        int attackCount = 6;
-        enemy.nextType = ActionType.Attack;
+        AudioManager.Instance.AttackAudio();
+        AudioManager.Instance.HurtVoiceAudio();
+        int attackCount = 3;
         while (attackCount > 0)
         {
             // ����Ч��
@@ -112,7 +119,10 @@ public class Boss3AI : MonoBehaviour
 
     public void Defend()
     {
-        enemy.Shield += 3;
+        AudioManager.Instance.ArmorAudio();
+        //����
+        gameObject.GetComponent<Enemy>().Shield += 12;
+        baseDamage += 2;
     }
 
     public void Skill()
