@@ -195,13 +195,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startBGMClip: {fileID: 8300000, guid: 26c27d90039492446b64ad13f17b2f8e, type: 3}
   fightBGMClip: {fileID: 8300000, guid: 1ef8ce50da09d4a49b7e18465f85688b, type: 3}
-  deathClip: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: a6162ae985e08a348bddfea15a5df5be, type: 3}
   winClip: {fileID: 0}
   loseClip: {fileID: 0}
-  hurtEffectClip: {fileID: 0}
-  hurtVoiceClip: {fileID: 0}
-  clickCardClip: {fileID: 0}
-  armorClip: {fileID: 0}
+  hurtEffectClip: {fileID: 8300000, guid: c24676b1c0276a54280b10d198b4eb3f, type: 3}
+  hurtVoiceClip: {fileID: 8300000, guid: 7792ba3237749894b9d49488cf2284ff, type: 3}
+  clickCardClip: {fileID: 8300000, guid: dd2caf77aea9dec45a13078c5df56431, type: 3}
+  armorClip: {fileID: 8300000, guid: 9dc843a2ebc616845953a082c079c11d, type: 3}
 --- !u!114 &125535359
 MonoBehaviour:
   m_ObjectHideFlags: 0
