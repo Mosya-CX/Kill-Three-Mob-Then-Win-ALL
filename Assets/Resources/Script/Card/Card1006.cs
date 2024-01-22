@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -21,8 +22,18 @@ public class Card1006 : CardItem
         {
 
             //抽卡效果
-            CardItem item = UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(2, true);
+            CardItem item = UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(3, true);
             item.cost = 0;
+            // 更新花费ui
+            TMP_Text[] Texts = item.gameObject.GetComponentsInChildren<TMP_Text>();
+            foreach (var text in Texts)
+            {
+                if (text.name == "Expand")
+                {
+                    text.text = item.cost.ToString();
+                }
+            }
+
             base.OnPointerClick(eventData);
         }
 
