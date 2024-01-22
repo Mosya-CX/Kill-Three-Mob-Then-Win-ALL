@@ -57,10 +57,9 @@ public class FightManager : MonoBehaviour
                 if (fightUnit is Fight_PlayerTurn)
                 {
                     // 在此进行回合结算
-                    Debug.Log("回合结算");
+
                     fightUnit.End();
                 }
-                Debug.Log("切换回合");
                 fightUnit = new Fight_EnemyTurn();
                 break;
             case FightType.Win:
