@@ -27,6 +27,6 @@ public class Fight_PlayerTurn : FightUnit
 
     public override void End()
     {
-        GameManager.Instance.turn++;
+
     }
 }

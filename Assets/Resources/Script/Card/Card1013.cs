@@ -21,7 +21,8 @@ public class Card1013 : CardItem
             AudioManager.Instance.ArmorAudio();
             // 使用效果
             GameManager.Instance.player.Shield += 8;
-            BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3001);
+            // 加buff
+            BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3005);
 
 
             base.OnPointerClick(eventData);
