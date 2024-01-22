@@ -138,7 +138,6 @@ public class FightUI : BasePanel
 
         //¿¨ÅÆÒÆµ½ÆúÅÆ¶ÑÐ§¹û
         item.GetComponent<RectTransform>().DOAnchorPos(new Vector2(1000, -700), 0.25f);
-
         item.transform.DOScale(0, 0.25f);
 
         Destroy(item.gameObject, 1);

@@ -24,8 +24,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip armorClip;     //获得护甲值的音效
 
     AudioSource bgmSource;
-    AudioSource effect1Source;      
-    AudioSource effect2Source;
+    AudioSource attackSource;      
+    AudioSource hurtSource;
+    AudioSource fightingSource;
 
 
     private void Awake()
@@ -41,8 +42,10 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         bgmSource = gameObject.AddComponent<AudioSource>();
-        effect1Source = gameObject.AddComponent<AudioSource>();
-        effect2Source = gameObject.AddComponent<AudioSource>();
+        attackSource = gameObject.AddComponent<AudioSource>();
+        hurtSource = gameObject.AddComponent<AudioSource>();
+        fightingSource = gameObject.AddComponent<AudioSource>();
+
     }
 
     //开始游戏时播放bgm
@@ -65,41 +68,41 @@ public class AudioManager : MonoBehaviour
     //玩家胜利播放音效
     public void PlayerWonAudio()
     {
-        Instance.effect1Source.clip = Instance.winClip;
-        Instance.effect1Source.Play();
+        Instance.fightingSource.clip = Instance.winClip;
+        Instance.fightingSource.Play();
     }
 
     //玩家死亡播放音效
     public void PlayerDeathAudio()
     {
-        Instance.effect1Source.clip = Instance.deathClip;
-        Instance.effect1Source.Play();
+        Instance.fightingSource.clip = Instance.deathClip;
+        Instance.fightingSource.Play();
     }
     //点击卡牌音效
     public void ClickCardAudio()
     {
-        Instance.effect1Source.clip = Instance.clickCardClip;
-        Instance.effect1Source.Play();
+        Instance.fightingSource.clip = Instance.clickCardClip;
+        Instance.fightingSource.Play();
     }
 
-    //受伤音效
-    public void HurtEffectAudio()
+    //攻击音效
+    public void AttackAudio()
     {
-        Instance.effect2Source.clip = Instance.hurtEffectClip;
-        Instance.effect2Source.Play();
+        Instance.attackSource.clip = Instance.hurtEffectClip;
+        Instance.attackSource.Play();
     }
 
     //受伤声音/呻吟
     public void HurtVoiceAudio()
     {
-        Instance.effect1Source.clip = Instance.hurtVoiceClip;
-        Instance.effect1Source.Play();
+        Instance.hurtSource.clip = Instance.hurtVoiceClip;
+        Instance.hurtSource.Play();
     }
 
     //获得护甲值的音效
     public void ArmorAudio()
     {
-        Instance.effect2Source.clip = Instance.armorClip;
-        Instance.effect2Source.Play();
+        Instance.fightingSource.clip = Instance.armorClip;
+        Instance.fightingSource.Play();
     }
 }

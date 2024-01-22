@@ -10,6 +10,8 @@ public class Card1002 : CardItem
     {
         if (TryUse())
         {
+            //音效
+            AudioManager.Instance.AttackAudio();
             // 使用效果
             if (GameManager.Instance.enemy.Shield >= 7)
             {
