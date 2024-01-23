@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//��֮����			���10��ľ�����˺����»غ϶�����2����ò���2����
+//草之呼吸	造成10点木属性伤害，下回合额外获得2点费用并抽2张牌
+
 public class Card1015 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -32,12 +33,10 @@ public class Card1015 : CardItem
             {
                 GameManager.Instance.enemy.curHP -= 10;
             }
-            // ��buff
+            // buff
             BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3002);
-            // �»غ϶�����2�����
-            //BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3002);
 
-            // �»غ϶����2����
+            
 
             base.OnPointerClick(eventData);
         }

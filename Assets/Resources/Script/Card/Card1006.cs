@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//��û���			��3����,����һ�����
+//我没意见	Card1006	抽三张牌并随机使你的一张手牌变成0费
 public class Card1006 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -17,14 +17,14 @@ public class Card1006 : CardItem
             return;
         }
 
-        // ʹ��Ч��
+        //使用
         if (TryUse() == true)
         {
 
-            //�鿨Ч��
+            //抽卡
             CardItem item = UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(3, true);
             item.cost = 0;
-            // ���»���ui
+            //改费用和费用ui
             TMP_Text[] Texts = item.gameObject.GetComponentsInChildren<TMP_Text>();
             foreach (var text in Texts)
             {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//���ؼ汸			���12���˺������12���
+//攻守兼备	Card1005	造成12点伤害，获得12点格挡
 public class Card1005 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -19,7 +19,7 @@ public class Card1005 : CardItem
         if (TryUse())
         {
             AudioManager.Instance.AttackAudio();
-            // ʹ��Ч��
+            // 效果
             GameManager.Instance.player.Shield += 12;
             if (GameManager.Instance.enemy.Shield >= 12)
             {

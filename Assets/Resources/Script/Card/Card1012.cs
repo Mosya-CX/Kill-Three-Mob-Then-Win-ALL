@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//ˮ֮����			���13��񵲣����ڻغϽ������3��ˮԪ���˺�
+//水之屏障	获得13点格挡，并在回合结束造成3点水元素伤害
+
 public class Card1012 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -19,7 +20,7 @@ public class Card1012 : CardItem
         if (TryUse())
         {
            
-            // ʹ��Ч��
+            // 效果
             GameManager.Instance.player.Shield += 13;
 
             // ��buff
