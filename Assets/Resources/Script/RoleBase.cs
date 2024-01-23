@@ -57,6 +57,7 @@ public class RoleBase : MonoBehaviour
                 {
                     // 生成伤害数字物体 
                     GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/DamageNum")) as GameObject;
+                    obj.transform.SetParent(GameObject.Find("UI").transform, false);
                     if (gameObject.tag == "Player")
                     {
                         obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-450, -150), Random.Range(300, 401));// 在某个区域内随机生成位置
