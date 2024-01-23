@@ -8,6 +8,7 @@ TagManager:
   - FightUI
   - HandCard
   - SelectMenu
+  - Background
   layers:
   - Default
   - TransparentFX

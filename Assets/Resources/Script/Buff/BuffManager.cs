@@ -118,7 +118,14 @@ public class BuffManager : MonoBehaviour
                     enemyData.gameObject.GetComponent<Boss3AI>().baseDamage = (int)(enemyData.gameObject.GetComponent<Boss3AI>().baseDamage * 1.1);
                 }
                 // »ð¼Ó²Ý
-                playerData.curHP += 10;
+                if (playerData.curHP <= playerData.maxHP - 10)
+                {
+                    playerData.curHP += 10;
+                }
+                else
+                {
+                    playerData.curHP = playerData.maxHP;
+                }
                 DelBuff(enemyData.gameObject, 3000);
                 DelBuff(enemyData.gameObject, 3002);
                 

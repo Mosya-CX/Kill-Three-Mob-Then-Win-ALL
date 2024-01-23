@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 1444545771}
   m_Layer: 0
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -427,7 +427,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: 9afbf95b70ccae041a2411c827f476ab, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -435,7 +435,7 @@ SpriteRenderer:
   m_Size: {x: 12, y: 6.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1444545772
@@ -653,6 +653,14 @@ PrefabInstance:
     - target: {fileID: 1786664781679289499, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
       propertyPath: m_Name
       value: FightUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276143571579352473, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276143571579352473, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 2711138722535625307, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
       propertyPath: m_AnchorMax.x

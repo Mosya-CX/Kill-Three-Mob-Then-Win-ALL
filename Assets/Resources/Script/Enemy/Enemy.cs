@@ -51,8 +51,8 @@ public class Enemy : RoleBase
         // 敌人下回合显示ui
         if (nextType == ActionType.None)
         {
-            UnityEngine.UIElements.Image img = nextAction.GetComponent<UnityEngine.UIElements.Image>();
-            img.sprite = null;
+            //UnityEngine.UIElements.Image img = nextAction.GetComponent<UnityEngine.UIElements.Image>();
+            //img.sprite = null;
         }
         else if (nextType == ActionType.Attack)
         {
