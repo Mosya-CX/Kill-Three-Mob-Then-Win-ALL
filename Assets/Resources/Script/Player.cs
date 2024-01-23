@@ -14,10 +14,11 @@ public class Player : RoleBase
     public GameObject Enemy;
     public int cardCount=6;   //玩家每回合的摸牌数
     public int finalDemage;// 玩家造成的最终伤害值存储在这
+
     private void Start()
     {
         Init();
-        
+
     }
 
     private void Update()
@@ -34,5 +35,22 @@ public class Player : RoleBase
         GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/AttackEffeck")) as GameObject;
         obj.transform.SetParent(GameObject.Find("UI").transform, false);
         obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(500, 100);
+    }
+
+    // 锁定玩家鼠标
+    public void LockInput()
+    {
+        // 锁定鼠标光标  
+        Cursor.lockState = CursorLockMode.Locked;
+        // 隐藏鼠标光标  
+        Cursor.visible = false;
+    }
+    // 解锁玩家鼠标
+    public void UnlockInput()
+    {
+        // 解锁鼠标光标  
+        Cursor.lockState = CursorLockMode.None;
+        // 显示鼠标光标  
+        Cursor.visible = true;
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//Ѹ�ݹ���			��� 7���˺�����1����
+//                 造成7伤害，摸一张
 public class Card1002 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -18,9 +18,11 @@ public class Card1002 : CardItem
 
         if (TryUse())
         {
-            //��Ч
+            // 播放动画
+            GameManager.Instance.player.animator.SetTrigger("Attack");
+            // 
             AudioManager.Instance.AttackAudio();
-            // ʹ��Ч��
+            // 
             if (GameManager.Instance.enemy.Shield >= 7)
             {
                 GameManager.Instance.enemy.Shield -= 7;
@@ -35,7 +37,7 @@ public class Card1002 : CardItem
                 GameManager.Instance.enemy.curHP -= 7;
             }
 
-            //�鿨Ч��
+            //
             UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(1, true);
 
             base.OnPointerClick(eventData);

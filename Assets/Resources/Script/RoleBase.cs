@@ -14,7 +14,7 @@ public class RoleBase : MonoBehaviour
     public TMP_Text HPText;  // 绑定HP的Text
     public int Shield;// 护盾值
     public TMP_Text shieldText;// 绑定护盾值的文本
-    Animator animator;
+    public Animator animator;// 获取动画机
     public int lastHP;// 血量变动前的上一次血量
 
     public List<int> buffList;
