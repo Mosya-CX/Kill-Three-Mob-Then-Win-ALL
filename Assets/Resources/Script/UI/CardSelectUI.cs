@@ -15,8 +15,14 @@ public class CardSelectUI : BasePanel
 
     private void Start()
     {
+        
         isReCreate = false;
         progress = 1;
+
+        if (GameManager.Instance.currentProgress == 4)
+        {
+            progress = 4;
+        }
     }
 
     void Update()

@@ -78,7 +78,8 @@ public class Enemy : RoleBase
     // 攻击瞬间特效
     public void AttackEffeck()
     {
-        GameObject.Instantiate(Resources.Load("Prefab/Item/AttackEffeck"));
+        GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/AttackEffeck")) as GameObject;
+        obj.transform.position = new Vector2 (-500, 100);
     }
     // 切换敌人状态
     public void SwitchToPlayerTrun()

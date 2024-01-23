@@ -34,23 +34,28 @@ public class FightInit : FightUnit
         }
 
         // 重置牌堆
-
-        FightCardManager.instance.ResetHandCard();
-        FightCardManager.instance.ResetUsedCard();
-
+        if (progress != 4)
+        {
+            FightCardManager.instance.ResetHandCard();
+            FightCardManager.instance.ResetUsedCard();
+        }
+        
         // 显示战斗界面()
         // UIManager.Instance.OpenUI<FightUI>("FightUI");
         GameObject.FindWithTag("FightUI").SetActive(true);
         GameObject.FindWithTag("Player").SetActive(true) ;
 
-        // 重置玩家费用上限
-        GameManager.Instance.player.totalFee = 4;
+        if (progress != 4)
+        {
+            // 重置玩家费用上限
+            GameManager.Instance.player.totalFee = 4;
 
-        // 重置玩家血量
-        GameManager.Instance.player.curHP = GameManager.Instance.player.maxHP;
+            // 重置玩家血量
+            GameManager.Instance.player.curHP = GameManager.Instance.player.maxHP;
 
-        // 重置玩家护盾值
-        GameManager.Instance.player.Shield = 0;
+            // 重置玩家护盾值
+            GameManager.Instance.player.Shield = 0;
+        }
 
         //切换到玩家回合
         FightManager.Instance.ChangeType(FightType.Player);
@@ -61,7 +66,11 @@ public class FightInit : FightUnit
 
 
         GameManager.Instance.isFighting = true;
-        GameManager.Instance.turn = 0;
+        if (progress != 4)
+        {
+            GameManager.Instance.turn = 0;
+        }
+       
     }
 
     public override void OnUpdate()
