@@ -19,8 +19,15 @@ public class Card1016 : CardItem
 
         if (TryUse())
         {
-            
-            GameManager.Instance.player.curHP += 15;
+            Player playerData = GameManager.Instance.player;
+            if (playerData.curHP <= playerData.maxHP - 20)
+            {
+                playerData.curHP += 20;
+            }
+            else
+            {
+                playerData.curHP = playerData.maxHP;
+            }
             GameManager.Instance.player.cardCount += 2;
 
             base.OnPointerClick(eventData);

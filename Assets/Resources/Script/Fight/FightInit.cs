@@ -14,18 +14,31 @@ public class FightInit : FightUnit
         //初始化战斗数值
         FightManager.Instance.Init();
 
-        // 敌人生成(检测GameManager的progress判断处于什么阶段，通过EnemyManager里的LoadMob传入id生成对应的敌人)
+        // 敌人生成
         int progress = GameManager.Instance.currentProgress;
+        GameObject Bg = GameObject.Find("Background");
         if (progress == 1)
         {
+            // 加载背景
+            Sprite newBg = Resources.Load<Sprite>("Img/UI 2/Bg1");
+            Bg.GetComponent<SpriteRenderer>().sprite = newBg;
+
             EnemyManager.Instance.LoadMob("2001");
         }
         else if (progress == 2)
         {
+            // 加载背景
+            Sprite newBg = Resources.Load<Sprite>("Img/UI 2/Bg2");
+            Bg.GetComponent<SpriteRenderer>().sprite = newBg;
+
             EnemyManager.Instance.LoadMob("2002");
         }
         else if (progress == 3)
         {
+            // 加载背景
+            Sprite newBg = Resources.Load<Sprite>("Img/UI 2/Bg3");
+            Bg.GetComponent<SpriteRenderer>().sprite = newBg;
+
             EnemyManager.Instance.LoadMob("2003");
         }
         else if (progress == 4)
