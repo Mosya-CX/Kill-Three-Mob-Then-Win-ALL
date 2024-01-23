@@ -37,6 +37,7 @@ public class Boss2AI : MonoBehaviour
             case 1:
                 if (isCharging)
                 {
+                    GameManager.Instance.player.totalFee++;
                     ChargingAttack();
                     isCharging = false;
                     attackOrder = 2;
@@ -44,12 +45,13 @@ public class Boss2AI : MonoBehaviour
                 else
                 {
                     isCharging = true;
-
+                    GameManager.Instance.player.totalFee--;
                 }
                 break;
             case 2:
                 if (isCharging)
                 {
+                    GameManager.Instance.player.totalFee++;
                     Recover();
                     isCharging = false;
                     attackOrder = 3;
@@ -57,6 +59,7 @@ public class Boss2AI : MonoBehaviour
                 else
                 {
                     isCharging = true;
+                    GameManager.Instance.player.totalFee--;
                 }
                 break;
             case 3:

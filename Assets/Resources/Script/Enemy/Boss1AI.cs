@@ -140,5 +140,6 @@ public class Boss1AI : MonoBehaviour
     void Skill()
     {
         baseDamage++;
+        
     }
 }
