@@ -21,9 +21,9 @@ public class Card1016 : CardItem
         {
             
             GameManager.Instance.player.curHP += 15;
-
+            base.OnPointerClick(eventData);
         }
 
-        base.OnPointerClick(eventData);
+        
     }
 }

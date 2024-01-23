@@ -28,68 +28,29 @@ public class Boss3AI : MonoBehaviour
     // 行动
     public void Move()
     {
+        
         if(gameObject.GetComponent<Enemy>().curHP <= 50)
         {
-            attackMode = 3;
-        }
-        if(attackMode == 1) 
-        {
-            if (nextMove == 1)
-            {
-                Attack();
-            }
-            else
-            {
-                Defend();
-            }
-            attackOrder++;
-        }
-
-        else if (attackMode == 2)
-        {
-            if (nextMove == 1)
-            {
-                Attack();
-            }
-            else
-            {
-                Defend();
-            }
-            attackOrder++;
-        }
-
-        else if (attackOrder == 3)
-        {
-            if (nextMove == 1)
-            {
-                Attack();
-            }
-            else
-            {
-                Defend();
-            }
-            enemy.nextType = ActionType.Skill;
-            attackOrder++;
-
-        }
-        else if (attackOrder == 4)
-        {
             Skill();
-            attackOrder = 1;
+        }
+        else if(nextMove==1){
+            Attack();
+        }
+        else if (nextMove == 2) 
+        {
+            Defend();
         }
         nextMove = Random.Range(1, 3);
-        if (attackOrder != 4)
+        if (nextMove == 1)
         {
-            switch (nextMove)
-            {
-                case 1:
-                    enemy.nextType = ActionType.Attack;
-                    break;
-                case 2:
-                    enemy.nextType = ActionType.Defend;
-                    break;
-            }
+            enemy.nextType = ActionType.Attack;
         }
+        else if (nextMove == 2)
+        {
+            enemy.nextType = ActionType.Defend;
+        }
+        
+
     }
 
    public void Attack()
