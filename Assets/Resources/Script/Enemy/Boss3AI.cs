@@ -18,6 +18,7 @@ public class Boss3AI : MonoBehaviour
     
     void Start()
     {
+        nextMove = Random.Range(1, 3);
         attackMode = 1;
         player = GameManager.Instance.player;
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
@@ -71,7 +72,7 @@ public class Boss3AI : MonoBehaviour
             attackOrder++;
 
         }
-        if (attackOrder == 4)
+        else if (attackOrder == 4)
         {
             Skill();
             attackOrder = 1;

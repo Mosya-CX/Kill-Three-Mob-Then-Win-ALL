@@ -47,6 +47,8 @@ public class Boss4AI : MonoBehaviour
         //加盾
         enemy.Shield += 10;
         //往洗牌区玩家加牌
+        FightCardManager.instance.availableCardList.Add("1018");
+        FightCardManager.instance.availableCardList.Add("1018");
     }
 
     public void Action2()
