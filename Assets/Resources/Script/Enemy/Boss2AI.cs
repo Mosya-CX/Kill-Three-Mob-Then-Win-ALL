@@ -97,6 +97,8 @@ public class Boss2AI : MonoBehaviour
     }
     public void Attack()
     {
+        AudioManager.Instance.AttackAudio();
+        AudioManager.Instance.HurtVoiceAudio();
         if (player.Shield >= baseDamage)
         {
             player.Shield -= baseDamage;
