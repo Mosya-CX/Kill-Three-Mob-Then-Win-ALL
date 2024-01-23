@@ -32,7 +32,8 @@ public class GameManager : MonoBehaviour
     // 绑定玩家和敌人
     public Player player;
     public Enemy enemy;
-    
+
+    public GameObject Test;
     //public int currentTurn;// 0表示非战斗状态，1表示玩家回合，2表示敌人回合
     private void Awake()
     {
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+
         //播放开局bgm
         AudioManager.Instance.StartLevelAudio();
 
@@ -89,6 +91,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        
         gameTime += Time.deltaTime;//结局要用到的时间
 
         switch (currentProgress)

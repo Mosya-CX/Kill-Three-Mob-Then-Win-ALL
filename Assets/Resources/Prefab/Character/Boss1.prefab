@@ -105,6 +105,7 @@ MonoBehaviour:
   HPText: {fileID: 0}
   Shield: 0
   shieldText: {fileID: 0}
+  lastHP: 0
   buffList: 
   id: 0
   Player: {fileID: 0}
@@ -129,6 +130,7 @@ MonoBehaviour:
   baseDamage: 0
   enemy: {fileID: 0}
   nextMove: 0
+  animator: {fileID: 0}
 --- !u!95 &1422531692396894595
 Animator:
   serializedVersion: 5
