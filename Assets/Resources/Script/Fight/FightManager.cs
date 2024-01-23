@@ -44,22 +44,25 @@ public class FightManager : MonoBehaviour
                 fightUnit = new FightInit();
                 break;
             case FightType.Player:
+
                 // 判断上回合是否是敌人回合
                 if (fightUnit is Fight_EnemyTurn)
                 {
-                    // 在此进行回合结算
+                    // 在此进行敌人回合结算
                     fightUnit.End();
                 }
+
                 fightUnit = new Fight_PlayerTurn();
                 break;
             case FightType.Enemy:
-                // 判断
+
                 if (fightUnit is Fight_PlayerTurn)
                 {
-                    // 在此进行回合结算
+                    // 在此进行玩家回合结算
 
                     fightUnit.End();
                 }
+
                 fightUnit = new Fight_EnemyTurn();
                 break;
             case FightType.Win:

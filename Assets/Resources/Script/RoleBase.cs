@@ -15,6 +15,7 @@ public class RoleBase : MonoBehaviour
     public int Shield;// 护盾值
     public TMP_Text shieldText;// 绑定护盾值的文本
     Animator animator;
+    public int lastHP;// 血量变动前的上一次血量
 
     public List<int> buffList;
 
@@ -22,6 +23,7 @@ public class RoleBase : MonoBehaviour
     protected void Init()
     {
         curHP = maxHP;
+        lastHP = curHP;
         HPSlider.maxValue = maxHP;
         HPSlider.minValue = 0;
         HPSlider.value = HPSlider.maxValue;
@@ -42,10 +44,30 @@ public class RoleBase : MonoBehaviour
             // 此处是血条渐变
             if (curHP > HPSlider.value)
             {
+                
                 HPSlider.value += Time.deltaTime * 30;
+                if (curHP != lastHP)
+                {
+                    lastHP = curHP;
+                }
             }
             else if (curHP < HPSlider.value)
             {
+                if (curHP != lastHP)
+                {
+                    // 生成伤害数字物体 
+                    GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/DamageNum")) as GameObject;
+                    if (gameObject.tag == "Player")
+                    {
+                        obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-450, -150), Random.Range(300, 401));// 在某个区域内随机生成位置
+                    }
+                    else if (gameObject.tag == "Enemy")
+                    {
+                        obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(150, 450), Random.Range(300, 401));
+                    }
+                    obj.GetComponent<TMP_Text>().text = (curHP - lastHP).ToString();
+                    lastHP = curHP;
+                }
                 HPSlider.value -= Time.deltaTime * 30;
             }
         }
@@ -96,7 +118,6 @@ public class RoleBase : MonoBehaviour
 
             //播放受击动画
             
-            
         }
         else
         {
@@ -104,7 +125,6 @@ public class RoleBase : MonoBehaviour
             Shield = 0;
             curHP -= val;
             //播放受伤动画
-
 
         }
     }

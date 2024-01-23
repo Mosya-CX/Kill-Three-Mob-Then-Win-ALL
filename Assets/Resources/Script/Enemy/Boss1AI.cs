@@ -110,10 +110,7 @@ public class Boss1AI : MonoBehaviour
         // enemy.AttackEffeck();
         while (attackCount > 0)
         {
-            // 生成伤害数字物体 
-            //GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/DamageNum")) as GameObject;
-            //obj.transform.position = new Vector2(Random.Range(), Random.Range());// 在某个区域内随机生成位置
-            //obj.GetComponent<TMP_Text>().text = (-baseDamage).ToString();
+            
             if (player.Shield >= baseDamage)
             {
                 player.Shield -= baseDamage;

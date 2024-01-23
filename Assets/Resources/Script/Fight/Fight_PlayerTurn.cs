@@ -18,6 +18,18 @@ public class Fight_PlayerTurn : FightUnit
         });
         //抽牌
         UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(GameManager.Instance.player.cardCount, true);
+        // 萤草buff效果
+        if (GameManager.Instance.player.buffList.Contains(3007))
+        {
+            UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(2, true);
+            BuffManager.Instance.DelBuff(GameManager.Instance.player.gameObject, 3007);
+        }
+        // 解放buff效果
+        if (GameManager.Instance.player.buffList.Contains(3008))
+        {
+            GameManager.Instance.player.currentFee += 2;
+            BuffManager.Instance.DelBuff(GameManager.Instance.player.gameObject, 3008);
+        }
     }
 
     public override void OnUpdate()
