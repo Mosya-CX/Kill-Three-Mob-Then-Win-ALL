@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class Boss1AI : MonoBehaviour
 {
-    // ������ʽ
+    // 攻击模式
     public int attackMode;
-    // ����˳��
+    // 攻击顺序
     public int attackOrder;
-    // ����Ҷ���
+    // 绑定玩家
     public Player player;
-    // ��û���������
+    // 绑定伤害和敌人
     public int baseDamage;
     public Enemy enemy;
-    //BOSS����һ���غϹ���
+    //BOSS的下一步行动
     public int nextMove;
     // 获得animator
     public Animator animator;

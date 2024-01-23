@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//���ٷ��� ���12���
+//快速防守	Card1003	获得12点格挡
 public class Card1003 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -19,9 +19,9 @@ public class Card1003 : CardItem
 
         if (TryUse())
         {
-            //��Ч
+            // 音效
             AudioManager.Instance.ArmorAudio();
-            // ʹ��Ч��
+            // 效果
             GameManager.Instance.player.Shield += 12;
 
             base.OnPointerClick(eventData);
