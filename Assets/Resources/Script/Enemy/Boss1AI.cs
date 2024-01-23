@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Boss1AI : MonoBehaviour
@@ -15,6 +16,9 @@ public class Boss1AI : MonoBehaviour
     public Enemy enemy;
     //BOSS����һ���غϹ���
     public int nextMove;
+    // 获得animator
+    public Animator animator;
+
     void Start()
     {
         nextMove = Random.Range(1, 3);
@@ -23,6 +27,7 @@ public class Boss1AI : MonoBehaviour
         player = GameManager.Instance.player.GetComponent<Player>();
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
         enemy = gameObject.GetComponent<Enemy>();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // �����ж�
@@ -32,10 +37,12 @@ public class Boss1AI : MonoBehaviour
         {
             if (nextMove == 1)
             {
+                // animator.SetTrigger("Attack");
                 Attack();
             }
             else
             {
+                // animator.SetTrigger("Defend");
                 Defend();
             }
             attackOrder++;
@@ -44,10 +51,12 @@ public class Boss1AI : MonoBehaviour
         {
             if (nextMove == 1)
             {
+                // animator.SetTrigger("Attack");
                 Attack();
             }
             else
             {
+                // animator.SetTrigger("Defend");
                 Defend();
             }
             attackOrder++;
@@ -56,10 +65,12 @@ public class Boss1AI : MonoBehaviour
         {
             if (nextMove == 1)
             {
+                // animator.SetTrigger("Attack");
                 Attack();
             }
             else
             {
+                // animator.SetTrigger("Defend");
                 Defend();
             }
             enemy.nextType = ActionType.Skill;
@@ -68,6 +79,8 @@ public class Boss1AI : MonoBehaviour
         }
         if(attackOrder == 4)
         {
+            // animator.SetTrigger("Skill");
+
             Skill();
             attackOrder = 1;
         }
@@ -93,10 +106,14 @@ public class Boss1AI : MonoBehaviour
         AudioManager.Instance.HurtVoiceAudio();
         int attackCount = 5;
         enemy.nextType = ActionType.Attack;
+        // 生成攻击特效
+        // enemy.AttackEffeck();
         while (attackCount > 0)
         {
-            // ����Ч��
-
+            // 生成伤害数字物体 
+            //GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/DamageNum")) as GameObject;
+            //obj.transform.position = new Vector2(Random.Range(), Random.Range());// 在某个区域内随机生成位置
+            //obj.GetComponent<TMP_Text>().text = (-baseDamage).ToString();
             if (player.Shield >= baseDamage)
             {
                 player.Shield -= baseDamage;
@@ -116,16 +133,12 @@ public class Boss1AI : MonoBehaviour
 
     void Defend()
     {
-        // ����Ч��
-
         AudioManager.Instance.ArmorAudio();
-        Debug.Log("���з���");
         gameObject.GetComponent<Enemy>().Shield += 12;
     }
 
     void Skill()
     {
-        // ����Ч��
         baseDamage++;
     }
 }

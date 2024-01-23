@@ -30,7 +30,7 @@ public class RoleBase : MonoBehaviour
         shieldText.text = Shield.ToString();
         HPText.text = curHP + " / " + maxHP;
 
-        //animator = GetComponent<Animator>();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     protected void onUpdate()
@@ -42,11 +42,11 @@ public class RoleBase : MonoBehaviour
             // 此处是血条渐变
             if (curHP > HPSlider.value)
             {
-                HPSlider.value += Time.deltaTime ;
+                HPSlider.value += Time.deltaTime * 30;
             }
             else if (curHP < HPSlider.value)
             {
-                HPSlider.value -= Time.deltaTime ;
+                HPSlider.value -= Time.deltaTime * 30;
             }
         }
         shieldText.text = Shield.ToString();

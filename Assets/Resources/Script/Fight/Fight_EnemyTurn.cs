@@ -16,7 +16,7 @@ public class Fight_EnemyTurn : FightUnit
         //敌人回合提示
         UIManager.Instance.ShowTip("敌人回合", Color.red, delegate ()
         {
-            Debug.Log("敌人回合");
+            
         });
         // 执行敌人ai逻辑
         if (enemy.GetComponent<Boss1AI>() != null )
