@@ -27,6 +27,12 @@ public class Player : RoleBase
         FeeText.text = currentFee + "/" + totalFee;
     }
 
-    
-   
+
+    // ¹¥»÷Ë²¼äÌØÐ§
+    public void AttackEffeck()
+    {
+        GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/AttackEffeck")) as GameObject;
+        obj.transform.SetParent(GameObject.Find("UI").transform, false);
+        obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(500, 100);
+    }
 }

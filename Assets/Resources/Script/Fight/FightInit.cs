@@ -38,6 +38,9 @@ public class FightInit : FightUnit
         {
             FightCardManager.instance.ResetHandCard();
             FightCardManager.instance.ResetUsedCard();
+            // 重新加入用过的三费卡
+            FightCardManager.instance.availableCardList.AddRange(FightCardManager.instance.threeFeeUsedCardList);
+            FightCardManager.instance.threeFeeUsedCardList.Clear();
         }
         
         // 显示战斗界面()

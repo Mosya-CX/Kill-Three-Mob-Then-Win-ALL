@@ -21,9 +21,11 @@ public class Card1016 : CardItem
         {
             
             GameManager.Instance.player.curHP += 15;
+            GameManager.Instance.player.cardCount += 2;
 
+            base.OnPointerClick(eventData);
         }
 
-        base.OnPointerClick(eventData);
+        
     }
 }

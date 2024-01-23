@@ -79,7 +79,8 @@ public class Enemy : RoleBase
     public void AttackEffeck()
     {
         GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/AttackEffeck")) as GameObject;
-        obj.transform.position = new Vector2 (-500, 100);
+        obj.transform.SetParent(GameObject.Find("UI").transform, false);
+        obj.GetComponent<RectTransform>().anchoredPosition = new Vector2 (-500, 100);
     }
     // 切换敌人状态
     public void SwitchToPlayerTrun()
