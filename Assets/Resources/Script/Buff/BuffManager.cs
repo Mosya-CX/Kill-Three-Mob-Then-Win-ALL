@@ -75,7 +75,11 @@ public class BuffManager : MonoBehaviour
             // 检测敌人身上的元素反应
             if (enemyBuffList.Contains(3000) && enemyBuffList.Contains(3001))
             {
-
+                //痴的特殊效果
+                if (enemyData.gameObject.name == "痴")
+                {
+                    enemyData.gameObject.GetComponent<Boss3AI>().baseDamage = (int)(enemyData.gameObject.GetComponent<Boss3AI>().baseDamage * 1.1);
+                }
                 // 火加水
                 playerData.Shield += 8;
                 if (enemyData.Shield >= 8)
@@ -96,6 +100,11 @@ public class BuffManager : MonoBehaviour
             }
             else if (enemyBuffList.Contains(3001) && enemyBuffList.Contains(3002))
             {
+                //痴的特殊效果
+                if (enemyData.gameObject.name == "痴")
+                {
+                    enemyData.gameObject.GetComponent<Boss3AI>().baseDamage = (int)(enemyData.gameObject.GetComponent<Boss3AI>().baseDamage * 1.1);
+                }
                 // 水加草
                 playerData.currentFee++;
                 DelBuff(enemyData.gameObject, 3001);
@@ -103,6 +112,11 @@ public class BuffManager : MonoBehaviour
             }
             else if (enemyBuffList.Contains(3000) && enemyBuffList.Contains(3002))
             {
+                //痴的特殊效果
+                if (enemyData.gameObject.name == "痴")
+                {
+                    enemyData.gameObject.GetComponent<Boss3AI>().baseDamage = (int)(enemyData.gameObject.GetComponent<Boss3AI>().baseDamage * 1.1);
+                }
                 // 火加草
                 playerData.curHP += 10;
                 DelBuff(enemyData.gameObject, 3000);

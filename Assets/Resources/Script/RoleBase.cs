@@ -71,6 +71,11 @@ public class RoleBase : MonoBehaviour
                 }
                 HPSlider.value -= Time.deltaTime * 30;
             }
+
+            if(HPSlider.value<=curHP+ Time.deltaTime * 30&& HPSlider.value>=curHP- Time.deltaTime * 30)
+            {
+                HPSlider.value=curHP;
+            }
         }
         shieldText.text = Shield.ToString();
         HPText.text = curHP + " / " + maxHP;
@@ -96,6 +101,21 @@ public class RoleBase : MonoBehaviour
             }
             else if (tag == "Enemy")
             {
+                //触发贪的特殊效果
+                if(name == "贪")
+                {
+                    FightCardManager.instance.availableCardList.Add("1017");
+                    //Debug.Log("贪心！");
+                }
+                //避免嗔的效果特殊效果持续
+                else if (name== "嗔")
+                {
+                    bool isCharging = GetComponent<Boss2AI>().isCharging;
+                    if (isCharging)
+                    {
+                        GameManager.Instance.player.totalFee++;
+                    }
+                }
                 // 播放敌人死亡动画
 
                 // 移除敌人
