@@ -76,5 +76,14 @@ public class Enemy : RoleBase
         
     }
 
-    
+    // 攻击瞬间特效
+    public void AttackEffeck()
+    {
+        GameObject.Instantiate(Resources.Load("Prefab/Item/AttackEffeck"));
+    }
+    // 切换敌人状态
+    public void SwitchToPlayerTrun()
+    {
+        FightManager.Instance.ChangeType(FightType.Player);
+    }
 }

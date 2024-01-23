@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5494875185935567933}
   - component: {fileID: 3124241191339079467}
   - component: {fileID: 639172696872310346}
+  - component: {fileID: 6993998480948879949}
   m_Layer: 0
   m_Name: Boss4
   m_TagString: Untagged
@@ -128,3 +129,24 @@ MonoBehaviour:
   baseDamage: 0
   enemy: {fileID: 0}
   nextMove: 0
+--- !u!95 &6993998480948879949
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227168835805578654}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
