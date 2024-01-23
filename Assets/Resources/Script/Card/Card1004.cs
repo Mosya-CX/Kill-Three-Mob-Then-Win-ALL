@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//��ȫ��Ҫ     ��������������������²�����6��
+//我全都要	从摸牌区将你的手牌重新补充至6张
+
 public class Card1004 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -16,13 +17,11 @@ public class Card1004 : CardItem
             return;
         }
 
-        // 
+
         if (TryUse() == true)
         {
-            Debug.Log("手牌有"+PlayerInfoManager.Instance.handCards.Count+"张");
             if (PlayerInfoManager.Instance.handCards.Count <= 6)
             {
-                Debug.Log("手牌有" + PlayerInfoManager.Instance.handCards.Count + "张");
                 // 抽卡
                 UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(6 - PlayerInfoManager.Instance.handCards.Count + 1, true);
             }

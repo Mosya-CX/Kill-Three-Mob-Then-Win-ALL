@@ -7,7 +7,7 @@ using System.Reflection;
 using TMPro;
 
 
-// �����ж�����
+// 枚举行动类型
 public enum ActionType
 {
     None,
@@ -16,27 +16,26 @@ public enum ActionType
     Skill,
 }
 
-// �ҵ�������
-// �洢������Ϣ
+// 敌人管理器
 public class Enemy : RoleBase
 {
     public int id;
     public GameObject Player;
-    public ActionType nextType;// �»غ��ж�
-    public GameObject nextAction;// �󶨵����»غ��ж���ʾui
+    public ActionType nextType;// 下一个行动
+    public GameObject nextAction;// 绑定ui
     public int baseDamage;
     UnityEngine.UI.Image img;
-    //public int finalDemage;// �洢��ɵ������˺�
+    //public int finalDemage;
     private void Start()
     {
 
-        // ���°�Ѫ��
+        // 绑定血条
         HPSlider = GameObject.Find("UI/FightUI/Middle/RightTop/EnemyHP").GetComponent<UnityEngine.UI.Slider>() ;
-        // ��Ѫ���ı�
+        // 绑定血条文本
         HPText = GameObject.Find("UI/FightUI/Middle/RightTop/EnemyHP/HPText").GetComponent<TMP_Text>();
-        // �󶨻���ֵ�ı�
+        // 绑定护盾文本
         shieldText = GameObject.Find("UI/FightUI/Middle/RightTop/Shield/ShieldValue").GetComponent<TMP_Text>();
-        // ���°��»غ��ж���ʾui
+        // 绑定下一个行动ui
         nextAction = GameObject.Find("UI/FightUI/Top/EnemyAction");
         Init();
         Player = GameObject.FindWithTag("Player");

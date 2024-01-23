@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//��Ҷ���			�ظ�20Ѫ���ڱ���ʣ��ʱ���ڣ�ÿ�غ϶��2����
+//落叶归根	回复20血，在本局剩余时间内，每回合多抽2张牌
 
 public class Card1016 : CardItem
 {
@@ -21,7 +21,6 @@ public class Card1016 : CardItem
         {
             
             GameManager.Instance.player.curHP += 15;
-            // ʣ��ʱ����ÿ�غ϶��2���� ��Ҫ��PlayerTurn�ĳ�����
 
         }
 

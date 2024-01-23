@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-//����			����4�㻤��
+//防御	增加4点护盾
+
 public class Card1001 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -17,10 +18,10 @@ public class Card1001 : CardItem
 
         if (TryUse())
         {
-            //��������
+            //播放音效
             AudioManager.Instance.ArmorAudio();
 
-            // ʹ��Ч��
+            //效果
             GameManager.Instance.player.Shield += 4;
 
             base.OnPointerClick(eventData);

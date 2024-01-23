@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//����			���8�㻤�ܣ��ڱ���ʣ��ʱ���ڣ�ʹ�������ϴ��ڲ������ĵ�ˮԪ�ظ���
+//浊流	获得20点格挡，在本局剩余时间内，使敌人身上存在不会消耗的水元素附着
+
 public class Card1013 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
@@ -19,9 +20,9 @@ public class Card1013 : CardItem
         if (TryUse())
         {
            
-            // ʹ��Ч��
+            // 效果
             GameManager.Instance.player.Shield += 8;
-            // ��buff
+            // buff
             //BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3005);
 
 

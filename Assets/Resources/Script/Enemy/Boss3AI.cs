@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Boss3AI : MonoBehaviour
 {
-    // ������ʽ
+    // 攻击模式
     public int attackMode;
-    // ����˳��
+    // 攻击顺序
     public int attackOrder;
-    // ����Ҷ���
+    // 绑定玩家
     public Player player;
-    // ��û���������
+    // 绑定伤害
     public int baseDamage;
-    //BOSS����һ���غϹ���
+    //BOSS下一步行动
     public int nextMove;
     public Enemy enemy;
     
@@ -24,7 +24,7 @@ public class Boss3AI : MonoBehaviour
         enemy = GetComponent<Enemy>();  
     }
 
-    // �����ж�
+    // 行动
     public void Move()
     {
         if(gameObject.GetComponent<Enemy>().curHP <= 50)
@@ -98,7 +98,7 @@ public class Boss3AI : MonoBehaviour
         int attackCount = 3;
         while (attackCount > 0)
         {
-            // ����Ч��
+            // 动画
 
             if (player.Shield >= baseDamage)
             {
@@ -120,7 +120,8 @@ public class Boss3AI : MonoBehaviour
     public void Defend()
     {
         AudioManager.Instance.ArmorAudio();
-        //����
+        //动画
+
         gameObject.GetComponent<Enemy>().Shield += 12;
         baseDamage += 2;
     }
