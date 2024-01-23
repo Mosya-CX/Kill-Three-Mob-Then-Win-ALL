@@ -17,7 +17,10 @@ public class Boss2AI : MonoBehaviour
     public bool isCharging;
     //蓄力攻击的伤害
     public int ChargingDamage;
+    // 获得自身数据
     public Enemy enemy;
+    // 获得动画机
+    public Animator animator;
     void Start()
     {
         attackMode = 1;
@@ -26,6 +29,7 @@ public class Boss2AI : MonoBehaviour
         player = GameManager.Instance.player.GetComponent<Player>();
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
         enemy = GetComponent<Enemy>();
+        animator = gameObject.GetComponent<Animator>();
         ChargingDamage = baseDamage / 3 * 7;
     }
 
@@ -37,12 +41,16 @@ public class Boss2AI : MonoBehaviour
             case 1:
                 if (isCharging)
                 {
+                    //animator.SetTrigger("ChargeAttack");
+
                     ChargingAttack();
                     isCharging = false;
                     attackOrder = 2;
                 }
                 else
                 {
+                    //animator.SetTrigger("Recover");
+
                     isCharging = true;
 
                 }
@@ -50,22 +58,33 @@ public class Boss2AI : MonoBehaviour
             case 2:
                 if (isCharging)
                 {
+                    //animator.SetTrigger("Recover");
+
                     Recover();
                     isCharging = false;
                     attackOrder = 3;
                 }
                 else
                 {
+                    //animator.SetTrigger("Charge");
+
                     isCharging = true;
                 }
                 break;
             case 3:
+                //animator.SetTrigger("Attack");
+
                 Attack();
+
                 attackOrder = 1;
                 break;
             
             case 5:
+
+                //animator.SetTrigger("Skill");
+                
                 Skill();
+
                 attackOrder = 3;
                 break;
         }
@@ -73,6 +92,9 @@ public class Boss2AI : MonoBehaviour
 
     public void ChargingAttack()
     {
+        // 生成攻击特效
+        // enemy.AttackEffeck();
+
         if (player.Shield >= ChargingDamage)
         {
             player.Shield -= ChargingDamage;
@@ -94,6 +116,9 @@ public class Boss2AI : MonoBehaviour
     }
     public void Attack()
     {
+        // 生成攻击特效
+        // enemy.AttackEffeck();
+
         if (player.Shield >= baseDamage)
         {
             player.Shield -= baseDamage;
