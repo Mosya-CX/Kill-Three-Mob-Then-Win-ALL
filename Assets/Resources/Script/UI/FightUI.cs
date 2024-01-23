@@ -49,42 +49,41 @@ public class FightUI : BasePanel
         for (int i = 0; i < count; i++)
         {
            
-            // �˴��ж��ƶ��Ƿ�����
+            // 
             if (FightCardManager.instance.availableCardList.Count == 0)
             {
-                // ���û���ˣ��ͽ����ƶѵ�������ϴ������ƶ�
+                //
                 FightCardManager.instance.ResetUsedCard();
                 if (FightCardManager.instance.availableCardList.Count == 0)
                 {
-                    Debug.Log("û����");
                     
                     return item;
                 }
             }
             
-            // �鿨
+            // 
             string cardId = FightCardManager.instance.DrawCard();
             Dictionary<string, string> cardData = GameConfigManager.Instance.getCardById(cardId);
             //print(cardId);
             //print(cardData["PrefabPath"]);
-            // ���ɿ�������
+            // 
             GameObject obj = Instantiate(Resources.Load(cardData["PrefabPath"]), transform) as GameObject;
             obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(80, 70);
             
-            // ��������UIΪ������
+            // 
             obj.transform.SetParent(GameObject.FindWithTag("HandCard").transform, false);
             
             //var item = obj.AddComponent<CardItem>();
 
-            // �����Ƽ��Ͻű�
+            // 
             item = obj.AddComponent(System.Type.GetType(cardData["Script"])) as CardItem;
             
-            // ��ʼ����������
+            // 
             item.Init(cardData);
             
             item.isSlectable = isSlectable;
 
-            // ���ӵ������б�
+            // 
             cardItemList.Add(item);
             PlayerInfoManager.Instance.handCards.Add(cardId);
 
