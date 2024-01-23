@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//Ѹ�ݹ���			��� 7���˺�����1����
+//迅捷攻击	造成 7点伤害，抽1张牌
+
 public class Card1002 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)

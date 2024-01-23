@@ -47,7 +47,7 @@ public class Enemy : RoleBase
     {
         onUpdate();
         // �˴�������ʾ�����»غ��ж���UI
-        /*if (nextType == ActionType.None)
+        if (nextType == ActionType.None)
         {
             img = nextAction.GetComponent<UnityEngine.UI.Image>();
             //UnityEngine.UIElements.Image img = nextAction.GetComponent<UnityEngine.UIElements.Image>();
@@ -70,9 +70,9 @@ public class Enemy : RoleBase
             Sprite newSprite = Resources.Load<Sprite>("Img/Item/Skill");
             UnityEngine.UI.Image img = nextAction.GetComponent<UnityEngine.UI.Image>();
             img.sprite = newSprite;
-        }*/
+        }
 
-        
+
     }
 
     // 攻击瞬间特效
