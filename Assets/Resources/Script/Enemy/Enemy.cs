@@ -45,6 +45,8 @@ public class Enemy : RoleBase
 
     private void Update()
     {
+        
+
         onUpdate();
         // �˴�������ʾ�����»غ��ж���UI
         /*if (nextType == ActionType.None)
@@ -81,6 +83,8 @@ public class Enemy : RoleBase
         GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/AttackEffeck")) as GameObject;
         obj.transform.SetParent(GameObject.Find("UI").transform, false);
         obj.GetComponent<RectTransform>().anchoredPosition = new Vector2 (-500, 100);
+        AttackMoment.Instance.Hit(6);
+        AttackMoment.Instance.camShake(0.1f, 0.015f);
     }
     // 切换敌人状态
     public void SwitchToPlayerTrun()
