@@ -16,12 +16,15 @@ public class Boss3AI : MonoBehaviour
     public int nextMove;
     public Enemy enemy;
     
+    // 获得动画机
+    public Animator animator;
     void Start()
     {
         attackMode = 1;
         player = GameManager.Instance.player;
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
-        enemy = GetComponent<Enemy>();  
+        enemy = gameObject.GetComponent<Enemy>();  
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // 行动
@@ -35,10 +38,14 @@ public class Boss3AI : MonoBehaviour
         {
             if (nextMove == 1)
             {
+                //animator.SetTrigger("Attack");
+
                 Attack();
             }
             else
             {
+                //animator.SetTrigger("Defend");
+
                 Defend();
             }
             attackOrder++;
@@ -48,10 +55,14 @@ public class Boss3AI : MonoBehaviour
         {
             if (nextMove == 1)
             {
+                //animator.SetTrigger("Attack");
+
                 Attack();
             }
             else
             {
+                //animator.SetTrigger("Defend");
+
                 Defend();
             }
             attackOrder++;
@@ -61,10 +72,14 @@ public class Boss3AI : MonoBehaviour
         {
             if (nextMove == 1)
             {
+                //animator.SetTrigger("Attack");
+
                 Attack();
             }
             else
             {
+                //animator.SetTrigger("Defend");
+
                 Defend();
             }
             enemy.nextType = ActionType.Skill;
@@ -73,6 +88,8 @@ public class Boss3AI : MonoBehaviour
         }
         if (attackOrder == 4)
         {
+            animator.SetTrigger("Skill");
+
             Skill();
             attackOrder = 1;
         }
@@ -93,12 +110,14 @@ public class Boss3AI : MonoBehaviour
 
    public void Attack()
     {
+        // 生成攻击特效
+        // enemy.AttackEffeck();
+
         AudioManager.Instance.AttackAudio();
         AudioManager.Instance.HurtVoiceAudio();
         int attackCount = 3;
         while (attackCount > 0)
         {
-            // 动画
 
             if (player.Shield >= baseDamage)
             {
