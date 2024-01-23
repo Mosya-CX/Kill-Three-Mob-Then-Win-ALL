@@ -566,10 +566,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1747406557786957135, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.31300354
-      objectReference: {fileID: 0}
     - target: {fileID: 1786664781679289499, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
       propertyPath: m_Name
       value: FightUI
@@ -581,14 +577,6 @@ PrefabInstance:
     - target: {fileID: 2711138722535625307, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2766590971132536684, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.15298462
-      objectReference: {fileID: 0}
-    - target: {fileID: 5623639632436231582, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 4.1983185
       objectReference: {fileID: 0}
     - target: {fileID: 6019623345523408788, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
       propertyPath: m_Pivot.x
@@ -669,10 +657,6 @@ PrefabInstance:
     - target: {fileID: 6019623345523408788, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7935783141330004397, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.32617188
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
