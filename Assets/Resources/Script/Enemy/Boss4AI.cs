@@ -97,8 +97,9 @@ public class Boss4AI : MonoBehaviour
 
     public void Action3()
     {
-
-        BuffManager.Instance.enemyBuffList.Clear();//ÒÆ³ý¸ºÃæBUFF
+        // Çå³ýbuff
+        BuffManager.Instance.ClearBuff(gameObject);
+        
         if (player.Shield >= 8)
         {
             player.Shield -= 8;
