@@ -67,13 +67,15 @@ public class FightInit : FightUnit
             EnemyManager.Instance.LoadMob("2004");
         }
 
+        //删除玩家所有手牌
+        UIManager.Instance.GetUI<FightUI>("FightUI").RemoveAllCards();
+        FightCardManager.instance.usedCardList.AddRange(PlayerInfoManager.Instance.handCards);
+        PlayerInfoManager.Instance.handCards.Clear();
+        GameObject.Find("UI/FightUI").GetComponent<FightUI>().cardItemList.Clear();
+
         // 重置牌堆
         if (progress != 4)
         {
-            // 重置手牌
-            UIManager.Instance.GetUI<FightUI>("FightUI").RemoveAllCards();
-            GameObject.Find("UI/FightUI").GetComponent<FightUI>().cardItemList.Clear();
-            FightCardManager.instance.ResetHandCard();
             // 重置弃牌堆
             FightCardManager.instance.ResetUsedCard();
             // 重新加入用过的三费卡
@@ -102,6 +104,11 @@ public class FightInit : FightUnit
             // 重置摸牌数
             GameManager.Instance.player.cardCount = 6;
         }
+
+        // 清除buff
+        BuffManager.Instance.ClearBuff(GameManager.Instance.player.gameObject);
+        BuffManager.Instance.ClearBuff(GameManager.Instance.enemy.gameObject);
+
 
         //切换到玩家回合
         FightManager.Instance.ChangeType(FightType.Player);

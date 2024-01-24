@@ -184,23 +184,58 @@ public class BuffManager : MonoBehaviour
         {
             // 删除ui物体
             GameObject obj = GameObject.Find("UI/FightUI/Middle/PlayerStack/" + buffId);
-            obj.GetComponent<BaseBuff>().Dele();
+            if (obj != null)
+            {
+                obj.GetComponent<BaseBuff>().Dele();
+            }
             //obj.name = "None";
             //obj.SetActive(false);
 
-            playerBuffList.RemoveAt(enemyBuffList.IndexOf(buffId));
+            if (playerBuffList != null && playerBuffList.Contains(buffId))
+            {
+                playerBuffList.RemoveAt(playerBuffList.IndexOf(buffId));
+            }
+            
         }
         else if (target.tag == "Enemy")
         {
 
             // 删除ui物体
             GameObject obj = GameObject.Find("UI/FightUI/Middle/EnemyStack/" + buffId);
-            obj.GetComponent<BaseBuff>().Dele();
+            if (obj != null)
+            {
+                obj.GetComponent<BaseBuff>().Dele();
+            }
             //obj.name = "None";
             //obj.SetActive(false) ;
 
-
-            enemyBuffList.RemoveAt(enemyBuffList.IndexOf(buffId));
+            // 从列表里清除
+            if (enemyBuffList != null && enemyBuffList.Contains(buffId))
+            {
+                enemyBuffList.RemoveAt(enemyBuffList.IndexOf(buffId));
+            }
+            
         }
+    }
+
+    // 清空buff栏
+    public void ClearBuff(GameObject target)
+    {
+        if (target.tag == "Enemy")
+        {
+            DelBuff(target, 3000);
+            DelBuff(target, 3001);
+            DelBuff(target, 3002);
+            DelBuff(target, 3003);
+            DelBuff(target, 3005);
+            DelBuff(target, 3006);
+        }
+        else if (target.tag == "Player")
+        {
+            DelBuff(target, 3004);
+            DelBuff(target, 3007);
+            DelBuff(target, 3008);
+        }
+        
     }
 }

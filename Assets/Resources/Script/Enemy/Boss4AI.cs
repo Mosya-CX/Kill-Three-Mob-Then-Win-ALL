@@ -49,6 +49,7 @@ public class Boss4AI : MonoBehaviour
                 Action3();
                 break;
         }
+        nextMove = Random.Range(1, 4);
     }
 
     public void Action1()
