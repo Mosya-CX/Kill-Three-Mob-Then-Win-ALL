@@ -20,6 +20,7 @@ public class Boss3AI : MonoBehaviour
     public Animator animator;
     void Start()
     {
+        nextMove = Random.Range(1, 3);
         attackMode = 1;
         player = GameManager.Instance.player;
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
@@ -30,82 +31,29 @@ public class Boss3AI : MonoBehaviour
     // 行动
     public void Move()
     {
+        
         if(gameObject.GetComponent<Enemy>().curHP <= 50)
         {
-            attackMode = 3;
-        }
-        if(attackMode == 1) 
-        {
-            if (nextMove == 1)
-            {
-                //animator.SetTrigger("Attack");
-
-                Attack();
-            }
-            else
-            {
-                //animator.SetTrigger("Defend");
-
-                Defend();
-            }
-            attackOrder++;
-        }
-
-        else if (attackMode == 2)
-        {
-            if (nextMove == 1)
-            {
-                //animator.SetTrigger("Attack");
-
-                Attack();
-            }
-            else
-            {
-                //animator.SetTrigger("Defend");
-
-                Defend();
-            }
-            attackOrder++;
-        }
-
-        else if (attackOrder == 3)
-        {
-            if (nextMove == 1)
-            {
-                //animator.SetTrigger("Attack");
-
-                Attack();
-            }
-            else
-            {
-                //animator.SetTrigger("Defend");
-
-                Defend();
-            }
-            enemy.nextType = ActionType.Skill;
-            attackOrder++;
-
-        }
-        if (attackOrder == 4)
-        {
-            animator.SetTrigger("Skill");
-
             Skill();
-            attackOrder = 1;
+        }
+        else if(nextMove==1){
+            Attack();
+        }
+        else if (nextMove == 2) 
+        {
+            Defend();
         }
         nextMove = Random.Range(1, 3);
-        if (attackOrder != 4)
+        if (nextMove == 1)
         {
-            switch (nextMove)
-            {
-                case 1:
-                    enemy.nextType = ActionType.Attack;
-                    break;
-                case 2:
-                    enemy.nextType = ActionType.Defend;
-                    break;
-            }
+            enemy.nextType = ActionType.Attack;
         }
+        else if (nextMove == 2)
+        {
+            enemy.nextType = ActionType.Defend;
+        }
+        
+
     }
 
    public void Attack()
