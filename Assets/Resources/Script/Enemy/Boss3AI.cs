@@ -34,14 +34,22 @@ public class Boss3AI : MonoBehaviour
         
         if(gameObject.GetComponent<Enemy>().curHP <= 50)
         {
-            Skill();
+            StartCoroutine(DelayExecution(1.5f, Skill));
+            animator.SetTrigger("Skill");
+            
+            //Skill();
         }
-        else if(nextMove==1){
-            Attack();
+        else if(nextMove==1)
+        {
+            animator.SetTrigger("Attack");
+            
+            //Attack();
         }
         else if (nextMove == 2) 
         {
-            Defend();
+            animator.SetTrigger("Defend");
+
+            //Defend();
         }
         nextMove = Random.Range(1, 3);
         if (nextMove == 1)
@@ -59,7 +67,7 @@ public class Boss3AI : MonoBehaviour
    public void Attack()
     {
         // 生成攻击特效
-        // enemy.AttackEffeck();
+        enemy.AttackEffeck();
 
         AudioManager.Instance.AttackAudio();
         AudioManager.Instance.HurtVoiceAudio();
@@ -95,10 +103,23 @@ public class Boss3AI : MonoBehaviour
 
     public void Skill()
     {
-        if(enemy.maxHP/enemy.curHP>2 )
-        {
-            enemy.curHP = 0;
-            player.totalFee -= 1;
-        }
+        player.totalFee -= 1;
+        enemy.curHP = 0;
+        
+        //if (enemy.maxHP/enemy.curHP>2 )
+        //{
+            
+        //}
     }
+
+    // 协程方法，用于延迟执行  
+    public IEnumerator DelayExecution(float delay, System.Action callback)
+    {
+        // 等待指定的延迟时间  
+        yield return new WaitForSeconds(delay);
+
+        // 调用回调函数  
+        callback?.Invoke();
+    }
+
 }

@@ -32,11 +32,10 @@ public class Player : RoleBase
     // 攻击瞬间特效
     public void AttackEffeck()
     {
-        GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/AttackEffeck")) as GameObject;
+        GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Effect/AttackEffect")) as GameObject;
         obj.transform.SetParent(GameObject.Find("UI").transform, false);
         obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(500, 100);
-        AttackMoment.Instance.Hit(6);
-        AttackMoment.Instance.camShake(0.1f, 0.015f);
+        
     }
 
     // 锁定玩家鼠标
@@ -54,5 +53,10 @@ public class Player : RoleBase
         Cursor.lockState = CursorLockMode.None;
         // 显示鼠标光标  
         Cursor.visible = true;
+    }
+    // 切换回合
+    public void SwitchTurnToEnemy()
+    {
+        FightManager.Instance.ChangeType(FightType.Enemy);
     }
 }
