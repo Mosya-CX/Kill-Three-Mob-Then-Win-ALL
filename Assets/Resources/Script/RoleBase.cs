@@ -39,12 +39,53 @@ public class RoleBase : MonoBehaviour
 
     protected void onUpdate()
     {
+        //更新血条Slider
         if (maxHP != HPSlider.maxValue)
         {
             HPSlider.maxValue = maxHP;
         }
 
-        
+        if (!GameManager.Instance.isFighting && lastHP != curHP || !GameManager.Instance.isFighting && lastShield != Shield)
+        {
+            lastHP = curHP;
+            lastShield = Shield;
+        }
+
+        if (lastShield != Shield && GameManager.Instance.isFighting)
+        {
+            if (lastShield < Shield)
+            {
+                GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/DamageNum")) as GameObject;
+                obj.transform.SetParent(GameObject.Find("UI").transform, false);
+                if (gameObject.tag == "Player")
+                {
+                    obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-450, -150), Random.Range(300, 401));// 在某个区域内随机生成位置
+                }
+                else if (gameObject.tag == "Enemy")
+                {
+                    obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(150, 450), Random.Range(300, 401));
+                }
+                obj.GetComponent<TMP_Text>().text = "+" + (Shield - lastShield);
+                obj.GetComponent<TMP_Text>().color = Color.blue;
+                
+            }
+            else if (lastShield > Shield)
+            {
+                GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/DamageNum")) as GameObject;
+                obj.transform.SetParent(GameObject.Find("UI").transform, false);
+                if (gameObject.tag == "Player")
+                {
+                    obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-450, -150), Random.Range(300, 401));// 在某个区域内随机生成位置
+                }
+                else if (gameObject.tag == "Enemy")
+                {
+                    obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(150, 450), Random.Range(300, 401));
+                }
+                obj.GetComponent<TMP_Text>().text = (Shield - lastShield).ToString();
+                obj.GetComponent<TMP_Text>().color = Color.white;
+            }
+            lastShield = Shield;
+        }
 
         // 更新血量和护盾值
         if (curHP != HPSlider.value)
@@ -55,19 +96,21 @@ public class RoleBase : MonoBehaviour
             {
                 
                 HPSlider.value += Time.deltaTime * 30;
-                if (curHP != lastHP)
+                if (curHP != lastHP && GameManager.Instance.isFighting)
                 {
                     // 生成回复数字物体
                     CreateRecoverNum();
+
                     lastHP = curHP;
                 }
             }
             else if (curHP < HPSlider.value)
             {
-                if (curHP != lastHP)
+                if (curHP != lastHP && GameManager.Instance.isFighting)
                 {
                     // 生成伤害数字物体 
                     CreateDamageNum();
+
                     lastHP = curHP;
                 }
 

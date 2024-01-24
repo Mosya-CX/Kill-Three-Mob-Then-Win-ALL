@@ -34,7 +34,10 @@ public class Fight_EnemyTurn : FightUnit
         {
             enemy.GetComponent<Boss3AI>().Move();
         }
-
+        else if (enemy.GetComponent<Boss4AI>() != null)
+        {
+            enemy.GetComponent<Boss4AI>().Move();
+        }
         //切换到玩家回合
         FightManager.Instance.ChangeType(FightType.Player);
     }
