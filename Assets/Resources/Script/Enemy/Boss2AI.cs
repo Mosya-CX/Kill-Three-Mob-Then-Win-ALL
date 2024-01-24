@@ -41,11 +41,13 @@ public class Boss2AI : MonoBehaviour
                     ChargingAttack();
                     isCharging = false;
                     attackOrder = 2;
+                    enemy.nextType = ActionType.Skill;
                 }
                 else
                 {
                     isCharging = true;
                     GameManager.Instance.player.totalFee--;
+                    enemy.nextType = ActionType.Attack;
                 }
                 break;
             case 2:
@@ -54,22 +56,26 @@ public class Boss2AI : MonoBehaviour
                     GameManager.Instance.player.totalFee++;
                     Recover();
                     isCharging = false;
+                    enemy.nextType = ActionType.Attack;
                     attackOrder = 3;
                 }
                 else
                 {
                     isCharging = true;
                     GameManager.Instance.player.totalFee--;
+                    enemy.nextType = ActionType.Attack;
                 }
                 break;
             case 3:
                 Attack();
                 attackOrder = 1;
+                enemy.nextType = ActionType.Skill;
                 break;
             
             case 5:
                 Skill();
                 attackOrder = 3;
+                enemy.nextType = ActionType.Attack;
                 break;
         }
     }
