@@ -11,7 +11,7 @@ public class Card1018 : CardItem
         // ¶¯»­Ð§¹û
 
         // ÑÓ³ÙÖ´ÐÐ
-        StartCoroutine(DelayAction(4.0f));
+        StartCoroutine(DelayAction(1.5f));
         
 
 
@@ -50,6 +50,7 @@ public class Card1018 : CardItem
 
         // É¾³ý¿¨ÅÆ
         PlayerInfoManager.Instance.handCards.Remove(data["Id"]);
+        GameObject.Find("UI/FightUI").GetComponent<FightUI>().cardItemList.Remove(this);
 
         Destroy(gameObject);
     }

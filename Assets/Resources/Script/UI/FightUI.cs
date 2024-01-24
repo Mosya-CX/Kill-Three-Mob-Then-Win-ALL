@@ -117,20 +117,20 @@ public class FightUI : BasePanel
     //ɾ����������
     public void RemoveCard(CardItem item)
     {
-        item.enabled = false;//���ÿ����߼�
+        item.enabled = false;//
 
-        //���ӵ����Ƽ���
+        //
         FightCardManager.instance.usedCardList.Add(item.data["Id"]);
 
-        //����ʹ�ú�Ŀ�������
+        //
         usedCardNumTxt.text = FightCardManager.instance.usedCardList.Count.ToString();
        
-        //�Ӽ�����ɾ��
+        //
         cardItemList.Remove(item);
-        //ˢ�¿���
+        //
         //UpdateCardItemPos();
 
-        //�����Ƶ����ƶ�Ч��
+        //
         item.GetComponent<RectTransform>().DOAnchorPos(new Vector2(1000, -700), 0.25f);
         item.transform.DOScale(0, 0.25f);
 
@@ -147,12 +147,15 @@ public class FightUI : BasePanel
     }
 
     //�л��غ�
-    private void ChangeTurn()
+    public void ChangeTurn()
     {
         //ֻ����һغϲ����л�
         if(FightManager.Instance.fightUnit is Fight_PlayerTurn) 
         {
-            FightManager.Instance.ChangeType(FightType.Enemy);
+            // 播放动画
+            GameManager.Instance.player.animator.SetTrigger("Attack");
+
+            //FightManager.Instance.ChangeType(FightType.Enemy);
 
         }
     }

@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 125535359}
   - component: {fileID: 125535360}
   - component: {fileID: 125535361}
+  - component: {fileID: 125535362}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -228,6 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662a433e77a76e74885e77ce472afd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fightUnit: {fileID: 0}
 --- !u!114 &125535361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +246,18 @@ MonoBehaviour:
   enemyData: {fileID: 0}
   playerBuffList: 
   enemyBuffList: 
+--- !u!114 &125535362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125535355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667bc68a10ce86c4a8be8a454ca25190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &222457448 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8073490460254143163, guid: 6645d601307e1d140aabec57cc4addf9, type: 3}

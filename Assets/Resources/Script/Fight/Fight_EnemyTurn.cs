@@ -39,7 +39,7 @@ public class Fight_EnemyTurn : FightUnit
             enemy.GetComponent<Boss4AI>().Move();
         }
         //切换到玩家回合
-        FightManager.Instance.ChangeType(FightType.Player);
+        //FightManager.Instance.ChangeType(FightType.Player);
     }
 
     public override void OnUpdate()
