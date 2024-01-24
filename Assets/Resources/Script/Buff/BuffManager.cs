@@ -186,14 +186,20 @@ public class BuffManager : MonoBehaviour
             GameObject obj = GameObject.Find("UI/FightUI/Middle/PlayerStack/" + buffId);
             if (obj != null)
             {
+                Debug.Log("删除了buff" + buffId);
                 obj.GetComponent<BaseBuff>().Dele();
             }
             //obj.name = "None";
             //obj.SetActive(false);
 
-            if (playerBuffList != null && playerBuffList.Contains(buffId))
+            if (playerData.buffList.Contains(buffId))
             {
-                playerBuffList.RemoveAt(playerBuffList.IndexOf(buffId));
+                Debug.Log("有buff" + buffId);
+            }
+            if (playerData != null && playerData.buffList.Contains(buffId))
+            {
+                Debug.Log("删除了buff" + buffId);
+                playerData.buffList.Remove(buffId);
             }
             
         }
@@ -212,7 +218,7 @@ public class BuffManager : MonoBehaviour
             // 从列表里清除
             if (enemyBuffList != null && enemyBuffList.Contains(buffId))
             {
-                enemyBuffList.RemoveAt(enemyBuffList.IndexOf(buffId));
+                enemyBuffList.Remove(buffId);
             }
             
         }

@@ -19,7 +19,11 @@ public class Card1015 : CardItem
 
         if (TryUse())
         {
-            
+
+            //播放特效
+            GameManager.Instance.player.animator.SetTrigger("Plant");
+
+
             if (GameManager.Instance.enemy.Shield >= 10)
             {
                 GameManager.Instance.enemy.Shield -= 10;
@@ -35,8 +39,9 @@ public class Card1015 : CardItem
             }
             // buff
             BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3002);
+            BuffManager.Instance.AddBuff(GameManager.Instance.player.gameObject, 3007);
+            BuffManager.Instance.AddBuff(GameManager.Instance.player.gameObject, 3008);
 
-            
 
             base.OnPointerClick(eventData);
         }

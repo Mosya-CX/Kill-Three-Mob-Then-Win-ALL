@@ -18,6 +18,11 @@ public class Card1005 : CardItem
 
         if (TryUse())
         {
+            //播放特效
+            GameManager.Instance.player.animator.SetTrigger("Normal");
+            //播放特效
+            GameManager.Instance.player.animator.SetTrigger("Defend");
+
             AudioManager.Instance.AttackAudio();
             // 效果
             GameManager.Instance.player.Shield += 12;

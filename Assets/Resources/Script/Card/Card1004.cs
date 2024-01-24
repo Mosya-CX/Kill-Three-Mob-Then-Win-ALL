@@ -20,6 +20,8 @@ public class Card1004 : CardItem
 
         if (TryUse() == true)
         {
+            
+
             if (PlayerInfoManager.Instance.handCards.Count <= 6)
             {
                 // 抽卡

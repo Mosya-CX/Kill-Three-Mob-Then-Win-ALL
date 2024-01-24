@@ -18,11 +18,13 @@ public class Card1013 : CardItem
 
         if (TryUse())
         {
-           
+            //播放特效
+            GameManager.Instance.player.animator.SetTrigger("Water");
+
             // ʹ��Ч��
             GameManager.Instance.player.Shield += 20;
             // ��buff
-            //BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3005);
+            BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3005);
 
 
             base.OnPointerClick(eventData);

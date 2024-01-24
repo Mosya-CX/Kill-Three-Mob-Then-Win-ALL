@@ -18,6 +18,9 @@ public class Card1001 : CardItem
 
         if (TryUse())
         {
+            //播放特效
+            GameManager.Instance.player.animator.SetTrigger("Defend");
+
             //播放音效
             AudioManager.Instance.ArmorAudio();
 

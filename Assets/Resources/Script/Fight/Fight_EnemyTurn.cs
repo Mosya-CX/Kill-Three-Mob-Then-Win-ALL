@@ -50,19 +50,6 @@ public class Fight_EnemyTurn : FightUnit
     public override void End()
     {
         GameManager.Instance.turn++;
-        // 火花buff效果
-        if (GameManager.Instance.enemy.buffList.Contains(3003) )
-        {
-            GameManager.Instance.enemy.curHP -= 1;
-            BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3000);
-            BuffManager.Instance.DelBuff(GameManager.Instance.enemy.gameObject, 3003);
-        }
-        // 水之屏障buff效果
-        if (GameManager.Instance.enemy.buffList.Contains(3006))
-        {
-            GameManager.Instance.enemy.curHP -= 3;
-            BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3001);
-            BuffManager.Instance.DelBuff(GameManager.Instance.enemy.gameObject, 3006);
-        }
+        
     }
 }

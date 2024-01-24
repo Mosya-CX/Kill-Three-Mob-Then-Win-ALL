@@ -22,10 +22,10 @@ public class FightCardManager
     public void Init()
     {
         // 测试用
-        //availableCardList = new List<string>() { "1016", "1007","1010", "1013"};
+        availableCardList = new List<string>() { "1016", "1007","1010", "1013","1000", "1000", "1000", "1002", "1002", "1002","1000", "1000", "1000"};
         // 正式用
-        availableCardList = new List<string>() { "1000", "1000", "1000", "1002", "1002", "1002", "1002", "1002", "1002", "1003", "1005", "1008", "1011", "1014" };
-        
+        //availableCardList = new List<string>() { "1000", "1000", "1000", "1002", "1002", "1002", "1002", "1002", "1002", "1003", "1005", "1008", "1011", "1014" };
+
         usedCardList = new List<string>();
         threeFeeUsedCardList = new List<string>();
 
