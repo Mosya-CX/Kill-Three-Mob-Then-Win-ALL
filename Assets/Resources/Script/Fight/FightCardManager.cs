@@ -12,6 +12,8 @@ public class FightCardManager
     public List<string> availableCardList;
     // 弃牌堆
     public List<string> usedCardList;
+    // 三费卡弃牌堆
+    public List<string> threeFeeUsedCardList;
 
     public TMP_Text cardCountText;   //现有手牌数量
     public TMP_Text usedCardCountText;    //弃牌堆数量
@@ -19,8 +21,13 @@ public class FightCardManager
     // 战斗开始初始化手牌
     public void Init()
     {
-        availableCardList = new List<string>() { "1004", "1004", "1004", "1000", "1000", "1000", "1000", "1000", "1000", "1000", "1000", "1000", "1000", "1000" };
+        // 测试用
+        //availableCardList = new List<string>() { "1016", "1007","1010", "1013"};
+        // 正式用
+        availableCardList = new List<string>() { "1000", "1000", "1000", "1002", "1002", "1002", "1002", "1002", "1002", "1003", "1005", "1008", "1011", "1014" };
+        
         usedCardList = new List<string>();
+        threeFeeUsedCardList = new List<string>();
 
         // 清空手牌
         ResetHandCard();

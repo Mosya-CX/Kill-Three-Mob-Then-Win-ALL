@@ -14,18 +14,52 @@ public class FightInit : FightUnit
         //初始化战斗数值
         FightManager.Instance.Init();
 
-        // 敌人生成(检测GameManager的progress判断处于什么阶段，通过EnemyManager里的LoadMob传入id生成对应的敌人)
+        // 敌人生成
         int progress = GameManager.Instance.currentProgress;
+        GameObject Bg = GameObject.FindWithTag("Background");
         if (progress == 1)
         {
+            // 加载背景
+            Sprite newBg = Resources.Load<Sprite>("Img/UI 2/Bg1");
+            if (Bg.GetComponent<SpriteRenderer>() == null)
+            {
+                Bg.AddComponent<SpriteRenderer>().sprite = newBg;
+            }
+            else
+            {
+                Bg.GetComponent<SpriteRenderer>().sprite = newBg;
+            }
+
             EnemyManager.Instance.LoadMob("2001");
         }
         else if (progress == 2)
         {
+            // 加载背景
+            Sprite newBg = Resources.Load<Sprite>("Img/UI 2/Bg2");
+            if (Bg.GetComponent<SpriteRenderer>() == null)
+            {
+                Bg.AddComponent<SpriteRenderer>().sprite = newBg;
+            }
+            else
+            {
+                Bg.GetComponent<SpriteRenderer>().sprite = newBg;
+            }
+
             EnemyManager.Instance.LoadMob("2002");
         }
         else if (progress == 3)
         {
+            // 加载背景
+            Sprite newBg = Resources.Load<Sprite>("Img/UI 2/Bg3");
+            if (Bg.GetComponent<SpriteRenderer>() == null)
+            {
+                Bg.AddComponent<SpriteRenderer>().sprite = newBg;
+            }
+            else
+            {
+                Bg.GetComponent<SpriteRenderer>().sprite = newBg;
+            }
+
             EnemyManager.Instance.LoadMob("2003");
         }
         else if (progress == 4)
@@ -33,13 +67,24 @@ public class FightInit : FightUnit
             EnemyManager.Instance.LoadMob("2004");
         }
 
+        //删除玩家所有手牌
+        UIManager.Instance.GetUI<FightUI>("FightUI").RemoveAllCards();
+        FightCardManager.instance.usedCardList.AddRange(PlayerInfoManager.Instance.handCards);
+        PlayerInfoManager.Instance.handCards.Clear();
+        GameObject.Find("UI/FightUI").GetComponent<FightUI>().cardItemList.Clear();
+
         // 重置牌堆
         if (progress != 4)
         {
-            FightCardManager.instance.ResetHandCard();
+            // 重置弃牌堆
             FightCardManager.instance.ResetUsedCard();
+            // 重新加入用过的三费卡
+            FightCardManager.instance.availableCardList.AddRange(FightCardManager.instance.threeFeeUsedCardList);
+            FightCardManager.instance.threeFeeUsedCardList.Clear();
         }
-        
+
+
+
         // 显示战斗界面()
         // UIManager.Instance.OpenUI<FightUI>("FightUI");
         GameObject.FindWithTag("FightUI").SetActive(true);
@@ -55,7 +100,15 @@ public class FightInit : FightUnit
 
             // 重置玩家护盾值
             GameManager.Instance.player.Shield = 0;
+
+            // 重置摸牌数
+            GameManager.Instance.player.cardCount = 6;
         }
+
+        // 清除buff
+        BuffManager.Instance.ClearBuff(GameManager.Instance.player.gameObject);
+        BuffManager.Instance.ClearBuff(GameManager.Instance.enemy.gameObject);
+
 
         //切换到玩家回合
         FightManager.Instance.ChangeType(FightType.Player);

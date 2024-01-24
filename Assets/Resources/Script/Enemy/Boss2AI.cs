@@ -5,21 +5,21 @@ using UnityEngine;
 public class Boss2AI : MonoBehaviour
 {
 
-    // ¹¥»÷·½Ê½
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
     public int attackMode;
-    // ¹¥»÷Ë³Ðò
+    // ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½
     public int attackOrder;
-    // °ó¶¨Íæ¼Ò¶ÔÏó
+    // ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½
     public Player player;
-    // »ñµÃ»ù´¡¹¥»÷Á¦
+    // ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public int baseDamage;
-    //ÅÐ¶ÏÊÇ·ñÔÚÐîÁ¦
+    //ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public bool isCharging;
-    //ÐîÁ¦¹¥»÷µÄÉËº¦
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½
     public int ChargingDamage;
-    // »ñµÃ×ÔÉíÊý¾Ý
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public Enemy enemy;
-    // »ñµÃ¶¯»­»ú
+    // ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½
     public Animator animator;
     void Start()
     {
@@ -33,7 +33,7 @@ public class Boss2AI : MonoBehaviour
         ChargingDamage = baseDamage / 3 * 7;
     }
 
-    // µÐÈËÐÐ¶¯
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
     public void Move()
     {
         switch (attackOrder)
@@ -46,13 +46,15 @@ public class Boss2AI : MonoBehaviour
                     ChargingAttack();
                     isCharging = false;
                     attackOrder = 2;
+                    enemy.nextType = ActionType.Skill;
                 }
                 else
                 {
                     //animator.SetTrigger("Recover");
 
                     isCharging = true;
-
+                    GameManager.Instance.player.totalFee--;
+                    enemy.nextType = ActionType.Attack;
                 }
                 break;
             case 2:
@@ -62,6 +64,7 @@ public class Boss2AI : MonoBehaviour
 
                     Recover();
                     isCharging = false;
+                    enemy.nextType = ActionType.Attack;
                     attackOrder = 3;
                 }
                 else
@@ -69,6 +72,8 @@ public class Boss2AI : MonoBehaviour
                     //animator.SetTrigger("Charge");
 
                     isCharging = true;
+                    GameManager.Instance.player.totalFee--;
+                    enemy.nextType = ActionType.Attack;
                 }
                 break;
             case 3:
@@ -77,6 +82,7 @@ public class Boss2AI : MonoBehaviour
                 Attack();
 
                 attackOrder = 1;
+                enemy.nextType = ActionType.Skill;
                 break;
             
             case 5:
@@ -86,13 +92,14 @@ public class Boss2AI : MonoBehaviour
                 Skill();
 
                 attackOrder = 3;
+                enemy.nextType = ActionType.Attack;
                 break;
         }
     }
 
     public void ChargingAttack()
     {
-        // Éú³É¹¥»÷ÌØÐ§
+        // ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
         // enemy.AttackEffeck();
 
         if (player.Shield >= ChargingDamage)
@@ -116,9 +123,7 @@ public class Boss2AI : MonoBehaviour
     }
     public void Attack()
     {
-        AudioManager.Instance.AttackAudio();
-        AudioManager.Instance.HurtVoiceAudio();
-        // Éú³É¹¥»÷ÌØÐ§
+        // ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
         // enemy.AttackEffeck();
 
         if (player.Shield >= baseDamage)
@@ -138,7 +143,7 @@ public class Boss2AI : MonoBehaviour
 
    
 
-    public void Skill()//¼õÉÙÍæ¼Ò³éÅÆÊý
+    public void Skill()//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½
     {
         player.cardCount--;
     }

@@ -9,11 +9,11 @@ public class Card1017 : CardItem
 {
     public override void OnPointerClick(PointerEventData eventData)
     {
-        if (TryUse())
-        {
-            Debug.Log("1017");
-            base.OnPointerClick(eventData);
-        }
+        //if (TryUse())
+        //{
+        //    Debug.Log("1017");
+        //    base.OnPointerClick(eventData);
+        //}
         
     }
 }

@@ -15,6 +15,8 @@ public class Boss4AI : MonoBehaviour
     public Enemy enemy;
     //BOSS的下一个回合攻击
     public int nextMove;
+    //上回合是否是Action3
+    public bool isAction3;
     // 获得动画机
     public Animator animator;
 
@@ -31,24 +33,36 @@ public class Boss4AI : MonoBehaviour
     // 敌人行动
     public void Move()
     {
-        switch(nextMove)
+        enemy.nextType = ActionType.Skill;
+        switch (nextMove)
         {
             case 1:
                 //animator.SetTrigger("Defend");
-
+                enemy.nextType = ActionType.Defend;
                 Action1();
                 break;
             case 2:
                 //animator.SetTrigger("Attack");
-
+                enemy.nextType = ActionType.Attack;
                 Action2();
                 break;
             case 3:
                 //animator.SetTrigger("Skill");
-
+                enemy.nextType = ActionType.Skill;
                 Action3();
+                isAction3 = true;
                 break;
         }
+        if (isAction3)
+        {
+            nextMove = Random.Range(1, 3);
+            isAction3=false;
+        }
+        else
+        {
+            nextMove = Random.Range(1, 4);
+        }
+        
     }
 
     public void Action1()
@@ -56,6 +70,8 @@ public class Boss4AI : MonoBehaviour
         //加盾
         enemy.Shield += 10;
         //往洗牌区玩家加牌
+        FightCardManager.instance.availableCardList.Add("1018");
+        FightCardManager.instance.availableCardList.Add("1018");
     }
 
     public void Action2()
@@ -81,8 +97,9 @@ public class Boss4AI : MonoBehaviour
 
     public void Action3()
     {
-
-        BuffManager.Instance.enemyBuffList.Clear();//移除负面BUFF
+        // 清除buff
+        BuffManager.Instance.ClearBuff(gameObject);
+        
         if (player.Shield >= 8)
         {
             player.Shield -= 8;

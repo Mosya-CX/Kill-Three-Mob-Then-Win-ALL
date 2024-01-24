@@ -75,10 +75,11 @@ public class BuffManager : MonoBehaviour
             // 检测敌人身上的元素反应
             if (enemyBuffList.Contains(3000) && enemyBuffList.Contains(3001))
             {
+             
                 //痴的特殊效果
-                if (enemyData.gameObject.name == "痴")
+                if (GameManager.Instance.currentProgress == 4 && GameManager.Instance.isFighting == true)
                 {
-                    enemyData.gameObject.GetComponent<Boss3AI>().baseDamage = (int)(enemyData.gameObject.GetComponent<Boss3AI>().baseDamage * 1.1);
+                    enemyData.curHP -= 15;
                 }
                 // 火加水
                 playerData.Shield += 8;
@@ -101,9 +102,9 @@ public class BuffManager : MonoBehaviour
             else if (enemyBuffList.Contains(3001) && enemyBuffList.Contains(3002))
             {
                 //痴的特殊效果
-                if (enemyData.gameObject.name == "痴")
+                if (GameManager.Instance.currentProgress==4&&GameManager.Instance.isFighting==true)
                 {
-                    enemyData.gameObject.GetComponent<Boss3AI>().baseDamage = (int)(enemyData.gameObject.GetComponent<Boss3AI>().baseDamage * 1.1);
+                    enemyData.curHP -= 15;
                 }
                 // 水加草
                 playerData.currentFee++;
@@ -113,12 +114,19 @@ public class BuffManager : MonoBehaviour
             else if (enemyBuffList.Contains(3000) && enemyBuffList.Contains(3002))
             {
                 //痴的特殊效果
-                if (enemyData.gameObject.name == "痴")
+                if (GameManager.Instance.currentProgress == 4 && GameManager.Instance.isFighting == true)
                 {
-                    enemyData.gameObject.GetComponent<Boss3AI>().baseDamage = (int)(enemyData.gameObject.GetComponent<Boss3AI>().baseDamage * 1.1);
+                    enemyData.curHP -= 15;
                 }
                 // 火加草
-                playerData.curHP += 10;
+                if (playerData.curHP <= playerData.maxHP - 10)
+                {
+                    playerData.curHP += 10;
+                }
+                else
+                {
+                    playerData.curHP = playerData.maxHP;
+                }
                 DelBuff(enemyData.gameObject, 3000);
                 DelBuff(enemyData.gameObject, 3002);
                 
@@ -176,23 +184,58 @@ public class BuffManager : MonoBehaviour
         {
             // 删除ui物体
             GameObject obj = GameObject.Find("UI/FightUI/Middle/PlayerStack/" + buffId);
-            obj.GetComponent<BaseBuff>().Dele();
+            if (obj != null)
+            {
+                obj.GetComponent<BaseBuff>().Dele();
+            }
             //obj.name = "None";
             //obj.SetActive(false);
 
-            playerBuffList.RemoveAt(enemyBuffList.IndexOf(buffId));
+            if (playerBuffList != null && playerBuffList.Contains(buffId))
+            {
+                playerBuffList.RemoveAt(playerBuffList.IndexOf(buffId));
+            }
+            
         }
         else if (target.tag == "Enemy")
         {
 
             // 删除ui物体
             GameObject obj = GameObject.Find("UI/FightUI/Middle/EnemyStack/" + buffId);
-            obj.GetComponent<BaseBuff>().Dele();
+            if (obj != null)
+            {
+                obj.GetComponent<BaseBuff>().Dele();
+            }
             //obj.name = "None";
             //obj.SetActive(false) ;
 
-
-            enemyBuffList.RemoveAt(enemyBuffList.IndexOf(buffId));
+            // 从列表里清除
+            if (enemyBuffList != null && enemyBuffList.Contains(buffId))
+            {
+                enemyBuffList.RemoveAt(enemyBuffList.IndexOf(buffId));
+            }
+            
         }
+    }
+
+    // 清空buff栏
+    public void ClearBuff(GameObject target)
+    {
+        if (target.tag == "Enemy")
+        {
+            DelBuff(target, 3000);
+            DelBuff(target, 3001);
+            DelBuff(target, 3002);
+            DelBuff(target, 3003);
+            DelBuff(target, 3005);
+            DelBuff(target, 3006);
+        }
+        else if (target.tag == "Player")
+        {
+            DelBuff(target, 3004);
+            DelBuff(target, 3007);
+            DelBuff(target, 3008);
+        }
+        
     }
 }

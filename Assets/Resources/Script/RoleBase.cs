@@ -14,8 +14,9 @@ public class RoleBase : MonoBehaviour
     public TMP_Text HPText;  // 绑定HP的Text
     public int Shield;// 护盾值
     public TMP_Text shieldText;// 绑定护盾值的文本
-    Animator animator;
+    public Animator animator;// 获取动画机
     public int lastHP;// 血量变动前的上一次血量
+    public int lastShield;// 护盾值变动前的上一次护盾值
 
     public List<int> buffList;
 
@@ -28,6 +29,7 @@ public class RoleBase : MonoBehaviour
         HPSlider.minValue = 0;
         HPSlider.value = HPSlider.maxValue;
         Shield = 0;
+        lastShield = Shield;
 
         shieldText.text = Shield.ToString();
         HPText.text = curHP + " / " + maxHP;
@@ -37,6 +39,54 @@ public class RoleBase : MonoBehaviour
 
     protected void onUpdate()
     {
+        //更新血条Slider
+        if (maxHP != HPSlider.maxValue)
+        {
+            HPSlider.maxValue = maxHP;
+        }
+
+        if (!GameManager.Instance.isFighting && lastHP != curHP || !GameManager.Instance.isFighting && lastShield != Shield)
+        {
+            lastHP = curHP;
+            lastShield = Shield;
+        }
+
+        if (lastShield != Shield && GameManager.Instance.isFighting)
+        {
+            if (lastShield < Shield)
+            {
+                GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/DamageNum")) as GameObject;
+                obj.transform.SetParent(GameObject.Find("UI").transform, false);
+                if (gameObject.tag == "Player")
+                {
+                    obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-450, -150), Random.Range(300, 401));// 在某个区域内随机生成位置
+                }
+                else if (gameObject.tag == "Enemy")
+                {
+                    obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(150, 450), Random.Range(300, 401));
+                }
+                obj.GetComponent<TMP_Text>().text = "+" + (Shield - lastShield);
+                obj.GetComponent<TMP_Text>().color = Color.blue;
+                
+            }
+            else if (lastShield > Shield)
+            {
+                GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/DamageNum")) as GameObject;
+                obj.transform.SetParent(GameObject.Find("UI").transform, false);
+                if (gameObject.tag == "Player")
+                {
+                    obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-450, -150), Random.Range(300, 401));// 在某个区域内随机生成位置
+                }
+                else if (gameObject.tag == "Enemy")
+                {
+                    obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(150, 450), Random.Range(300, 401));
+                }
+                obj.GetComponent<TMP_Text>().text = (Shield - lastShield).ToString();
+                obj.GetComponent<TMP_Text>().color = Color.white;
+            }
+            lastShield = Shield;
+        }
+
         // 更新血量和护盾值
         if (curHP != HPSlider.value)
         {
@@ -46,29 +96,24 @@ public class RoleBase : MonoBehaviour
             {
                 
                 HPSlider.value += Time.deltaTime * 30;
-                if (curHP != lastHP)
+                if (curHP != lastHP && GameManager.Instance.isFighting)
                 {
+                    // 生成回复数字物体
+                    CreateRecoverNum();
+
                     lastHP = curHP;
                 }
             }
             else if (curHP < HPSlider.value)
             {
-                if (curHP != lastHP)
+                if (curHP != lastHP && GameManager.Instance.isFighting)
                 {
                     // 生成伤害数字物体 
-                    GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/DamageNum")) as GameObject;
-                    obj.transform.SetParent(GameObject.Find("UI").transform, false);
-                    if (gameObject.tag == "Player")
-                    {
-                        obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-450, -150), Random.Range(300, 401));// 在某个区域内随机生成位置
-                    }
-                    else if (gameObject.tag == "Enemy")
-                    {
-                        obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(150, 450), Random.Range(300, 401));
-                    }
-                    obj.GetComponent<TMP_Text>().text = (curHP - lastHP).ToString();
+                    CreateDamageNum();
+
                     lastHP = curHP;
                 }
+
                 HPSlider.value -= Time.deltaTime * 30;
             }
 
@@ -127,6 +172,40 @@ public class RoleBase : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    public void CreateRecoverNum()
+    {
+        // 生成回血数字物体 
+        GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/DamageNum")) as GameObject;
+        obj.transform.SetParent(GameObject.Find("UI").transform, false);
+        if (gameObject.tag == "Player")
+        {
+            obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-450, -150), Random.Range(300, 401));// 在某个区域内随机生成位置
+        }
+        else if (gameObject.tag == "Enemy")
+        {
+            obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(150, 450), Random.Range(300, 401));
+        }
+        obj.GetComponent<TMP_Text>().text = "+" + (curHP - lastHP);
+        obj.GetComponent<TMP_Text>().color = Color.green;
+    }
+
+    public void CreateDamageNum()
+    {
+        GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/Item/DamageNum")) as GameObject;
+        obj.transform.SetParent(GameObject.Find("UI").transform, false);
+        if (gameObject.tag == "Player")
+        {
+            obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-450, -150), Random.Range(300, 401));// 在某个区域内随机生成位置
+        }
+        else if (gameObject.tag == "Enemy")
+        {
+            obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(150, 450), Random.Range(300, 401));
+        }
+        obj.GetComponent<TMP_Text>().text = (curHP - lastHP).ToString();
+        obj.GetComponent<TMP_Text>().color = Color.red;
+        
     }
 
     //受击

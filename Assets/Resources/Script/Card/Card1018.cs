@@ -18,6 +18,11 @@ public class Card1018 : CardItem
         
     }
 
+    public override void OnPointerClick(PointerEventData eventData)
+    {
+        //base.OnPointerClick(eventData);
+    }
+
     IEnumerator DelayAction(float delayTime)
     {
         // 等待指定的时间  
