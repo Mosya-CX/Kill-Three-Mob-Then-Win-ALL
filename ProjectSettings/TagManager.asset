@@ -9,6 +9,8 @@ TagManager:
   - HandCard
   - SelectMenu
   - Background
+  - Win
+  - Lose
   layers:
   - Default
   - TransparentFX
