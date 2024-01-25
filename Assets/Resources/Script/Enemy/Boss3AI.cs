@@ -21,6 +21,14 @@ public class Boss3AI : MonoBehaviour
     void Start()
     {
         nextMove = Random.Range(1, 3);
+        if (nextMove == 1)
+        {
+            enemy.nextType = ActionType.Attack;
+        }
+        else if (nextMove == 2)
+        {
+            enemy.nextType = ActionType.Defend;
+        }
         attackMode = 1;
         player = GameManager.Instance.player;
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;

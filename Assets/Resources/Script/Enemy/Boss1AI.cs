@@ -22,6 +22,15 @@ public class Boss1AI : MonoBehaviour
     void Start()
     {
         nextMove = Random.Range(1, 3);
+        switch (nextMove)
+        {
+            case 1:
+                enemy.nextType = ActionType.Attack;
+                break;
+            case 2:
+                enemy.nextType = ActionType.Defend;
+                break;
+        }
         attackMode = 1;
         attackOrder = 1;
         player = GameManager.Instance.player.GetComponent<Player>();
