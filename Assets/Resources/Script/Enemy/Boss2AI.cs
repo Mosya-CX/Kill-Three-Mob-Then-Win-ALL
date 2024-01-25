@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss2AI : MonoBehaviour
 {
 
+
     // ¹¥»÷·½Ê½
     public int attackMode;
     // ¹¥»÷Ë³Ðò
@@ -17,11 +18,14 @@ public class Boss2AI : MonoBehaviour
     public bool isCharging;
     //ÐîÁ¦¹¥»÷µÄÉËº¦
     public int ChargingDamage;
+    public Animator animator;
     public Enemy enemy;
+
     void Start()
     {
         attackMode = 1;
         attackOrder = 5;
+        enemy.nextType = ActionType.Skill;
         isCharging = false;
         player = GameManager.Instance.player.GetComponent<Player>();
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
