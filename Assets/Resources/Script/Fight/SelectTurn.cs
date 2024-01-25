@@ -10,6 +10,7 @@ public class SelectTurn : FightUnit
     public override void Init()
     {
         // 切换bgm
+        AudioManager.Instance.CloseBGM();
 
         // 打开选面板
         GameObject obj = GameObject.Instantiate(Resources.Load("Prefab/UI/CardSelectUI"), GameObject.Find("UI").transform) as GameObject;

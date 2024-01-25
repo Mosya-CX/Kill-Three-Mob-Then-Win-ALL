@@ -10,6 +10,7 @@ public class Fight_Win : FightUnit
         GameManager.Instance.isFighting = false;
 
         // «–ªªbgm
+        AudioManager.Instance.CloseBGM();
 
         GameManager.Instance.currentProgress++;
         // ”–æÁ«È”√None

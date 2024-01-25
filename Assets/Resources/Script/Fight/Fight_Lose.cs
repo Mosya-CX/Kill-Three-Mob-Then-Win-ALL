@@ -15,6 +15,7 @@ public class Fight_Lose : FightUnit
         //FightManager.Instance.ChangeType(FightType.Init);
 
         // 切换bgm
+        AudioManager.Instance.CloseBGM();
 
         // 锁定鼠标光标  
         Cursor.lockState = CursorLockMode.Locked;

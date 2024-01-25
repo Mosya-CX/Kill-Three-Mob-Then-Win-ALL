@@ -21,6 +21,13 @@ public class Boss1AI : MonoBehaviour
 
     void Start()
     {
+        
+        attackMode = 1;
+        attackOrder = 1;
+        player = GameManager.Instance.player.GetComponent<Player>();
+        baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
+        enemy = gameObject.GetComponent<Enemy>();
+        animator = gameObject.GetComponent<Animator>();
         nextMove = Random.Range(1, 3);
         switch (nextMove)
         {
@@ -31,15 +38,9 @@ public class Boss1AI : MonoBehaviour
                 enemy.nextType = ActionType.Defend;
                 break;
         }
-        attackMode = 1;
-        attackOrder = 1;
-        player = GameManager.Instance.player.GetComponent<Player>();
-        baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
-        enemy = gameObject.GetComponent<Enemy>();
-        animator = gameObject.GetComponent<Animator>();
     }
 
-    // �����ж�
+    // 
     public void Move()
     {
         if (attackOrder == 1)
