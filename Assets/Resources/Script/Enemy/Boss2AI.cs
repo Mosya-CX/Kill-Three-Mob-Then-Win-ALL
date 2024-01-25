@@ -44,9 +44,9 @@ public class Boss2AI : MonoBehaviour
             case 1:
                 if (isCharging)
                 {
-                    //animator.SetTrigger("ChargeAttack");
+                    animator.SetTrigger("ChargeAttack");
                     GameManager.Instance.player.totalFee++;
-                    ChargingAttack();
+                    //ChargingAttack();
                     isCharging = false;
                     attackOrder = 2;
                     enemy.nextType = ActionType.Skill;
