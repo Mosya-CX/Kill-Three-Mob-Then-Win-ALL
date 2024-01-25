@@ -63,6 +63,11 @@ public class FightUI : BasePanel
             
             // 
             string cardId = FightCardManager.instance.DrawCard();
+            if (cardId == null)
+            {
+                Debug.Log("没牌了");
+                return null;
+            }
             Dictionary<string, string> cardData = GameConfigManager.Instance.getCardById(cardId);
             //print(cardId);
             //print(cardData["PrefabPath"]);
@@ -83,7 +88,7 @@ public class FightUI : BasePanel
             
             item.isSlectable = isSlectable;
 
-            // 
+            // 加入手牌区
             cardItemList.Add(item);
             PlayerInfoManager.Instance.handCards.Add(cardId);
 
@@ -119,21 +124,21 @@ public class FightUI : BasePanel
     {
         item.enabled = false;//
 
-        //
+        // 加入弃牌堆
         FightCardManager.instance.usedCardList.Add(item.data["Id"]);
 
-        //
+        // 更新弃牌堆数字
         usedCardNumTxt.text = FightCardManager.instance.usedCardList.Count.ToString();
        
-        //
+        //从FightUI的手牌存储区中移除
         cardItemList.Remove(item);
         //
         //UpdateCardItemPos();
 
-        //
+        //移动位置
         item.GetComponent<RectTransform>().DOAnchorPos(new Vector2(1000, -700), 0.25f);
         item.transform.DOScale(0, 0.25f);
-
+        // 延迟删除
         Destroy(item.gameObject, 1);
     }
 
