@@ -5,7 +5,8 @@ using UnityEngine;
 public class Boss2AI : MonoBehaviour
 {
 
-    // ������ʽ
+
+    // 攻击方式
     public int attackMode;
     // ����˳��
     public int attackOrder;
@@ -17,20 +18,22 @@ public class Boss2AI : MonoBehaviour
     public bool isCharging;
     //�����������˺�
     public int ChargingDamage;
-    // �����������
-    public Enemy enemy;
-    // ��ö�����
     public Animator animator;
+    public Enemy enemy;
+
     void Start()
     {
         attackMode = 1;
         attackOrder = 5;
+        
         isCharging = false;
         player = GameManager.Instance.player.GetComponent<Player>();
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
         enemy = GetComponent<Enemy>();
         animator = gameObject.GetComponent<Animator>();
         ChargingDamage = baseDamage / 3 * 7;
+
+        enemy.nextType = ActionType.Skill;
     }
 
     // �����ж�
@@ -41,45 +44,45 @@ public class Boss2AI : MonoBehaviour
             case 1:
                 if (isCharging)
                 {
-                    //animator.SetTrigger("ChargeAttack");
-
-                    ChargingAttack();
+                    animator.SetTrigger("ChargeAttack");
+                    GameManager.Instance.player.totalFee++;
+                    //ChargingAttack();
                     isCharging = false;
                     attackOrder = 2;
                     enemy.nextType = ActionType.Skill;
                 }
                 else
                 {
-                    //animator.SetTrigger("Recover");
+                    animator.SetTrigger("Charge");
 
                     isCharging = true;
-                    GameManager.Instance.player.totalFee--;
+                    //GameManager.Instance.player.totalFee--;
                     enemy.nextType = ActionType.Attack;
                 }
                 break;
             case 2:
                 if (isCharging)
                 {
-                    //animator.SetTrigger("Recover");
-
-                    Recover();
+                    animator.SetTrigger("Recover");
+                    GameManager.Instance.player.totalFee++;
+                    //Recover();
                     isCharging = false;
                     enemy.nextType = ActionType.Attack;
                     attackOrder = 3;
                 }
                 else
                 {
-                    //animator.SetTrigger("Charge");
+                    animator.SetTrigger("Charge");
 
                     isCharging = true;
-                    GameManager.Instance.player.totalFee--;
+                    //GameManager.Instance.player.totalFee--;
                     enemy.nextType = ActionType.Attack;
                 }
                 break;
             case 3:
-                //animator.SetTrigger("Attack");
+                animator.SetTrigger("Attack");
 
-                Attack();
+                //Attack();
 
                 attackOrder = 1;
                 enemy.nextType = ActionType.Skill;
@@ -87,9 +90,9 @@ public class Boss2AI : MonoBehaviour
             
             case 5:
 
-                //animator.SetTrigger("Skill");
+                animator.SetTrigger("Skill");
                 
-                Skill();
+                //Skill();
 
                 attackOrder = 3;
                 enemy.nextType = ActionType.Attack;
@@ -99,8 +102,8 @@ public class Boss2AI : MonoBehaviour
 
     public void ChargingAttack()
     {
-        // ���ɹ�����Ч
-        // enemy.AttackEffeck();
+        // 
+        enemy.AttackEffeck();
 
         if (player.Shield >= ChargingDamage)
         {
@@ -123,8 +126,8 @@ public class Boss2AI : MonoBehaviour
     }
     public void Attack()
     {
-        // ���ɹ�����Ч
-        // enemy.AttackEffeck();
+        // 
+        enemy.AttackEffeck();
 
         if (player.Shield >= baseDamage)
         {

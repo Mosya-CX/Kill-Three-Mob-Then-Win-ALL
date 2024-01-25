@@ -22,7 +22,7 @@ public class Card1010 : CardItem
             Debug.Log("1010");
             // 使用效果
             // 加buff
-            // BuffManager.Instance.AddBuff(GameManager.Instance.player.gameObject, 3004);
+            BuffManager.Instance.AddBuff(GameManager.Instance.player.gameObject, 3004);
             
 
            

@@ -19,6 +19,9 @@ public class Card1016 : CardItem
 
         if (TryUse())
         {
+            //播放特效
+            GameManager.Instance.player.animator.SetTrigger("Recover");
+
             Player playerData = GameManager.Instance.player;
             if (playerData.curHP <= playerData.maxHP - 20)
             {

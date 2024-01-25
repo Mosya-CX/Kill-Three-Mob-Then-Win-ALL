@@ -19,12 +19,14 @@ public class Card1012 : CardItem
 
         if (TryUse())
         {
-           
+            //播放特效
+            GameManager.Instance.player.animator.SetTrigger("Defend");
+
             // 效果
             GameManager.Instance.player.Shield += 13;
 
-            // ��buff
-
+            // 加buff
+            BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3006);
 
             //if (GameManager.Instance.enemy.Shield >= 3)
             //{

@@ -18,6 +18,9 @@ public class Card1009 : CardItem
 
         if (TryUse())
         {
+            //播放特效
+            GameManager.Instance.player.animator.SetTrigger("Fire");
+
             Debug.Log("1009");
             //使用效果
             // 造成伤害

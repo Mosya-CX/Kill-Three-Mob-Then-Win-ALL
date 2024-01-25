@@ -28,6 +28,8 @@ public class Boss4AI : MonoBehaviour
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
         enemy = GetComponent<Enemy>();
         animator = gameObject.GetComponent<Animator>();
+
+        nextMove = Random.Range(1, 4);
     }
 
     // 敌人行动
@@ -37,19 +39,19 @@ public class Boss4AI : MonoBehaviour
         switch (nextMove)
         {
             case 1:
-                //animator.SetTrigger("Defend");
+                animator.SetTrigger("Defend");
                 enemy.nextType = ActionType.Defend;
-                Action1();
+                //Action1();
                 break;
             case 2:
-                //animator.SetTrigger("Attack");
+                animator.SetTrigger("Attack");
                 enemy.nextType = ActionType.Attack;
-                Action2();
+                //Action2();
                 break;
             case 3:
-                //animator.SetTrigger("Skill");
+                animator.SetTrigger("Skill");
                 enemy.nextType = ActionType.Skill;
-                Action3();
+                //Action3();
                 isAction3 = true;
                 break;
         }
@@ -77,7 +79,7 @@ public class Boss4AI : MonoBehaviour
     public void Action2()
     {
         // 生成攻击特效
-        // enemy.AttackEffeck();
+        enemy.AttackEffeck();
 
         if (player.Shield >= baseDamage)
         {
@@ -87,10 +89,31 @@ public class Boss4AI : MonoBehaviour
         {
             player.curHP -= (baseDamage - player.Shield);
             player.Shield = 0;
+
+            // 回复未被格挡的血量
+            int addHp = baseDamage - player.Shield;
+            if (enemy.curHP <= enemy.maxHP - addHp)
+            {
+                enemy.curHP += addHp;
+            }
+            else
+            {
+                enemy.curHP = enemy.maxHP;
+            }
         }
         else
         {
             player.curHP -= baseDamage;
+            // 回复未被格挡的血量
+            int addHp = baseDamage;
+            if (enemy.curHP <= enemy.maxHP - addHp)
+            {
+                enemy.curHP += addHp;
+            }
+            else
+            {
+                enemy.curHP = enemy.maxHP;
+            }
         }
     }
 

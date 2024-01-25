@@ -36,6 +36,9 @@ public class Card1007 : CardItem
                 GameManager.Instance.enemy.curHP -= 1;
             }
 
+            //播放特效
+            GameManager.Instance.player.animator.SetTrigger("Normal");
+
             // 加buff
             BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, Random.Range(3000, 3003));
 

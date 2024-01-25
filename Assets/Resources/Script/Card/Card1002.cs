@@ -18,8 +18,8 @@ public class Card1002 : CardItem
 
         if (TryUse())
         {
-            // 播放动画
-            GameManager.Instance.player.animator.SetTrigger("Attack");
+            //播放特效
+            GameManager.Instance.player.animator.SetTrigger("Normal");
             // 
             AudioManager.Instance.AttackAudio();
             // 

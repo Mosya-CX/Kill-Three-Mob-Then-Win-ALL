@@ -21,12 +21,10 @@ public class Card1000 : CardItem
         {
             Debug.Log("1000");
             //播放特效
+            GameManager.Instance.player.animator.SetTrigger("Normal");
 
             //播放敌人受伤音效
             AudioManager.Instance.AttackAudio();
-
-            // 播放动画
-            GameManager.Instance.player.animator.SetTrigger("Attack");
 
             // 使用效果
             if (GameManager.Instance.enemy.Shield >= 5)

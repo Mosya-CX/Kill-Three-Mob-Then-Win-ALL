@@ -7,15 +7,18 @@ public class FightInit : FightUnit
 {
     public override void Init()
     {
+        int progress = GameManager.Instance.currentProgress;
 
         //切换BGM
+        
         AudioManager.Instance.FightingAudio();
-
+        
+        
         //初始化战斗数值
         FightManager.Instance.Init();
 
         // 敌人生成
-        int progress = GameManager.Instance.currentProgress;
+        
         GameObject Bg = GameObject.FindWithTag("Background");
         if (progress == 1)
         {
@@ -69,9 +72,9 @@ public class FightInit : FightUnit
 
         //删除玩家所有手牌
         UIManager.Instance.GetUI<FightUI>("FightUI").RemoveAllCards();
-        FightCardManager.instance.usedCardList.AddRange(PlayerInfoManager.Instance.handCards);
+        //FightCardManager.instance.usedCardList.AddRange(PlayerInfoManager.Instance.handCards);
         PlayerInfoManager.Instance.handCards.Clear();
-        GameObject.Find("UI/FightUI").GetComponent<FightUI>().cardItemList.Clear();
+        //GameObject.Find("UI/FightUI").GetComponent<FightUI>().cardItemList.Clear();
 
         // 重置牌堆
         if (progress != 4)

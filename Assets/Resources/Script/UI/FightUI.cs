@@ -63,6 +63,11 @@ public class FightUI : BasePanel
             
             // 
             string cardId = FightCardManager.instance.DrawCard();
+            if (cardId == null)
+            {
+                Debug.Log("没牌了");
+                return null;
+            }
             Dictionary<string, string> cardData = GameConfigManager.Instance.getCardById(cardId);
             //print(cardId);
             //print(cardData["PrefabPath"]);
@@ -83,7 +88,7 @@ public class FightUI : BasePanel
             
             item.isSlectable = isSlectable;
 
-            // 
+            // 加入手牌区
             cardItemList.Add(item);
             PlayerInfoManager.Instance.handCards.Add(cardId);
 
@@ -117,23 +122,23 @@ public class FightUI : BasePanel
     //ɾ����������
     public void RemoveCard(CardItem item)
     {
-        item.enabled = false;//���ÿ����߼�
+        item.enabled = false;//
 
-        //���ӵ����Ƽ���
+        // 加入弃牌堆
         FightCardManager.instance.usedCardList.Add(item.data["Id"]);
 
-        //����ʹ�ú�Ŀ�������
+        // 更新弃牌堆数字
         usedCardNumTxt.text = FightCardManager.instance.usedCardList.Count.ToString();
        
-        //�Ӽ�����ɾ��
+        //从FightUI的手牌存储区中移除
         cardItemList.Remove(item);
-        //ˢ�¿���
+        //
         //UpdateCardItemPos();
 
-        //�����Ƶ����ƶ�Ч��
+        //移动位置
         item.GetComponent<RectTransform>().DOAnchorPos(new Vector2(1000, -700), 0.25f);
         item.transform.DOScale(0, 0.25f);
-
+        // 延迟删除
         Destroy(item.gameObject, 1);
     }
 
@@ -147,12 +152,15 @@ public class FightUI : BasePanel
     }
 
     //�л��غ�
-    private void ChangeTurn()
+    public void ChangeTurn()
     {
         //ֻ����һغϲ����л�
         if(FightManager.Instance.fightUnit is Fight_PlayerTurn) 
         {
-            FightManager.Instance.ChangeType(FightType.Enemy);
+            // 播放动画
+            GameManager.Instance.player.animator.SetTrigger("Attack");
+
+            //FightManager.Instance.ChangeType(FightType.Enemy);
 
         }
     }

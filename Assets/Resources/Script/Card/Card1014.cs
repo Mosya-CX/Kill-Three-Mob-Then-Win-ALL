@@ -20,12 +20,17 @@ public class Card1014 : CardItem
         if (TryUse())
         {
             Debug.Log("1014");
+
+            //播放特效
+            GameManager.Instance.player.animator.SetTrigger("Plant");
+
             // 使用效果
             GameManager.Instance.enemy.curHP -= 6;
             BuffManager.Instance.AddBuff(GameManager.Instance.enemy.gameObject, 3002);
-            // 下回合额外抽做不到
+            // 
+            BuffManager.Instance.AddBuff(GameManager.Instance.player.gameObject, 3007);
             //抽卡效果
-            CardItem item = UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(2, true);
+            //CardItem item = UIManager.Instance.GetUI<FightUI>("FightUI").CreateCardItem(2, true);
 
             base.OnPointerClick(eventData);
         }
