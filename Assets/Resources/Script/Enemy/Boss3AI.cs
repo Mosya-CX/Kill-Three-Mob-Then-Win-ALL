@@ -14,10 +14,10 @@ public class Boss3AI : MonoBehaviour
     public int baseDamage;
     //BOSS下一步行动
     public int nextMove;
+    public Animator animator;
     public Enemy enemy;
     
-    // 获得动画机
-    public Animator animator;
+   
     void Start()
     {
         
@@ -29,6 +29,11 @@ public class Boss3AI : MonoBehaviour
 
 
         nextMove = Random.Range(1, 3);
+        attackMode = 1;
+        player = GameManager.Instance.player;
+        baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
+        enemy = gameObject.GetComponent<Enemy>();  
+        animator = gameObject.GetComponent<Animator>();
         if (nextMove == 1)
         {
             enemy.nextType = ActionType.Attack;

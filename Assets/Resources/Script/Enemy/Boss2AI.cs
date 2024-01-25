@@ -6,20 +6,28 @@ public class Boss2AI : MonoBehaviour
 {
 
 
+
+
     // 攻击方式
+
     public int attackMode;
-    // ����˳��
+    //攻击顺序 
     public int attackOrder;
-    // ����Ҷ���
+    // 帮绑定玩家物体
     public Player player;
-    // ��û���������
+    // 基础伤害
     public int baseDamage;
-    //�ж��Ƿ�������
+    //是否蓄力
     public bool isCharging;
-    //�����������˺�
+    //蓄力伤害
+
     public int ChargingDamage;
-    public Animator animator;
+
+    // 敌人物体
     public Enemy enemy;
+    // 动画机
+    public Animator animator;
+
 
     void Start()
     {
@@ -30,7 +38,10 @@ public class Boss2AI : MonoBehaviour
         player = GameManager.Instance.player.GetComponent<Player>();
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
         enemy = GetComponent<Enemy>();
+
+        enemy.nextType = ActionType.Skill;
         animator = gameObject.GetComponent<Animator>();
+
         ChargingDamage = baseDamage / 3 * 7;
 
         enemy.nextType = ActionType.Skill;
@@ -44,9 +55,14 @@ public class Boss2AI : MonoBehaviour
             case 1:
                 if (isCharging)
                 {
+
                     animator.SetTrigger("ChargeAttack");
+
+                    // ChargingAttack();
+
                     GameManager.Instance.player.totalFee++;
-                    //ChargingAttack();
+                   
+
                     isCharging = false;
                     attackOrder = 2;
                     enemy.nextType = ActionType.Skill;
@@ -63,7 +79,9 @@ public class Boss2AI : MonoBehaviour
             case 2:
                 if (isCharging)
                 {
+
                     animator.SetTrigger("Recover");
+                    //Recover();
                     GameManager.Instance.player.totalFee++;
                     //Recover();
                     isCharging = false;
@@ -75,8 +93,12 @@ public class Boss2AI : MonoBehaviour
                     animator.SetTrigger("Charge");
 
                     isCharging = true;
-                    //GameManager.Instance.player.totalFee--;
+                    GameManager.Instance.player.totalFee--;
+
                     enemy.nextType = ActionType.Attack;
+
+                    enemy.nextType = ActionType.Defend;
+
                 }
                 break;
             case 3:
@@ -146,7 +168,8 @@ public class Boss2AI : MonoBehaviour
 
    
 
-    public void Skill()//������ҳ�����
+
+    public void Skill()//减少玩家抽牌数
     {
         player.cardCount--;
     }

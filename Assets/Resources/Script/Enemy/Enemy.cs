@@ -48,26 +48,30 @@ public class Enemy : RoleBase
         
 
         onUpdate();
-        // 敌人下回合显示ui
+        // �˴�������ʾ�����»غ��ж���UI
         if (nextType == ActionType.None)
         {
+
             //UnityEngine.UIElements.Image img = nextAction.GetComponent<UnityEngine.UIElements.Image>();
             //img.sprite = null;
         }
         else if (nextType == ActionType.Attack)
         {
+
             Sprite newSprite = Resources.Load<Sprite>("Img/Item/Attack");
             UnityEngine.UI.Image img = nextAction.GetComponent<UnityEngine.UI.Image>();
             img.sprite = newSprite;
         }
         else if (nextType == ActionType.Defend)
         {
+
             Sprite newSprite = Resources.Load<Sprite>("Img/Item/Defend");
             UnityEngine.UI.Image img = nextAction.GetComponent<UnityEngine.UI.Image>();
             img.sprite = newSprite;
         }
         else if (nextType == ActionType.Skill)
         {
+
             Sprite newSprite = Resources.Load<Sprite>("Img/Item/Skill");
             UnityEngine.UI.Image img = nextAction.GetComponent<UnityEngine.UI.Image>();
             img.sprite = newSprite;
