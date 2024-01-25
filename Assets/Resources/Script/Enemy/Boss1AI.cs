@@ -22,24 +22,28 @@ public class Boss1AI : MonoBehaviour
     void Start()
     {
         nextMove = Random.Range(1, 3);
-        switch (nextMove)
-        {
-            case 1:
-                enemy.nextType = ActionType.Attack;
-                break;
-            case 2:
-                enemy.nextType = ActionType.Defend;
-                break;
-        }
+       
+        
         attackMode = 1;
         attackOrder = 1;
         player = GameManager.Instance.player.GetComponent<Player>();
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
         enemy = gameObject.GetComponent<Enemy>();
         animator = gameObject.GetComponent<Animator>();
+        switch (nextMove)
+        {
+            case 1:
+                Debug.Log("attack!");
+                enemy.nextType = ActionType.Attack;
+                break;
+            case 2:
+                Debug.Log("attack22!");
+                enemy.nextType = ActionType.Defend;
+                break;
+        }
     }
 
-    // �����ж�
+   
     public void Move()
     {
         if (attackOrder == 1)
@@ -93,15 +97,18 @@ public class Boss1AI : MonoBehaviour
             //Skill();
             attackOrder = 1;
         }
-        nextMove = Random.Range(1, 3);
+        
         if (attackOrder != 4)
         {
+            nextMove = Random.Range(1, 3);
             switch (nextMove)
             {
                 case 1:
+                    Debug.Log("ksAttack");
                     enemy.nextType = ActionType.Attack;   
                     break;
                 case 2:
+                    Debug.Log("ksDefend");
                     enemy.nextType = ActionType.Defend;
                     break;
             }
@@ -114,7 +121,6 @@ public class Boss1AI : MonoBehaviour
         AudioManager.Instance.AttackAudio();
         AudioManager.Instance.HurtVoiceAudio();
         int attackCount = 5;
-        enemy.nextType = ActionType.Attack;
         // 生成攻击特效
         enemy.AttackEffeck();
         while (attackCount > 0)

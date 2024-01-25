@@ -27,6 +27,18 @@ public class Boss4AI : MonoBehaviour
         player = GameManager.Instance.player;
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
         enemy = GetComponent<Enemy>();
+        switch (nextMove)
+        {
+            case 1:
+                enemy.nextType = ActionType.Defend;
+                break;
+            case 2:
+                enemy.nextType = ActionType.Attack;
+                break;
+            case 3:
+                enemy.nextType = ActionType.Skill;
+                break;
+        }
         animator = gameObject.GetComponent<Animator>();
     }
 
@@ -38,17 +50,17 @@ public class Boss4AI : MonoBehaviour
         {
             case 1:
                 animator.SetTrigger("Defend");
-                enemy.nextType = ActionType.Defend;
+                
                 //Action1();
                 break;
             case 2:
                 animator.SetTrigger("Attack");
-                enemy.nextType = ActionType.Attack;
+                
                 //Action2();
                 break;
             case 3:
                 animator.SetTrigger("Skill");
-                enemy.nextType = ActionType.Skill;
+           
                 //Action3();
                 isAction3 = true;
                 break;
@@ -62,7 +74,18 @@ public class Boss4AI : MonoBehaviour
         {
             nextMove = Random.Range(1, 4);
         }
-        
+        switch (nextMove)
+        {
+            case 1:
+                enemy.nextType = ActionType.Defend;
+                break;
+            case 2:
+                enemy.nextType = ActionType.Attack;
+                break;
+            case 3:
+                enemy.nextType = ActionType.Skill;
+                break;
+        }
     }
 
     public void Action1()
