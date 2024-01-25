@@ -153,14 +153,14 @@ public class RoleBase : MonoBehaviour
                     //Debug.Log("贪心！");
                 }
                 //避免嗔的效果特殊效果持续
-                else if (name== "嗔")
-                {
-                    bool isCharging = GetComponent<Boss2AI>().isCharging;
-                    if (isCharging)
-                    {
-                        GameManager.Instance.player.totalFee++;
-                    }
-                }
+                //else if (name== "嗔")
+                //{
+                //    bool isCharging = GetComponent<Boss2AI>().isCharging;
+                //    if (isCharging)
+                //    {
+                //        //GameManager.Instance.player.totalFee++;
+                //    }
+                //}
                 // 播放敌人死亡动画
 
                 // 移除敌人

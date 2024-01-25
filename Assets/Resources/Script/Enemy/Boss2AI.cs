@@ -45,7 +45,7 @@ public class Boss2AI : MonoBehaviour
                 if (isCharging)
                 {
                     animator.SetTrigger("ChargeAttack");
-                    GameManager.Instance.player.totalFee++;
+                    //GameManager.Instance.player.totalFee++;
                     //ChargingAttack();
                     isCharging = false;
                     attackOrder = 2;
@@ -64,7 +64,7 @@ public class Boss2AI : MonoBehaviour
                 if (isCharging)
                 {
                     animator.SetTrigger("Recover");
-                    GameManager.Instance.player.totalFee++;
+                    //GameManager.Instance.player.totalFee++;
                     //Recover();
                     isCharging = false;
                     enemy.nextType = ActionType.Attack;
