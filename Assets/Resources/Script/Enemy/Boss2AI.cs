@@ -25,13 +25,15 @@ public class Boss2AI : MonoBehaviour
     {
         attackMode = 1;
         attackOrder = 5;
-        enemy.nextType = ActionType.Skill;
+        
         isCharging = false;
         player = GameManager.Instance.player.GetComponent<Player>();
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
         enemy = GetComponent<Enemy>();
         animator = gameObject.GetComponent<Animator>();
         ChargingDamage = baseDamage / 3 * 7;
+
+        enemy.nextType = ActionType.Skill;
     }
 
     // �����ж�

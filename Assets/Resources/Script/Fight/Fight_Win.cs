@@ -9,8 +9,7 @@ public class Fight_Win : FightUnit
     {
         GameManager.Instance.isFighting = false;
 
-        // 切换bgm
-        AudioManager.Instance.CloseBGM();
+        
 
         GameManager.Instance.currentProgress++;
         // 有剧情用None
@@ -21,6 +20,8 @@ public class Fight_Win : FightUnit
         }
         else 
         {
+            // 切换bgm
+            AudioManager.Instance.CloseBGM();
             // 锁定鼠标光标  
             Cursor.lockState = CursorLockMode.Locked;
             // 隐藏鼠标光标  

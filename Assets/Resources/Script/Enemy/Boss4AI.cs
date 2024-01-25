@@ -28,6 +28,8 @@ public class Boss4AI : MonoBehaviour
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
         enemy = GetComponent<Enemy>();
         animator = gameObject.GetComponent<Animator>();
+
+        nextMove = Random.Range(1, 4);
     }
 
     // µ–»À––∂Ø

@@ -10,10 +10,9 @@ public class FightInit : FightUnit
         int progress = GameManager.Instance.currentProgress;
 
         //切换BGM
-        if (progress != 4)
-        {
-            AudioManager.Instance.FightingAudio();
-        }
+        
+        AudioManager.Instance.FightingAudio();
+        
         
         //初始化战斗数值
         FightManager.Instance.Init();
