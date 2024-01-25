@@ -20,6 +20,14 @@ public class Boss3AI : MonoBehaviour
    
     void Start()
     {
+        
+        attackMode = 1;
+        player = GameManager.Instance.player;
+        baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
+        enemy = gameObject.GetComponent<Enemy>();  
+        animator = gameObject.GetComponent<Animator>();
+
+
         nextMove = Random.Range(1, 3);
         attackMode = 1;
         player = GameManager.Instance.player;

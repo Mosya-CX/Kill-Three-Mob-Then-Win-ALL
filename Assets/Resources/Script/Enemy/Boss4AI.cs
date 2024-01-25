@@ -40,6 +40,8 @@ public class Boss4AI : MonoBehaviour
                 break;
         }
         animator = gameObject.GetComponent<Animator>();
+
+        nextMove = Random.Range(1, 4);
     }
 
     // µ–»À––∂Ø

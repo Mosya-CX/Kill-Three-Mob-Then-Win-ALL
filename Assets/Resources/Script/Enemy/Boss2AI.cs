@@ -33,7 +33,7 @@ public class Boss2AI : MonoBehaviour
     {
         attackMode = 1;
         attackOrder = 5;
-       
+        
         isCharging = false;
         player = GameManager.Instance.player.GetComponent<Player>();
         baseDamage = gameObject.GetComponent<Enemy>().baseDamage;
@@ -43,6 +43,8 @@ public class Boss2AI : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
 
         ChargingDamage = baseDamage / 3 * 7;
+
+        enemy.nextType = ActionType.Skill;
     }
 
     // �����ж�
@@ -70,7 +72,7 @@ public class Boss2AI : MonoBehaviour
                     animator.SetTrigger("Charge");
 
                     isCharging = true;
-                    GameManager.Instance.player.totalFee--;
+                    //GameManager.Instance.player.totalFee--;
                     enemy.nextType = ActionType.Attack;
                 }
                 break;
@@ -81,6 +83,7 @@ public class Boss2AI : MonoBehaviour
                     animator.SetTrigger("Recover");
                     //Recover();
                     GameManager.Instance.player.totalFee++;
+                    //Recover();
                     isCharging = false;
                     enemy.nextType = ActionType.Attack;
                     attackOrder = 3;

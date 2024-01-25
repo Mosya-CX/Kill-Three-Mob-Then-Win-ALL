@@ -105,4 +105,13 @@ public class AudioManager : MonoBehaviour
         Instance.fightingSource.clip = Instance.armorClip;
         Instance.fightingSource.Play();
     }
+
+    // 关闭所有音效
+    public void CloseBGM()
+    {
+        Instance.bgmSource.Stop();
+        Instance.fightingSource.Stop();
+        Instance.hurtSource.Stop();
+        Instance.attackSource.Stop();
+    }
 }
